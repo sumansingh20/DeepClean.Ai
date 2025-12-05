@@ -48,6 +48,14 @@ mediapipe==0.10.3
 retinaface==0.0.13
 easyocr==1.7.0
 pytesseract==0.3.10
+scikit-image==0.22.0
+
+# Advanced Reporting & PDF Generation
+reportlab==4.0.7
+matplotlib==3.8.2
+plotly==5.18.0
+kaleido==0.2.1
+pandas==2.1.4
 
 # Audio Processing
 pydub==0.25.1

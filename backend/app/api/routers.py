@@ -1,6 +1,7 @@
 """
 Comprehensive API routers for A-DFP Firewall
 Analysis endpoints: voice, video, document, liveness, scam, risk, incidents, webhooks, health
+Advanced features: real-time analysis, blockchain evidence, forensic reports
 """
 
 from fastapi import APIRouter, UploadFile, File, HTTPException, status, Depends, Query, Body
@@ -33,6 +34,9 @@ from app.workers.tasks import (
     calculate_risk_score_task,
     generate_report_task
 )
+
+# Import advanced router
+from app.api.advanced_router import router as advanced_router
 
 logger = logging.getLogger(__name__)
 

@@ -406,6 +406,14 @@ app.include_router(
     tags=["Web Crawler & Reverse Search"]
 )
 
+# Advanced Analysis Router - Real ML detection, blockchain, reports
+from app.api.advanced_router import router as advanced_router
+app.include_router(
+    advanced_router,
+    prefix=settings.API_V1_STR + "/advanced",
+    tags=["Advanced Forensic Analysis"]
+)
+
 
 # ============================================================================
 # PRODUCTION SETTINGS
