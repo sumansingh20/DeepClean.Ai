@@ -1,0 +1,295 @@
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+
+export default function PricingPage() {
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
+  
+  const plans = [
+    {
+      name: 'Individual',
+      description: 'Perfect for personal protection',
+      icon: '👤',
+      monthlyPrice: 0,
+      annualPrice: 0,
+      color: 'from-gray-600 to-gray-800',
+      popular: false,
+      features: [
+        { text: '5 analyses per month', included: true },
+        { text: 'Basic detection engines', included: true },
+        { text: 'Email support', included: true },
+        { text: 'Standard processing speed', included: true },
+        { text: 'Victim support portal access', included: true },
+        { text: 'Legal document templates', included: true },
+        { text: 'Priority support', included: false },
+        { text: 'API access', included: false },
+        { text: 'White-label reports', included: false },
+      ]
+    },
+    {
+      name: 'Professional',
+      description: 'For creators & professionals',
+      icon: '💼',
+      monthlyPrice: 2999,
+      annualPrice: 29999,
+      color: 'from-blue-600 to-indigo-600',
+      popular: true,
+      features: [
+        { text: '100 analyses per month', included: true },
+        { text: 'All 6 AI detection engines', included: true },
+        { text: 'Priority email & chat support', included: true },
+        { text: 'Fast processing (2x speed)', included: true },
+        { text: 'Advanced evidence reports', included: true },
+        { text: 'Auto-takedown requests', included: true },
+        { text: 'Legal document generation', included: true },
+        { text: 'API access (100 calls/day)', included: true },
+        { text: 'Brand monitoring alerts', included: true },
+      ]
+    },
+    {
+      name: 'Enterprise',
+      description: 'Large organizations & govt',
+      icon: '🏢',
+      monthlyPrice: 'Custom',
+      annualPrice: 'Custom',
+      color: 'from-purple-600 to-pink-600',
+      popular: false,
+      features: [
+        { text: 'Unlimited analyses', included: true },
+        { text: 'All engines + custom training', included: true },
+        { text: '24/7 dedicated support', included: true },
+        { text: 'Ultra-fast processing', included: true },
+        { text: 'Court-ready evidence packages', included: true },
+        { text: 'Mass takedown automation', included: true },
+        { text: 'Legal team coordination', included: true },
+        { text: 'Full API access (unlimited)', included: true },
+        { text: 'White-label solution', included: true },
+        { text: 'On-premise deployment', included: true },
+        { text: 'Custom integrations', included: true },
+        { text: 'SLA guarantees', included: true },
+      ]
+    }
+  ];
+
+  const getPrice = (plan: typeof plans[0]) => {
+    if (plan.monthlyPrice === 'Custom') return 'Custom';
+    if (plan.monthlyPrice === 0) return 'Free';
+    
+    const price = billingCycle === 'monthly' ? plan.monthlyPrice : Math.floor(plan.annualPrice / 12);
+    return `₹${price.toLocaleString('en-IN')}`;
+  };
+
+  const getSavings = (plan: typeof plans[0]) => {
+    if (plan.monthlyPrice === 'Custom' || plan.monthlyPrice === 0) return null;
+    if (billingCycle === 'annual') {
+      const monthlyTotal = plan.monthlyPrice * 12;
+      const savings = monthlyTotal - plan.annualPrice;
+      const percentage = Math.round((savings / monthlyTotal) * 100);
+      return `Save ${percentage}%`;
+    }
+    return null;
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      {/* Header */}
+      <nav className="bg-white/70 backdrop-blur-2xl border-b border-white/20 shadow-xl sticky top-0 z-50">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-black shadow-lg">
+                DC
+              </div>
+              <span className="text-2xl font-black gradient-text">DeepClean AI</span>
+            </Link>
+            <Link href="/login" className="btn-primary">
+              Login
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h1 className="text-6xl font-black text-gray-900 mb-6">
+              Choose Your <span className="gradient-text">Protection Plan</span>
+            </h1>
+            <p className="text-2xl text-gray-600 max-w-3xl mx-auto mb-8">
+              Flexible pricing for individuals, professionals, and enterprises
+            </p>
+
+            {/* Billing Toggle */}
+            <div className="inline-flex items-center gap-4 bg-white rounded-full p-2 shadow-lg border-2 border-gray-200">
+              <button
+                onClick={() => setBillingCycle('monthly')}
+                className={`px-8 py-3 rounded-full font-bold transition-all ${
+                  billingCycle === 'monthly'
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                Monthly
+              </button>
+              <button
+                onClick={() => setBillingCycle('annual')}
+                className={`px-8 py-3 rounded-full font-bold transition-all relative ${
+                  billingCycle === 'annual'
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                Annual
+                <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                  Save 17%
+                </span>
+              </button>
+            </div>
+          </div>
+
+          {/* Pricing Cards */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {plans.map((plan, idx) => (
+              <div
+                key={idx}
+                className={`relative glass rounded-3xl p-8 border-2 transition-all duration-300 ${
+                  plan.popular
+                    ? 'border-blue-500 shadow-2xl scale-105 z-10'
+                    : 'border-gray-200 shadow-xl hover:shadow-2xl hover:scale-105'
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full text-sm font-black shadow-lg">
+                      ⭐ MOST POPULAR
+                    </div>
+                  </div>
+                )}
+
+                <div className="text-center mb-8">
+                  <div className={`w-20 h-20 mx-auto mb-4 bg-gradient-to-br ${plan.color} rounded-2xl flex items-center justify-center text-4xl shadow-xl`}>
+                    {plan.icon}
+                  </div>
+                  <h3 className="text-3xl font-black text-gray-900 mb-2">{plan.name}</h3>
+                  <p className="text-gray-600 font-semibold">{plan.description}</p>
+                </div>
+
+                <div className="text-center mb-8 py-6 bg-gradient-to-br from-gray-50 to-white rounded-2xl">
+                  <div className="text-5xl font-black text-gray-900 mb-2">
+                    {getPrice(plan)}
+                  </div>
+                  <div className="text-gray-600 font-semibold">
+                    {plan.monthlyPrice === 'Custom' ? 'Contact Sales' : billingCycle === 'monthly' ? 'per month' : 'per month (billed annually)'}
+                  </div>
+                  {getSavings(plan) && (
+                    <div className="mt-2 text-green-600 font-bold text-sm">
+                      🎉 {getSavings(plan)}
+                    </div>
+                  )}
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className={`flex items-start gap-3 ${feature.included ? 'text-gray-700' : 'text-gray-400'}`}>
+                      <span className={`text-xl flex-shrink-0 ${feature.included ? 'text-green-500' : 'text-gray-300'}`}>
+                        {feature.included ? '✓' : '✗'}
+                      </span>
+                      <span className="font-semibold text-sm">{feature.text}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  className={`w-full py-4 rounded-xl font-black text-lg transition-all ${
+                    plan.popular
+                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105'
+                      : 'bg-white border-2 border-gray-300 text-gray-900 hover:border-blue-600 hover:text-blue-600'
+                  }`}
+                >
+                  {plan.monthlyPrice === 'Custom' ? 'Contact Sales' : plan.monthlyPrice === 0 ? 'Get Started' : 'Start Free Trial'}
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* Enterprise Features */}
+          <div className="mt-20 max-w-5xl mx-auto glass rounded-3xl p-12 border border-white/20 shadow-2xl">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-black text-gray-900 mb-4">
+                🏛️ Special Plans Available
+              </h2>
+              <p className="text-xl text-gray-600">
+                Custom solutions for government agencies, law enforcement, and large organizations
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center p-6">
+                <div className="text-5xl mb-4">👮</div>
+                <h3 className="text-xl font-black text-gray-900 mb-2">Law Enforcement</h3>
+                <p className="text-gray-600 text-sm">
+                  Special pricing and features for police departments and cybercrime units
+                </p>
+              </div>
+              <div className="text-center p-6">
+                <div className="text-5xl mb-4">🏛️</div>
+                <h3 className="text-xl font-black text-gray-900 mb-2">Government</h3>
+                <p className="text-gray-600 text-sm">
+                  National and state government agency packages with priority support
+                </p>
+              </div>
+              <div className="text-center p-6">
+                <div className="text-5xl mb-4">🎓</div>
+                <h3 className="text-xl font-black text-gray-900 mb-2">Education</h3>
+                <p className="text-gray-600 text-sm">
+                  Discounted rates for universities and research institutions
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center mt-8">
+              <Link href="/admin" className="btn-primary text-xl px-12 py-5">
+                Contact Sales Team
+              </Link>
+            </div>
+          </div>
+
+          {/* FAQ */}
+          <div className="mt-20 max-w-4xl mx-auto">
+            <h2 className="text-4xl font-black text-center text-gray-900 mb-12">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              <div className="glass rounded-2xl p-8 border border-white/20">
+                <h3 className="text-xl font-black text-gray-900 mb-3">What payment methods do you accept?</h3>
+                <p className="text-gray-600">
+                  We accept all major credit/debit cards, UPI, net banking, and for enterprise clients, we offer invoice-based billing.
+                </p>
+              </div>
+              <div className="glass rounded-2xl p-8 border border-white/20">
+                <h3 className="text-xl font-black text-gray-900 mb-3">Can I cancel my subscription anytime?</h3>
+                <p className="text-gray-600">
+                  Yes! You can cancel your subscription at any time. You'll continue to have access until the end of your billing period.
+                </p>
+              </div>
+              <div className="glass rounded-2xl p-8 border border-white/20">
+                <h3 className="text-xl font-black text-gray-900 mb-3">Do you offer refunds?</h3>
+                <p className="text-gray-600">
+                  We offer a 14-day money-back guarantee if you're not satisfied with our service. For annual plans, pro-rated refunds are available.
+                </p>
+              </div>
+              <div className="glass rounded-2xl p-8 border border-white/20">
+                <h3 className="text-xl font-black text-gray-900 mb-3">Is my data secure?</h3>
+                <p className="text-gray-600">
+                  Absolutely. We use military-grade 256-bit encryption, are ISO 27001 certified, and comply with all Indian data protection laws.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
