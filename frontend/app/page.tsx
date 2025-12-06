@@ -30,10 +30,10 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 bg-gradient-to-br from-blue-50/30 via-white via-50% to-indigo-50/20">
+      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-blue-50/30 via-white via-50% to-indigo-50/20">
         <div className="max-w-7xl mx-auto">
           {/* Trust Badge */}
-          <div className="flex justify-center mb-16">
+          <div className="flex justify-center mb-10">
             <div className="inline-flex items-center gap-3 px-7 py-3.5 bg-white rounded-full border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
               <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shadow-md shadow-emerald-500/40"></div>
               <span className="text-sm font-black text-gray-800 tracking-wide">Trusted by law enforcement agencies</span>
@@ -41,18 +41,18 @@ export default function Home() {
           </div>
 
           {/* Main Headline */}
-          <div className="text-center max-w-5xl mx-auto mb-28">
-            <h1 className="text-7xl md:text-8xl font-black text-gray-900 mb-12 tracking-tight leading-[1.02] antialiased">
+          <div className="text-center max-w-5xl mx-auto mb-16">
+            <h1 className="text-7xl md:text-8xl font-black text-gray-900 mb-8 tracking-tight leading-[1.02] antialiased">
               Enterprise-grade<br/>
               <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">deepfake detection</span>
             </h1>
             
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto mb-16 leading-relaxed font-medium">
+            <p className="text-2xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
               Court-admissible forensic analysis powered by advanced AI.<br/>Protect your organization from manipulated media.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-32">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <Link 
                 href="/analysis" 
                 className="group px-14 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-lg font-bold rounded-2xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 inline-flex items-center justify-center gap-3"
@@ -71,7 +71,7 @@ export default function Home() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-16 pt-24 border-t border-gray-200">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 pt-16 border-t border-gray-200">
               {[
                 { value: "127,000+", label: "Content analyzed" },
                 { value: "94.7%", label: "Detection accuracy" },
@@ -89,9 +89,9 @@ export default function Home() {
       </section>
 
       {/* Social Proof */}
-      <section className="py-28 bg-gradient-to-b from-white via-gray-50/40 to-white border-y border-gray-100">
+      <section className="py-16 bg-gradient-to-b from-white via-gray-50/40 to-white border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs font-black text-gray-500 mb-14 tracking-[0.25em]">TRUSTED BY</p>
+          <p className="text-center text-xs font-black text-gray-500 mb-10 tracking-[0.25em]">TRUSTED BY</p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             {['Delhi Police', 'CBI', 'Ministry of Home Affairs', 'CERT-In', 'Supreme Court'].map((org) => (
               <div key={org} className="text-center py-8 px-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
@@ -103,10 +103,10 @@ export default function Home() {
       </section>
 
       {/* Features Overview */}
-      <section className="py-32 px-6">
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-24">
-            <h2 className="text-6xl font-black text-gray-900 mb-8 tracking-tight">Built for serious work</h2>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-6xl font-black text-gray-900 mb-6 tracking-tight">Built for serious work</h2>
             <p className="text-xl text-gray-600 leading-relaxed font-medium">
               Comprehensive detection suite designed for law enforcement, legal teams, and enterprises.
             </p>
@@ -133,14 +133,14 @@ export default function Home() {
                 icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               }
             ].map((feature, i) => (
-              <div key={i} className="group relative p-12 bg-white rounded-3xl border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-2">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 rounded-2xl flex items-center justify-center mb-10 group-hover:scale-105 transition-transform duration-300 shadow-md">
+              <div key={i} className="group relative p-10 bg-white rounded-3xl border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-2">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300 shadow-md">
                   <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
                   </svg>
                 </div>
-                <h3 className="text-3xl font-black text-gray-900 mb-6">{feature.title}</h3>
-                <p className="text-gray-600 mb-10 leading-relaxed text-base">{feature.description}</p>
+                <h3 className="text-3xl font-black text-gray-900 mb-4">{feature.title}</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed text-base">{feature.description}</p>
                 <ul className="space-y-4">
                   {feature.features.map((item, j) => (
                     <li key={j} className="flex items-center gap-3 text-sm font-bold text-gray-700">
@@ -156,9 +156,9 @@ export default function Home() {
       </section>
 
       {/* Emergency Support */}
-      <section className="py-20 bg-gradient-to-r from-red-50 via-orange-50 to-red-50 border-y-2 border-red-200">
+      <section className="py-16 bg-gradient-to-r from-red-50 via-orange-50 to-red-50 border-y-2 border-red-200">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-white rounded-3xl p-10 shadow-2xl border-2 border-red-200">
+          <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 border-red-200">
             <div className="flex flex-col lg:flex-row items-center gap-10">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl flex items-center justify-center shadow-xl">
@@ -185,9 +185,9 @@ export default function Home() {
       </section>
 
       {/* Detection Capabilities */}
-      <section className="py-24 px-6 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="py-20 px-6 bg-gradient-to-b from-white via-blue-50/30 to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <h2 className="text-5xl font-bold text-gray-900 mb-6">
               Detection Capabilities
             </h2>
@@ -230,9 +230,9 @@ export default function Home() {
       </section>
 
       {/* How It Works - Timeline */}
-      <section className="py-24 px-6 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 px-6 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <h2 className="text-5xl font-bold text-gray-900 mb-6">
               Simple 3-Step Process
             </h2>
@@ -265,7 +265,7 @@ export default function Home() {
       </section>
 
       {/* Social Proof */}
-      <section className="py-24 px-6 bg-gray-900">
+      <section className="py-16 px-6 bg-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
@@ -290,7 +290,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-32 px-6 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 overflow-hidden">
+      <section className="relative py-20 px-6 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
