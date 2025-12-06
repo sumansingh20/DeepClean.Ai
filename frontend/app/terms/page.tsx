@@ -474,7 +474,7 @@ In case of conflict between English and translated versions, English prevails.`
             <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 animate-fade-in">
               📜 Effective Date: December 5, 2025
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-fade-in-up">
+            <h1 className="text-4xl font-bold mb-6 text-gray-900">
               Terms of Service
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up">

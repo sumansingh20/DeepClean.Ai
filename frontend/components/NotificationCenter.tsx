@@ -43,7 +43,7 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
   }, [on, maxNotifications]);
 
   useEffect(() => {
-    const unsubscribe = on('result_ready', (data) => {
+    const unsubscribe = on('result_ready', (_data) => {
       const newNotif: Notification = {
         id: `notif_${Date.now()}`,
         type: 'success',
@@ -149,3 +149,5 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
     </div>
   );
 };
+
+export default NotificationCenter;

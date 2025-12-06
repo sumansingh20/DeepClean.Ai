@@ -91,11 +91,11 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <h1 className="text-6xl font-black text-gray-900 mb-6">
-              About <span className="gradient-text">DeepClean AI</span>
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              About DeepClean AI
             </h1>
-            <p className="text-2xl text-gray-600 leading-relaxed">
-              India's leading AI-powered platform protecting citizens and organizations from deepfake threats
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Platform for detecting deepfakes and protecting digital identity
             </p>
           </div>
 
@@ -131,27 +131,27 @@ export default function AboutPage() {
             <div className="glass rounded-3xl p-12 border border-white/20 shadow-2xl">
               {activeTab === 'mission' && (
                 <div className="animate-fade-in">
-                  <h2 className="text-4xl font-black text-gray-900 mb-6">Our Mission</h2>
-                  <p className="text-xl text-gray-700 leading-relaxed mb-6">
-                    To build a safer digital India by providing accessible, accurate, and actionable deepfake detection technology to every citizen and organization.
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Provide accessible and accurate deepfake detection technology to citizens and organizations.
                   </p>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    We believe that as AI-generated content becomes more sophisticated, the right to verify authenticity should be a fundamental digital right. DeepClean AI democratizes access to advanced detection technology, ensuring that deepfakes don't destroy reputations, relationships, or trust.
+                  <p className="text-base text-gray-600 leading-relaxed">
+                    As AI-generated content becomes more sophisticated, verifying authenticity is critical. Our platform helps identify manipulated media to protect reputation and prevent fraud.
                   </p>
                 </div>
               )}
 
               {activeTab === 'story' && (
                 <div className="animate-fade-in">
-                  <h2 className="text-4xl font-black text-gray-900 mb-6">Our Story</h2>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                    DeepClean AI was born out of a personal experience. In 2022, our founder witnessed a close friend's reputation destroyed by a deepfake video that went viral. Despite knowing it was fake, the damage was irreversible.
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
+                  <p className="text-base text-gray-700 leading-relaxed mb-4">
+                    Founded in 2023 to address the growing threat of deepfakes. Our team combines expertise in machine learning, computer vision, and cybersecurity.
                   </p>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                    This incident sparked a mission: to create a platform that could instantly detect and prove deepfakes, giving victims the tools to fight back. We assembled a team of India's brightest AI researchers, engineers, and legal experts.
+                  <p className="text-base text-gray-700 leading-relaxed mb-4">
+                    We built this platform to help individuals and organizations detect manipulated media quickly and accurately.
                   </p>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    Today, we're proud to serve 500+ organizations and have helped resolve over 100,000 cases, protecting countless individuals from digital fraud and misinformation.
+                  <p className="text-base text-gray-700 leading-relaxed">
+                    Currently serving over 500 organizations with more than 100,000 analyses completed.
                   </p>
                 </div>
               )}

@@ -46,9 +46,14 @@ class Settings(BaseSettings):
             f"@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
         )
     
-    # Database - MongoDB
+    # Database - MongoDB Atlas
     MONGODB_URL: str = os.getenv("MONGODB_URL", "mongodb://localhost:27017")
-    MONGODB_DB_NAME: str = os.getenv("MONGODB_DB_NAME", "adfp_audit")
+    MONGODB_DB_NAME: str = os.getenv("MONGODB_DB_NAME", "cybershield")
+    
+    @property
+    def MONGODB_CONNECTION_STRING(self) -> str:
+        """MongoDB Atlas connection string"""
+        return self.MONGODB_URL
     
     # Cache - Redis
     REDIS_HOST: str = os.getenv("REDIS_HOST", "localhost")
@@ -202,6 +207,7 @@ class Settings(BaseSettings):
     class Config:
         case_sensitive = True
         env_file = ".env"
+        extra = "allow"  # Allow extra fields from .env
 
 
 settings = Settings()

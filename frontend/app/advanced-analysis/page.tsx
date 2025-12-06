@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 interface CaseData {
   case_id: string;
@@ -33,7 +32,6 @@ interface AnalysisResult {
 }
 
 export default function AdvancedAnalysisDashboard() {
-  const router = useRouter();
   const [activeTab, setActiveTab] = useState<'analyze' | 'cases' | 'reports'>('analyze');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [mediaType, setMediaType] = useState<'video' | 'audio' | 'image'>('video');
@@ -255,6 +253,7 @@ export default function AdvancedAnalysisDashboard() {
                       ? 'audio/*'
                       : 'image/*'
                   }
+                  aria-label="Select file for advanced analysis"
                   className="w-full px-4 py-3 bg-gray-700 border border-purple-500/30 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white file:cursor-pointer hover:file:bg-purple-700"
                 />
                 {selectedFile && (
@@ -307,11 +306,11 @@ export default function AdvancedAnalysisDashboard() {
               >
                 {isAnalyzing ? (
                   <>
-                    <span className="inline-block animate-spin mr-2">⚡</span>
+                    <span className="inline-block animate-spin mr-2">◌</span>
                     Analyzing... {progress}%
                   </>
                 ) : (
-                  '🚀 Run Advanced Analysis'
+                  'Run Advanced Analysis'
                 )}
               </button>
 
@@ -319,9 +318,10 @@ export default function AdvancedAnalysisDashboard() {
               {isAnalyzing && (
                 <div className="mt-4">
                   <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-inline-styles */}
                     <div
                       className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500"
-                      style={{ width: `${progress}%` }}
+                      style={{ width: `${progress}%` } as React.CSSProperties}
                     />
                   </div>
                   <p className="text-sm text-gray-400 mt-2">{progressMessage}</p>

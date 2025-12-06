@@ -118,7 +118,7 @@ export default function CreateDeepfakePage() {
       }
 
       // Call API (replace with actual backend endpoint)
-      const response = await fetch('/api/deepfake/create', {
+      const response = await fetch('http://localhost:8001/api/v1/deepfake/create', {
         method: 'POST',
         body: formData
       });
@@ -147,11 +147,11 @@ export default function CreateDeepfakePage() {
       <main className="container mx-auto px-4 py-24">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            🎨 Create Your Deepfake
+          <h1 className="text-4xl font-bold mb-4 text-white">
+            Deepfake Creation Tools
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Upload your images/videos and transform them using AI. Select a tool, upload files, and let AI do the magic!
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Select a tool, upload your files, and process.
           </p>
         </div>
 
@@ -238,6 +238,7 @@ export default function CreateDeepfakePage() {
                     accept="image/*,video/*"
                     onChange={handleSourceUpload}
                     className="hidden"
+                    aria-label="Upload source file"
                   />
                 </div>
 
@@ -270,9 +271,10 @@ export default function CreateDeepfakePage() {
                   <input
                     ref={targetInputRef}
                     type="file"
-                    accept="image/*,video/*,audio/*"
+                    accept="image/*,video/*"
                     onChange={handleTargetUpload}
                     className="hidden"
+                    aria-label="Upload target file"
                   />
                 </div>
               </div>
@@ -294,7 +296,7 @@ export default function CreateDeepfakePage() {
                       Processing... {progress}%
                     </span>
                   ) : (
-                    '🚀 Create Deepfake'
+                    'Create Deepfake'
                   )}
                 </button>
               </div>
@@ -303,9 +305,10 @@ export default function CreateDeepfakePage() {
               {processing && (
                 <div className="mt-4">
                   <div className="bg-white/10 rounded-full h-3 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-inline-styles */}
                     <div
                       className="bg-gradient-to-r from-blue-500 to-purple-500 h-full transition-all duration-500"
-                      style={{ width: `${progress}%` }}
+                      style={{ width: `${progress}%` } as React.CSSProperties}
                     ></div>
                   </div>
                   <div className="text-center text-gray-300 text-sm mt-2">

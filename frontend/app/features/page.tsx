@@ -9,10 +9,10 @@ export default function FeaturesPage() {
     {
       icon: '🎤',
       title: 'Voice Deepfake Detection',
-      description: 'Advanced AI analysis using Wav2Vec2, MFCC, and spectral analysis',
+      description: 'AI analysis using Wav2Vec2, MFCC, and spectral analysis',
       accuracy: '91.8%',
       speed: '3 seconds',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'bg-blue-600',
       features: [
         'Real-time voice cloning detection',
         'Speaker verification',
@@ -24,10 +24,10 @@ export default function FeaturesPage() {
     {
       icon: '🎥',
       title: 'Video Deepfake Detection',
-      description: 'Multi-frame analysis with facial landmark tracking and GAN fingerprinting',
+      description: 'Multi-frame analysis with facial landmark tracking',
       accuracy: '94.2%',
       speed: '12 seconds',
-      color: 'from-purple-500 to-pink-500',
+      color: 'bg-purple-600',
       features: [
         'Face swap detection',
         'Expression manipulation detection',
@@ -39,10 +39,10 @@ export default function FeaturesPage() {
     {
       icon: '📄',
       title: 'Document Forgery Detection',
-      description: 'OCR-based verification and template matching for ID documents',
+      description: 'OCR verification and template matching for ID documents',
       accuracy: '89.5%',
       speed: '1.2 seconds',
-      color: 'from-green-500 to-emerald-500',
+      color: 'bg-green-600',
       features: [
         'ID card verification',
         'Passport authentication',
@@ -54,10 +54,10 @@ export default function FeaturesPage() {
     {
       icon: '👁️',
       title: 'Liveness Detection',
-      description: 'Real-time blink detection and anti-replay mechanisms',
+      description: 'Real-time blink detection and anti-replay',
       accuracy: '96.1%',
       speed: '0.8 seconds',
-      color: 'from-orange-500 to-red-500',
+      color: 'bg-orange-600',
       features: [
         'Blink detection',
         'Head movement analysis',
@@ -69,10 +69,10 @@ export default function FeaturesPage() {
     {
       icon: '📞',
       title: 'Scam Call Analysis',
-      description: 'ASR with NLP pattern matching for fraud detection',
+      description: 'Voice analysis with pattern matching for fraud detection',
       accuracy: '88.3%',
       speed: '5 seconds',
-      color: 'from-yellow-500 to-orange-500',
+      color: 'bg-yellow-600',
       features: [
         'Voice stress analysis',
         'Fraud pattern detection',
@@ -84,10 +84,10 @@ export default function FeaturesPage() {
     {
       icon: '⚖️',
       title: 'Legal Automation',
-      description: 'Generate court-ready evidence packages and legal documents',
+      description: 'Generate evidence packages and legal documents',
       accuracy: '100%',
       speed: '0.3 seconds',
-      color: 'from-indigo-500 to-purple-500',
+      color: 'bg-indigo-600',
       features: [
         'DMCA takedown notices',
         'IT Act FIR drafts',

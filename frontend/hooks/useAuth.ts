@@ -17,7 +17,7 @@ export const useAuth = () => {
     const token = getToken();
 
     if (storedUser && token) {
-      setUser(storedUser);
+      setUser(storedUser as User);
       setIsAuthenticated(true);
     }
   }, []);

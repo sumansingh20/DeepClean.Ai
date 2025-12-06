@@ -367,7 +367,7 @@ export default function DeepfakeToolsPage() {
               <span className="text-blue-300 font-medium">🔓 100% Open Source</span>
             </div>
             <div className="px-4 py-2 bg-purple-500/20 border border-purple-500/50 rounded-lg">
-              <span className="text-purple-300 font-medium">🎯 Real ML Models</span>
+              <span className="text-purple-300 font-medium">Real ML Models</span>
             </div>
           </div>
         </div>

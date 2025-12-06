@@ -16,7 +16,7 @@ Write-Host "      ✓ Cleanup complete" -ForegroundColor Green
 # Start Backend
 Write-Host "`n[2/4] Starting Backend (Port 8001)..." -ForegroundColor Yellow
 $backendPath = "D:\Deepfake\backend"
-$backendCmd = "cd $backendPath; `$env:PYTHONIOENCODING='utf-8'; Write-Host 'Backend Running...' -ForegroundColor Green; .\venv\Scripts\python.exe simple_backend.py"
+$backendCmd = "cd $backendPath; `$env:PYTHONIOENCODING='utf-8'; Write-Host 'Backend Running...' -ForegroundColor Green; .\venv\Scripts\python.exe main_api.py"
 Start-Process powershell -ArgumentList "-NoExit", "-Command", $backendCmd -WindowStyle Minimized
 Start-Sleep 6
 
@@ -25,7 +25,7 @@ try {
     Write-Host "      ✓ Backend: $($test.message)" -ForegroundColor Green
 } catch {
     Write-Host "      ✗ Backend failed to start!" -ForegroundColor Red
-    Write-Host "      Check: D:\Deepfake\backend\simple_backend.py" -ForegroundColor Yellow
+    Write-Host "      Check: D:\Deepfake\backend\main_api.py" -ForegroundColor Yellow
     exit 1
 }
 

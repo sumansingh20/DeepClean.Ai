@@ -40,7 +40,7 @@ interface RecentCase {
 }
 
 export default function GovernmentAdminPortal() {
-  const { user, loading } = useAuth();
+  const { user, isLoading } = useAuth();
   const router = useRouter();
 
   const [caseStats, setCaseStats] = useState<CaseStats | null>(null);
@@ -50,17 +50,17 @@ export default function GovernmentAdminPortal() {
   const [selectedTab, setSelectedTab] = useState("overview");
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (!isLoading && !user) {
       router.push("/login");
     }
 
-    if (user && user.role !== "admin" && user.role !== "officer") {
+    if (user && user.role !== "admin") {
       router.push("/dashboard");
     }
 
     // Load admin data
     loadAdminData();
-  }, [user, loading, router]);
+  }, [user, isLoading, router]);
 
   const loadAdminData = async () => {
     try {
@@ -84,103 +84,12 @@ export default function GovernmentAdminPortal() {
         setStateStats(data.state_stats || []);
         setRecentCases(data.recent_cases || []);
       } else {
-        // Fallback to demo data if API fails
-        loadDemoData();
+        console.error('Failed to load admin data: Invalid response format');
       }
     } catch (error) {
       console.error('Failed to load admin data:', error);
-      loadDemoData();
+      alert('Unable to load admin data. Please ensure the backend is running.');
     }
-  };
-  
-  const loadDemoData = () => {
-    // Demo data as fallback
-    setCaseStats({
-      total_cases: 1247,
-      pending_review: 83,
-      under_investigation: 145,
-      legal_action_taken: 892,
-      closed_cases: 127,
-    });
-
-    setPlatformStats([
-      {
-        platform: "YouTube",
-        total_incidents: 345,
-        takedowns_requested: 298,
-        takedowns_successful: 267,
-        pending_takedowns: 31,
-      },
-      {
-        platform: "Instagram",
-        total_incidents: 289,
-        takedowns_requested: 256,
-        takedowns_successful: 234,
-        pending_takedowns: 22,
-      },
-      {
-        platform: "Facebook",
-        total_incidents: 234,
-        takedowns_requested: 210,
-        takedowns_successful: 189,
-        pending_takedowns: 21,
-      },
-      {
-        platform: "Twitter/X",
-        total_incidents: 198,
-        takedowns_requested: 176,
-        takedowns_successful: 154,
-        pending_takedowns: 22,
-      },
-      {
-        platform: "Telegram",
-        total_incidents: 181,
-        takedowns_requested: 145,
-        takedowns_successful: 112,
-        pending_takedowns: 33,
-      },
-    ]);
-
-    setStateStats([
-      { state: "Maharashtra", total_cases: 234, severity_high: 45, severity_medium: 123, severity_low: 66 },
-      { state: "Delhi", total_cases: 198, severity_high: 38, severity_medium: 98, severity_low: 62 },
-      { state: "Karnataka", total_cases: 167, severity_high: 32, severity_medium: 87, severity_low: 48 },
-      { state: "Tamil Nadu", total_cases: 143, severity_high: 28, severity_medium: 76, severity_low: 39 },
-      { state: "Gujarat", total_cases: 128, severity_high: 24, severity_medium: 67, severity_low: 37 },
-    ]);
-
-    setRecentCases([
-      {
-        case_id: "CASE-2025-1234",
-        victim_name: "Victim Name Redacted",
-        incident_type: "Face Deepfake Video",
-        severity: "high",
-        state: "Maharashtra",
-        date_reported: "2025-12-03",
-        status: "under_investigation",
-        assigned_officer: "Officer Singh",
-      },
-      {
-        case_id: "CASE-2025-1233",
-        victim_name: "Victim Name Redacted",
-        incident_type: "Voice Clone Scam",
-        severity: "high",
-        state: "Delhi",
-        date_reported: "2025-12-02",
-        status: "legal_action",
-        assigned_officer: "Officer Kumar",
-      },
-      {
-        case_id: "CASE-2025-1232",
-        victim_name: "Victim Name Redacted",
-        incident_type: "Document Forgery",
-        severity: "medium",
-        state: "Karnataka",
-        date_reported: "2025-12-02",
-        status: "pending_review",
-        assigned_officer: "Unassigned",
-      },
-    ]);
   };
 
   const getSeverityColor = (severity: string) => {
@@ -211,7 +120,7 @@ export default function GovernmentAdminPortal() {
     }
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
@@ -233,7 +142,7 @@ export default function GovernmentAdminPortal() {
               <p className="text-blue-200 mt-1">National Deepfake Detection & Response System</p>
             </div>
             <div className="text-right">
-              <p className="font-medium">{user?.name || "Admin User"}</p>
+              <p className="font-medium">{user?.username || "Admin User"}</p>
               <p className="text-blue-200 text-sm">{user?.role || "Administrator"}</p>
             </div>
           </div>

@@ -86,48 +86,16 @@ export default function VictimPortal() {
       const data = await response.json();
       
       setAnalysisResult({
-        isDeepfake: data.is_deepfake || true,
-        confidence: data.confidence || 94.5,
-        detectionEngines: data.detection_engines || [
-          { name: 'Voice Analysis', score: 91.8, status: 'FAKE DETECTED' },
-          { name: 'Video Analysis', score: 96.2, status: 'FAKE DETECTED' },
-          { name: 'Facial Recognition', score: 93.4, status: 'FAKE DETECTED' },
-          { name: 'Audio Forensics', score: 89.7, status: 'FAKE DETECTED' },
-          { name: 'Temporal Analysis', score: 95.1, status: 'FAKE DETECTED' },
-          { name: 'GAN Detection', score: 97.3, status: 'FAKE DETECTED' }
-        ],
-        evidence: data.evidence || [
-          'Facial manipulation detected (96% confidence)',
-          'Audio-visual sync anomalies found',
-          'GAN fingerprint: StyleGAN2 detected',
-          'Frame inconsistencies: 45-67',
-          'Frequency artifacts in audio'
-        ]
+        isDeepfake: data.is_deepfake || false,
+        confidence: data.confidence || 0,
+        detectionEngines: data.detection_engines || [],
+        evidence: data.evidence || []
       });
       setActiveStep(3);
     } catch (error) {
       console.error('Analysis error:', error);
-      // Fallback to demo data if API fails
-      setAnalysisResult({
-        isDeepfake: true,
-        confidence: 94.5,
-        detectionEngines: [
-          { name: 'Voice Analysis', score: 91.8, status: 'FAKE DETECTED' },
-          { name: 'Video Analysis', score: 96.2, status: 'FAKE DETECTED' },
-          { name: 'Facial Recognition', score: 93.4, status: 'FAKE DETECTED' },
-          { name: 'Audio Forensics', score: 89.7, status: 'FAKE DETECTED' },
-          { name: 'Temporal Analysis', score: 95.1, status: 'FAKE DETECTED' },
-          { name: 'GAN Detection', score: 97.3, status: 'FAKE DETECTED' }
-        ],
-        evidence: [
-          'Facial manipulation detected (96% confidence)',
-          'Audio-visual sync anomalies found',
-          'GAN fingerprint: StyleGAN2 detected',
-          'Frame inconsistencies: 45-67',
-          'Frequency artifacts in audio'
-        ]
-      });
-      setActiveStep(3);
+      alert('Failed to analyze content. Please ensure the backend is running.');
+      setActiveStep(1);
     } finally {
       setAnalyzing(false);
     }
@@ -370,7 +338,7 @@ export default function VictimPortal() {
                   <div className="text-2xl font-bold text-gray-900 mb-4">Analyzing Content...</div>
                   <div className="text-lg text-gray-600 mb-8">Running 6 AI detection engines</div>
                   <div className="max-w-md mx-auto bg-gray-200 rounded-full h-4 overflow-hidden">
-                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 h-4 rounded-full animate-pulse" style={{width: '70%'}}></div>
+                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 h-4 rounded-full animate-pulse w-[70%]"></div>
                   </div>
                 </div>
               )}

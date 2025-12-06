@@ -259,7 +259,7 @@ export default function SecurityPage() {
               <span className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></span>
               Enterprise-Grade Security
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-fade-in-up">
+            <h1 className="text-4xl font-bold mb-6 text-gray-900">
               Security & Compliance
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up">

@@ -8,7 +8,6 @@ export default function AdminDashboard() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
   const [activeTab, setActiveTab] = useState('overview');
-  const [users, setUsers] = useState<any[]>([]);
   const [systemStats, setSystemStats] = useState({
     totalUsers: 0,
     activeUsers: 0,
@@ -196,7 +195,7 @@ export default function AdminDashboard() {
                       <span className="text-white font-bold">{systemStats.storageUsed} / 1 GB</span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-3">
-                      <div className="bg-gradient-to-r from-blue-500 to-cyan-500 h-3 rounded-full" style={{width: '14.5%'}}></div>
+                      <div className="bg-gradient-to-r from-blue-500 to-cyan-500 h-3 rounded-full w-[14.5%]"></div>
                     </div>
                   </div>
                   <div>
@@ -205,7 +204,7 @@ export default function AdminDashboard() {
                       <span className="text-white font-bold">256 MB / 512 MB</span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-3">
-                      <div className="bg-gradient-to-r from-green-500 to-emerald-500 h-3 rounded-full" style={{width: '50%'}}></div>
+                      <div className="bg-gradient-to-r from-green-500 to-emerald-500 h-3 rounded-full w-1/2"></div>
                     </div>
                   </div>
                   <div>
@@ -214,7 +213,7 @@ export default function AdminDashboard() {
                       <span className="text-white font-bold">23%</span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-3">
-                      <div className="bg-gradient-to-r from-yellow-500 to-orange-500 h-3 rounded-full" style={{width: '23%'}}></div>
+                      <div className="bg-gradient-to-r from-yellow-500 to-orange-500 h-3 rounded-full w-[23%]"></div>
                     </div>
                   </div>
                   <div>
@@ -223,7 +222,7 @@ export default function AdminDashboard() {
                       <span className="text-white font-bold">Low</span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-3">
-                      <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full" style={{width: '15%'}}></div>
+                      <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full w-[15%]"></div>
                     </div>
                   </div>
                 </div>

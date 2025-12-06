@@ -23,6 +23,12 @@ const nextConfig = {
   typescript: {
     tsconfigPath: './tsconfig.json',
   },
+  // Production optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Output standalone for better performance
+  output: 'standalone',
 }
 
 module.exports = nextConfig

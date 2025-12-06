@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/hooks';
 
@@ -8,7 +8,29 @@ export const Navbar: React.FC = () => {
   const { isAuthenticated, user, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-  const [notifications] = useState(3); // Mock notification count
+  const [notifications, setNotifications] = useState(0);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchNotifications();
+    }
+  }, [isAuthenticated]);
+
+  const fetchNotifications = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:8001/api/v1/incidents?limit=100', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const unreadCount = data.incidents?.filter((i: any) => i.status === 'pending').length || 0;
+        setNotifications(unreadCount);
+      }
+    } catch (error) {
+      console.error('Failed to fetch notifications:', error);
+    }
+  };
 
   const navigationLinks = [
     { name: 'Dashboard', href: '/dashboard', icon: '📊' },
@@ -123,20 +145,23 @@ export const Navbar: React.FC = () => {
                         <p className="text-xs text-gray-500">ID: {user?.id || 'N/A'}</p>
                       </div>
                       <Link href="/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
-                        📊 Dashboard
+                        Dashboard
                       </Link>
                       <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
-                        👤 Profile Settings
+                        Profile
                       </Link>
-                      <Link href="/api-keys" className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
-                        🔑 API Keys
+                      <Link href="/activity" className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+                        Activity Log
+                      </Link>
+                      <Link href="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+                        Settings
                       </Link>
                       <div className="border-t border-gray-200 my-2"></div>
                       <button
                         onClick={logout}
                         className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition"
                       >
-                        🚪 Logout
+                        Logout
                       </button>
                     </div>
                   )}

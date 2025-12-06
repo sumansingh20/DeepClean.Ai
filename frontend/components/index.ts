@@ -11,7 +11,10 @@ export { default as RiskScoreCard } from './RiskScoreCard';
 export { default as ScoreHistory } from './ScoreHistory';
 export { default as IncidentList } from './IncidentList';
 export { default as IncidentDetails } from './IncidentDetails';
-export { default as NotificationCenter } from './NotificationCenter';
+export { NotificationCenter } from './NotificationCenter';
 export { default as RealTimeProgress } from './RealTimeProgress';
 export { default as ReportGenerator } from './ReportGenerator';
 export { default as ReportsList } from './ReportsList';
+export { default as PasswordStrengthMeter } from './PasswordStrengthMeter';
+export { default as OAuthButtons } from './OAuthButtons';
+

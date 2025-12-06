@@ -281,7 +281,7 @@ export default function ResultsPage() {
             {/* Risk Score Card */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <span>🎯</span> Overall Risk Assessment
+                Overall Risk Assessment
               </h2>
               <RiskScoreCard
                 score={result.fusion_score}
@@ -318,9 +318,10 @@ export default function ResultsPage() {
                         <span className={`text-3xl font-bold text-${method.color}-600`}>{method.score}%</span>
                       </div>
                       <div className="w-full bg-white rounded-full h-3 overflow-hidden">
+                        {/* eslint-disable-next-line @next/next/no-inline-styles */}
                         <div
                           className={`bg-gradient-to-r from-${method.color}-500 to-${method.color}-600 h-3 rounded-full transition-all duration-500`}
-                          style={{ width: `${method.score}%` }}
+                          style={{ width: `${method.score}%` } as React.CSSProperties}
                         />
                       </div>
                     </div>

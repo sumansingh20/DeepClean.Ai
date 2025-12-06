@@ -285,7 +285,7 @@ export default function CareersPage() {
 
           {/* Job Cards */}
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {filteredJobs.map((job, index) => (
+            {filteredJobs.map((job) => (
               <div key={job.id} className="glass-effect p-8 rounded-2xl hover:shadow-2xl transition-all duration-500 group">
                 <div className="flex items-start justify-between mb-4">
                   <div>

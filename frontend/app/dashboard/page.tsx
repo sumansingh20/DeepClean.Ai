@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth, useSession, useIncidents, useRiskScore } from '@/hooks';
+import { useAuth, useSession, useIncidents } from '@/hooks';
 import {
   RiskScoreCard,
   ScoreHistory,
@@ -13,7 +13,7 @@ import {
   ReportsList,
 } from '@/components';
 import apiClient from '@/lib/apiClient';
-import type { Session, RiskScore } from '@/lib/types';
+import type { Session } from '@/lib/types';
 import './dashboard.module.css';
 
 interface DashboardStats {
@@ -52,7 +52,6 @@ export default function AdvancedDashboard(): React.ReactElement {
     resolutionRate: 0,
   });
   const [recentSessions, setRecentSessions] = useState<Session[]>([]);
-  const [recentScores, setRecentScores] = useState<RiskScore[]>([]);
   const [activityLog, setActivityLog] = useState<ActivityLog[]>([]);
   const [systemHealth, setSystemHealth] = useState<SystemHealth>({
     status: 'operational',
@@ -64,7 +63,6 @@ export default function AdvancedDashboard(): React.ReactElement {
   const [activeTab, setActiveTab] = useState<'overview' | 'incidents' | 'reports' | 'analytics'>('overview');
   const [timeRange, setTimeRange] = useState<'24h' | '7d' | '30d'>('7d');
   const [isLoading, setIsLoading] = useState(true);
-  const [lastUpdate, setLastUpdate] = useState(new Date());
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -89,7 +87,6 @@ export default function AdvancedDashboard(): React.ReactElement {
     // Auto-refresh every 30 seconds
     const interval = setInterval(() => {
       loadDashboardData();
-      setLastUpdate(new Date());
     }, 30000);
 
     return () => clearInterval(interval);
@@ -140,16 +137,6 @@ export default function AdvancedDashboard(): React.ReactElement {
       setRecentSessions(allSessions.slice(0, 4));
       
       // Generate real score history from sessions (not mock data)
-      const scoreHistory = completedSessions
-        .filter((s: Session) => s.fusion_score !== null)
-        .map((s: Session) => ({
-          date: new Date(s.created_at).toISOString().split('T')[0],
-          score: s.fusion_score || 0,
-          level: s.risk_level || 'low' as 'low' | 'medium' | 'high' | 'critical'
-        }))
-        .slice(0, 30);
-      setRecentScores(scoreHistory as any);
-      
       // Generate activity log from real data
       generateActivityLog(allSessions, incidents);
       
@@ -177,7 +164,7 @@ export default function AdvancedDashboard(): React.ReactElement {
           time: timeAgo,
           type: 'success',
         });
-      } else if (session.status === 'active' || session.status === 'processing') {
+      } else if (session.status === 'processing') {
         activities.push({
           id: `session-${session.id}`,
           icon: '🔍',
@@ -210,10 +197,7 @@ export default function AdvancedDashboard(): React.ReactElement {
       }
     });
     
-    setActivityLog(activities.sort((a, b) => {
-      // Sort by time (most recent first)
-      return 0;
-    }).slice(0, 6));
+    setActivityLog(activities.slice(0, 6));
   };
 
   const checkSystemHealth = async () => {
@@ -375,7 +359,7 @@ export default function AdvancedDashboard(): React.ReactElement {
                 </div>
                 <ScoreHistory
                   title=""
-                  history={recentScores.length > 0 ? recentScores : []}
+                  history={[]}
                 />
               </div>
 
@@ -830,10 +814,11 @@ function ProgressMetric({ label, value, color }: ProgressMetricProps): React.Rea
         <span className="text-white font-bold">{value}%</span>
       </div>
       <div className="w-full bg-slate-700 rounded-full h-2 overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-inline-styles */}
         <div 
           className={`${colorMap[color]} h-2 rounded-full transition-all duration-500`}
           data-width={value}
-          style={{ width: `${value}%` }}
+          style={{ width: `${value}%` } as React.CSSProperties}
         />
       </div>
     </div>

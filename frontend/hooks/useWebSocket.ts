@@ -88,7 +88,7 @@ export const useWebSocket = ({
         }
       };
 
-      ws.current.onerror = (event) => {
+      ws.current.onerror = () => {
         setError('WebSocket connection error');
       };
 

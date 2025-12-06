@@ -394,6 +394,14 @@ app.include_router(
     tags=["Deepfake Detection"]
 )
 
+# Import creation router separately
+from app.api.deepfake import creation_router
+app.include_router(
+    creation_router,
+    prefix=settings.API_V1_STR + "/deepfake",
+    tags=["Deepfake Creation"]
+)
+
 app.include_router(
     legal_router,
     prefix=settings.API_V1_STR + "/legal",

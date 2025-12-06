@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import apiClient from '@/lib/apiClient';
-import type { AnalysisResult } from '@/lib/types';
 
 interface UploadProgress {
   loaded: number;

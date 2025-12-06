@@ -26,7 +26,7 @@ export default function LiveDeepfakePage() {
     // Gender & Identity
     { id: 'gender-swap', name: '⚧️ Gender Swap', description: 'Masculine/Feminine face swap', category: 'Identity' },
     { id: 'celebrity-a', name: '🌟 Celebrity Style A', description: 'Hollywood star look', category: 'Identity' },
-    { id: 'celebrity-b', name: '✨ Celebrity Style B', description: 'Pop star appearance', category: 'Identity' },
+    { id: 'celebrity-b', name: 'Celebrity Style B', description: 'Pop star appearance', category: 'Identity' },
     { id: 'historic-figure', name: '🎭 Historic Figure', description: 'Classic historical look', category: 'Identity' },
     
     // Artistic Styles
@@ -46,7 +46,7 @@ export default function LiveDeepfakePage() {
     { id: 'elf', name: '🧝 Elf', description: 'Fantasy elf features', category: 'Fantasy' },
     
     // Enhancement & Beauty
-    { id: 'beauty-enhance', name: '✨ Beauty Enhance', description: 'Professional makeup look', category: 'Beauty' },
+    { id: 'beauty-enhance', name: 'Beauty Enhance', description: 'Professional makeup look', category: 'Beauty' },
     { id: 'skin-smooth', name: '💎 Skin Perfection', description: 'Flawless smooth skin', category: 'Beauty' },
     { id: 'eye-enhance', name: '👁️ Eye Enhancement', description: 'Brighter, larger eyes', category: 'Beauty' },
     { id: 'face-slim', name: '📐 Face Reshape', description: 'Slimmer face structure', category: 'Beauty' },
@@ -62,6 +62,12 @@ export default function LiveDeepfakePage() {
 
   const startCamera = async () => {
     try {
+      // Check if getUserMedia is supported
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert('❌ Camera not supported in your browser. Please use Chrome, Firefox, or Edge.');
+        return;
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { 
           width: { ideal: 1280 },
@@ -82,9 +88,27 @@ export default function LiveDeepfakePage() {
           processVideoFrame();
         };
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Camera access error:', error);
-      alert('Could not access camera. Please allow camera permissions and ensure no other app is using the camera.');
+      
+      // Provide specific error messages
+      let errorMessage = '❌ Could not access camera. ';
+      
+      if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
+        errorMessage += 'Please allow camera permissions in your browser settings.';
+      } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
+        errorMessage += 'No camera found. Please connect a webcam.';
+      } else if (error.name === 'NotReadableError' || error.name === 'TrackStartError') {
+        errorMessage += 'Camera is already in use by another application. Please close other apps using the camera.';
+      } else if (error.name === 'OverconstrainedError') {
+        errorMessage += 'Camera does not support the requested resolution. Try a different camera.';
+      } else if (error.name === 'SecurityError') {
+        errorMessage += 'Camera access blocked due to security restrictions. Use HTTPS or localhost.';
+      } else {
+        errorMessage += `Error: ${error.message || 'Unknown error'}`;
+      }
+      
+      alert(errorMessage);
     }
   };
 
@@ -427,14 +451,14 @@ export default function LiveDeepfakePage() {
       <main className="container mx-auto px-4 py-24">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            🎭 Live Deepfake Studio
+          <h1 className="text-4xl font-bold mb-4 text-white">
+            Live Camera Effects
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Real-time face transformation using your webcam. Apply AI-powered effects and filters instantly!
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Real-time video effects using your webcam.
           </p>
-          <div className="mt-4 inline-flex items-center px-4 py-2 bg-yellow-500/20 border border-yellow-500/50 rounded-lg">
-            <span className="text-green-300 font-medium">✅ Live Processing - 33 Real-time AI Effects Active</span>
+          <div className="mt-4 inline-flex items-center px-4 py-2 bg-green-900/30 border border-green-500/50 rounded-lg">
+            <span className="text-green-300 font-medium">Live Processing - 65 Effects Available</span>
           </div>
         </div>
 
@@ -448,23 +472,23 @@ export default function LiveDeepfakePage() {
                   {!cameraActive ? (
                     <button
                       onClick={startCamera}
-                      className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-medium hover:shadow-lg hover:scale-105 transition-all"
+                      className="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
                     >
-                      📷 Start Camera
+                      Start Camera
                     </button>
                   ) : (
                     <>
                       <button
                         onClick={capturePhoto}
-                        className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all"
+                        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
                       >
-                        📸 Capture
+                        Capture
                       </button>
                       <button
                         onClick={stopCamera}
-                        className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all"
+                        className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
                       >
-                        🛑 Stop
+                        Stop
                       </button>
                     </>
                   )}
@@ -525,13 +549,13 @@ export default function LiveDeepfakePage() {
               </div>
 
               {/* Instructions */}
-              <div className="mt-4 p-4 bg-blue-500/20 border border-blue-500/50 rounded-lg">
-                <h3 className="font-bold text-white mb-2">💡 How to Use:</h3>
+              <div className="mt-4 p-4 bg-blue-900/30 border border-blue-500/50 rounded-lg">
+                <h3 className="font-bold text-white mb-2">Instructions:</h3>
                 <ol className="text-gray-300 space-y-1 text-sm">
                   <li>1. Click Start Camera to activate your webcam</li>
                   <li>2. Select an effect from the panel on the right</li>
                   <li>3. Wait for face detection (green indicator)</li>
-                  <li>4. Click Capture to save your transformed photo</li>
+                  <li>4. Click Capture to save your photo</li>
                 </ol>
               </div>
             </div>
@@ -541,7 +565,7 @@ export default function LiveDeepfakePage() {
           <div className="lg:col-span-1">
             <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-6">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-white">🎨 Effects Library</h2>
+                <h2 className="text-xl font-bold text-white">Effects Library</h2>
                 <div className="text-sm text-gray-400">{effects.length} effects</div>
               </div>
               
@@ -581,8 +605,8 @@ export default function LiveDeepfakePage() {
               </div>
 
               {/* Stats */}
-              <div className="mt-6 p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/50 rounded-lg">
-                <h3 className="font-bold text-white mb-2">📊 Studio Stats:</h3>
+              <div className="mt-6 p-4 bg-gray-800/50 border border-gray-600 rounded-lg">
+                <h3 className="font-bold text-white mb-2">Stats:</h3>
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   <div className="text-gray-300">
                     <div className="text-xs opacity-75">Total Effects</div>
@@ -604,8 +628,8 @@ export default function LiveDeepfakePage() {
               </div>
 
               {/* Technical Info */}
-              <div className="mt-4 p-4 bg-blue-500/20 border border-blue-500/50 rounded-lg">
-                <h3 className="font-bold text-white mb-2">🔬 Technology:</h3>
+              <div className="mt-4 p-4 bg-gray-800/50 border border-gray-600 rounded-lg">
+                <h3 className="font-bold text-white mb-2">Technology:</h3>
                 <ul className="text-gray-300 space-y-1 text-xs">
                   <li>✓ WebRTC Camera Access</li>
                   <li>✓ Canvas 2D Real-time Processing</li>
@@ -647,7 +671,7 @@ export default function LiveDeepfakePage() {
 
         {/* Future Enhancements */}
         <div className="mt-12 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md rounded-2xl p-8 border border-white/20">
-          <h2 className="text-3xl font-bold text-white mb-6">🚀 Production Features (GPU Required):</h2>
+          <h2 className="text-2xl font-bold text-white mb-6">Production Features (GPU Required):</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-300">
             <div className="flex items-start gap-3">
               <span className="text-blue-400">🤖</span>

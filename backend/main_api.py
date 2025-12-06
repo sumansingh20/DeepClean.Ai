@@ -5,9 +5,9 @@
 from fastapi import FastAPI, HTTPException, UploadFile, File, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import Optional, Dict, List
-from datetime import datetime
+from datetime import datetime, timedelta
 import uvicorn
 import os
 import json
@@ -15,6 +15,7 @@ import hashlib
 import uuid
 import tempfile
 import time
+import jwt
 
 # CV and ML dependencies
 try:
@@ -25,6 +26,11 @@ try:
 except ImportError:
     CV_AVAILABLE = False
     print("Warning: OpenCV not available. Install opencv-python for full functionality.")
+
+# JWT Configuration
+SECRET_KEY = "your-secret-key-change-in-production-min-32-chars-long"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 app = FastAPI(
     title="DeepClean.AI - National Deepfake Detection Platform",
@@ -43,6 +49,42 @@ app.add_middleware(
 # Storage
 evidence_chains: Dict[str, List[Dict]] = {}
 analysis_results: Dict[str, Dict] = {}
+
+# Mock user database (in production, use real database)
+users_db = {
+    "admin@deepclean.ai": {
+        "email": "admin@deepclean.ai",
+        "username": "admin",
+        "hashed_password": "admin123",  # In production, hash this!
+        "role": "admin",
+        "full_name": "Admin User"
+    },
+    "user@example.com": {
+        "email": "user@example.com",
+        "username": "user",
+        "hashed_password": "password123",
+        "role": "user",
+        "full_name": "Regular User"
+    }
+}
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+    two_factor_code: Optional[str] = None
+    device_info: Optional[Dict] = None
+    device_fingerprint: Optional[str] = None
+    remember_device: Optional[bool] = False
+
+class RegisterRequest(BaseModel):
+    email: EmailStr
+    username: str
+    password: str
+
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str
+    user: Dict
 
 class DetectionResult(BaseModel):
     is_fake: bool
@@ -400,6 +442,182 @@ async def verify_chain(case_id: str):
     
     return {"case_id": case_id, "valid": is_valid, "blocks_verified": len(blocks), "issues": issues}
 
+# ============================================
+# AUTHENTICATION ENDPOINTS
+# ============================================
+
+@app.post("/api/v1/auth/login", response_model=TokenResponse)
+async def login(request: LoginRequest):
+    """Login endpoint with JWT token generation"""
+    user = users_db.get(request.email)
+    
+    if not user or user["hashed_password"] != request.password:
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    
+    # Create JWT token
+    token_data = {
+        "sub": user["email"],
+        "email": user["email"],
+        "username": user["username"],
+        "role": user["role"],
+        "exp": datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    }
+    
+    access_token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
+    
+    return TokenResponse(
+        access_token=access_token,
+        token_type="bearer",
+        user={
+            "email": user["email"],
+            "username": user["username"],
+            "role": user["role"],
+            "full_name": user.get("full_name", user["username"])
+        }
+    )
+
+@app.post("/api/v1/auth/register")
+async def register(request: RegisterRequest):
+    """Register new user endpoint"""
+    if request.email in users_db:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    
+    # Check if username exists
+    for user_data in users_db.values():
+        if user_data["username"] == request.username:
+            raise HTTPException(status_code=400, detail="Username already taken")
+    
+    # Create new user
+    users_db[request.email] = {
+        "email": request.email,
+        "username": request.username,
+        "hashed_password": request.password,  # In production, hash this!
+        "role": "user",
+        "full_name": request.username
+    }
+    
+    return {
+        "message": "User registered successfully",
+        "email": request.email,
+        "username": request.username
+    }
+
+@app.get("/api/v1/auth/me")
+async def get_current_user(token: str):
+    """Get current user from token"""
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        email = payload.get("sub")
+        user = users_db.get(email)
+        
+        if not user:
+            raise HTTPException(status_code=401, detail="User not found")
+        
+        return {
+            "email": user["email"],
+            "username": user["username"],
+            "role": user["role"],
+            "full_name": user.get("full_name", user["username"])
+        }
+    except jwt.PyJWTError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+# ============================================
+# OAUTH ENDPOINTS
+# ============================================
+
+@app.get("/api/v1/auth/oauth/{provider}")
+async def oauth_initiate(provider: str):
+    """Initiate OAuth flow"""
+    # OAuth configuration
+    oauth_configs = {
+        "google": {
+            "auth_url": "https://accounts.google.com/o/oauth2/v2/auth",
+            "client_id": os.getenv("GOOGLE_CLIENT_ID", "YOUR_GOOGLE_CLIENT_ID"),
+            "redirect_uri": "http://localhost:3003/auth/callback/google",
+            "scope": "openid email profile"
+        },
+        "github": {
+            "auth_url": "https://github.com/login/oauth/authorize",
+            "client_id": os.getenv("GITHUB_CLIENT_ID", "YOUR_GITHUB_CLIENT_ID"),
+            "redirect_uri": "http://localhost:3003/auth/callback/github",
+            "scope": "user:email"
+        },
+        "microsoft": {
+            "auth_url": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+            "client_id": os.getenv("MICROSOFT_CLIENT_ID", "YOUR_MICROSOFT_CLIENT_ID"),
+            "redirect_uri": "http://localhost:3003/auth/callback/microsoft",
+            "scope": "openid email profile"
+        }
+    }
+    
+    if provider not in oauth_configs:
+        raise HTTPException(status_code=400, detail="Invalid OAuth provider")
+    
+    config = oauth_configs[provider]
+    state = hashlib.sha256(f"{provider}-{datetime.utcnow().isoformat()}".encode()).hexdigest()[:16]
+    
+    # Build OAuth URL
+    auth_url = (
+        f"{config['auth_url']}?"
+        f"client_id={config['client_id']}&"
+        f"redirect_uri={config['redirect_uri']}&"
+        f"response_type=code&"
+        f"scope={config['scope']}&"
+        f"state={state}"
+    )
+    
+    return {"auth_url": auth_url, "state": state}
+
+@app.post("/api/v1/auth/oauth/{provider}/callback")
+async def oauth_callback(provider: str, code: str, state: Optional[str] = None):
+    """Handle OAuth callback"""
+    # In production, verify the code with the OAuth provider
+    # For now, create a user based on the OAuth response
+    
+    # Mock OAuth user data (in production, fetch from provider)
+    oauth_email = f"oauth.{provider}@example.com"
+    oauth_username = f"{provider}_user"
+    
+    # Check if user exists or create new one
+    if oauth_email not in users_db:
+        users_db[oauth_email] = {
+            "email": oauth_email,
+            "username": oauth_username,
+            "hashed_password": "",  # OAuth users don't need password
+            "role": "user",
+            "full_name": f"{provider.title()} User",
+            "oauth_provider": provider
+        }
+    
+    user = users_db[oauth_email]
+    
+    # Create JWT token
+    token_data = {
+        "sub": user["email"],
+        "email": user["email"],
+        "username": user["username"],
+        "role": user["role"],
+        "exp": datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    }
+    
+    access_token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)
+    
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": {
+            "email": user["email"],
+            "username": user["username"],
+            "role": user["role"],
+            "full_name": user.get("full_name", user["username"])
+        }
+    }
+
+# ============================================
+# DETECTION ENDPOINTS (Existing)
+# ============================================
+
 @app.get("/api/v1/advanced/report/download/{case_id}")
 async def download_report(case_id: str):
     if case_id not in analysis_results:
@@ -434,27 +652,28 @@ async def websocket_endpoint(websocket: WebSocket, session_id: str):
 
 if __name__ == "__main__":
     print("\n" + "="*70)
-    print("🚀 DEEPCLEAN.AI - NATIONAL DEEPFAKE DETECTION PLATFORM")
+    print("DEEPCLEAN.AI - NATIONAL DEEPFAKE DETECTION PLATFORM")
     print("="*70)
     
     if CV_AVAILABLE:
-        print("\n✅ REAL COMPUTER VISION ACTIVE:")
-        print("   ✓ OpenCV (Laplacian, Canny, Noise Analysis)")
-        print("   ✓ PIL (Color Stats, Histogram Analysis)")
-        print("   ✓ NumPy (Statistical Metrics)")
-        print("   ✓ Frame-by-frame Video Analysis")
+        print("\nREAL COMPUTER VISION ACTIVE:")
+        print("   - OpenCV (Laplacian, Canny, Noise Analysis)")
+        print("   - PIL (Color Stats, Histogram Analysis)")
+        print("   - NumPy (Statistical Metrics)")
+        print("   - Frame-by-frame Video Analysis")
     else:
-        print("\n⚠️  Install OpenCV for advanced detection:")
+        print("\nInstall OpenCV for advanced detection:")
         print("   pip install opencv-python pillow numpy")
     
-    print("\n📊 Features:")
-    print("   ✓ SHA-256 Blockchain Evidence")
-    print("   ✓ Forensic Reports (JSON)")
-    print("   ✓ WebSocket Real-time Updates")
-    print(f"   ✓ REAL Detection: {'YES' if CV_AVAILABLE else 'BASIC'}")
-    print("\n🌐 Production API: http://localhost:8001")
-    print("📖 Interactive Docs: http://localhost:8001/docs")
-    print("🔐 All endpoints secured with blockchain evidence")
+    print("\nFeatures:")
+    print("   - SHA-256 Blockchain Evidence")
+    print("   - Forensic Reports (JSON)")
+    print("   - WebSocket Real-time Updates")
+    print("   - Authentication (JWT)")
+    print(f"   - REAL Detection: {'YES' if CV_AVAILABLE else 'BASIC'}")
+    print("\nProduction API: http://localhost:8001")
+    print("Interactive Docs: http://localhost:8001/docs")
+    print("All endpoints secured with blockchain evidence")
     print("="*70 + "\n")
     
     uvicorn.run(app, host="0.0.0.0", port=8001, log_level="info")

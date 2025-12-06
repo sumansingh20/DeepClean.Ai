@@ -97,7 +97,8 @@ export const IncidentDetails: React.FC<IncidentDetailsProps> = ({
           <label className="block text-sm font-semibold text-gray-700 mb-2">Current Status</label>
           <select
             value={newStatus}
-            onChange={(e) => setNewStatus(e.target.value)}
+            onChange={(e) => setNewStatus(e.target.value as 'open' | 'investigating' | 'escalated' | 'resolved')}
+            aria-label="Incident status"
             className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
           >
             <option value="open">Open</option>

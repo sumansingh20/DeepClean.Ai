@@ -272,24 +272,36 @@ export default function SettingsPage() {
                   {[
                     { id: 'profile', icon: '👤', label: 'Profile' },
                     { id: 'security', icon: '🔐', label: 'Password' },
-                    { id: '2fa', icon: '🛡️', label: 'Two-Factor Auth' },
+                    { id: '2fa', icon: '🛡️', label: 'Two-Factor Auth', link: '/two-factor' },
+                    { id: 'sessions', icon: '📱', label: 'Active Sessions', link: '/sessions' },
                   ].map((tab) => (
-                    <button
-                      key={tab.id}
-                      onClick={() => {
-                        setActiveTab(tab.id);
-                        setMessage('');
-                        setError('');
-                      }}
-                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold transition-all ${
-                        activeTab === tab.id
-                          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                          : 'text-gray-700 hover:bg-gray-100'
-                      }`}
-                    >
-                      <span className="text-xl">{tab.icon}</span>
-                      <span>{tab.label}</span>
-                    </button>
+                    tab.link ? (
+                      <Link
+                        key={tab.id}
+                        href={tab.link}
+                        className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold transition-all text-gray-700 hover:bg-gray-100"
+                      >
+                        <span className="text-xl">{tab.icon}</span>
+                        <span>{tab.label}</span>
+                      </Link>
+                    ) : (
+                      <button
+                        key={tab.id}
+                        onClick={() => {
+                          setActiveTab(tab.id);
+                          setMessage('');
+                          setError('');
+                        }}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-semibold transition-all ${
+                          activeTab === tab.id
+                            ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                            : 'text-gray-700 hover:bg-gray-100'
+                        }`}
+                      >
+                        <span className="text-xl">{tab.icon}</span>
+                        <span>{tab.label}</span>
+                      </button>
+                    )
                   ))}
                 </nav>
               </div>
@@ -312,6 +324,7 @@ export default function SettingsPage() {
                           type="text"
                           value={username}
                           onChange={(e) => setUsername(e.target.value)}
+                          placeholder="Enter your username"
                           className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all"
                         />
                       </div>
@@ -321,6 +334,7 @@ export default function SettingsPage() {
                           type="email"
                           value={user.email}
                           disabled
+                          placeholder="Your email address"
                           className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-gray-50 text-gray-500"
                         />
                       </div>
@@ -330,6 +344,7 @@ export default function SettingsPage() {
                           type="text"
                           value={organization}
                           onChange={(e) => setOrganization(e.target.value)}
+                          placeholder="Enter your organization"
                           className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all"
                         />
                       </div>

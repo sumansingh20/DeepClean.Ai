@@ -76,15 +76,19 @@ export default function PricingPage() {
     if (plan.monthlyPrice === 'Custom') return 'Custom';
     if (plan.monthlyPrice === 0) return 'Free';
     
-    const price = billingCycle === 'monthly' ? plan.monthlyPrice : Math.floor(plan.annualPrice / 12);
+    const monthlyPrice = typeof plan.monthlyPrice === 'number' ? plan.monthlyPrice : 0;
+    const annualPrice = typeof plan.annualPrice === 'number' ? plan.annualPrice : 0;
+    const price = billingCycle === 'monthly' ? monthlyPrice : Math.floor(annualPrice / 12);
     return `₹${price.toLocaleString('en-IN')}`;
   };
 
   const getSavings = (plan: typeof plans[0]) => {
     if (plan.monthlyPrice === 'Custom' || plan.monthlyPrice === 0) return null;
     if (billingCycle === 'annual') {
-      const monthlyTotal = plan.monthlyPrice * 12;
-      const savings = monthlyTotal - plan.annualPrice;
+      const monthlyPrice = typeof plan.monthlyPrice === 'number' ? plan.monthlyPrice : 0;
+      const annualPrice = typeof plan.annualPrice === 'number' ? plan.annualPrice : 0;
+      const monthlyTotal = monthlyPrice * 12;
+      const savings = monthlyTotal - annualPrice;
       const percentage = Math.round((savings / monthlyTotal) * 100);
       return `Save ${percentage}%`;
     }

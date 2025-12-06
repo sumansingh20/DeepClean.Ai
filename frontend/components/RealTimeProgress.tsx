@@ -16,7 +16,7 @@ export const RealTimeProgress: React.FC<RealTimeProgressProps> = ({
 }) => {
   const [progress, setProgress] = useState<AnalysisProgress | null>(null);
   const [isCompleted, setIsCompleted] = useState(false);
-  const { isConnected, progress: wsProgress, on, error } = useWebSocket({
+  const { isConnected, progress: wsProgress, error } = useWebSocket({
     sessionId,
     enabled: true,
   });

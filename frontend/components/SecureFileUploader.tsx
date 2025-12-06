@@ -17,7 +17,7 @@
 
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useMemo } from 'react';
 import axios from 'axios';
 
 // ============================================================================
@@ -87,16 +87,16 @@ export default function SecureFileUploader() {
   const WS_BASE_URL = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8000';
   const MAX_FILE_SIZE = 500 * 1024 * 1024; // 500MB
   
-  const ALLOWED_TYPES = {
+  const ALLOWED_TYPES = useMemo(() => ({
     image: ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp'],
     video: ['video/mp4', 'video/avi', 'video/quicktime', 'video/x-matroska', 'video/webm']
-  };
+  }), []);
 
   // ============================================================================
   // File Validation
   // ============================================================================
 
-  const validateFile = (file: File): string | null => {
+  const validateFile = useCallback((file: File): string | null => {
     // Check file size
     if (file.size > MAX_FILE_SIZE) {
       return `File size exceeds maximum of 500MB. Your file: ${(file.size / (1024 * 1024)).toFixed(2)}MB`;
@@ -109,7 +109,7 @@ export default function SecureFileUploader() {
     }
 
     return null;
-  };
+  }, [ALLOWED_TYPES, MAX_FILE_SIZE]);
 
   // ============================================================================
   // File Selection Handlers
@@ -126,7 +126,7 @@ export default function SecureFileUploader() {
     setFile(selectedFile);
     setError(null);
     setResult(null);
-  }, []);
+  }, [validateFile]);
 
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -407,9 +407,10 @@ export default function SecureFileUploader() {
               <span className="text-sm font-medium text-gray-700">{uploadProgress}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
+              {/* eslint-disable-next-line @next/next/no-inline-styles */}
               <div
                 className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
-                style={{ width: `${uploadProgress}%` }}
+                style={{ width: `${uploadProgress}%` } as React.CSSProperties}
               />
             </div>
           </div>
@@ -427,9 +428,10 @@ export default function SecureFileUploader() {
               </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
+              {/* eslint-disable-next-line @next/next/no-inline-styles */}
               <div
                 className="bg-green-600 h-2.5 rounded-full transition-all duration-300"
-                style={{ width: `${analysisProgress.progress}%` }}
+                style={{ width: `${analysisProgress.progress}%` } as React.CSSProperties}
               />
             </div>
             <p className="text-xs text-gray-500 mt-1">

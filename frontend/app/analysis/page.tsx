@@ -15,14 +15,14 @@ export default function AnalysisPage() {
   const [history, setHistory] = useState<any[]>([]);
 
   const tabs = [
-    { key: 'voice', label: 'Voice', icon: '🎤', desc: 'Detect synthetic voice', gradient: 'from-blue-500 to-cyan-500' },
-    { key: 'video', label: 'Video', icon: '🎥', desc: 'Face swap detection', gradient: 'from-purple-500 to-pink-500' },
-    { key: 'image', label: 'Image', icon: '🖼️', desc: 'Photo manipulation', gradient: 'from-pink-500 to-rose-500' },
-    { key: 'audio', label: 'Audio', icon: '🔊', desc: 'Audio forensics', gradient: 'from-indigo-500 to-blue-500' },
-    { key: 'document', label: 'Document', icon: '📄', desc: 'Verify ID documents', gradient: 'from-green-500 to-emerald-500' },
-    { key: 'liveness', label: 'Liveness', icon: '👁️', desc: 'Real person check', gradient: 'from-orange-500 to-red-500' },
-    { key: 'scam', label: 'Scam Call', icon: '📞', desc: 'Fraud call analysis', gradient: 'from-yellow-500 to-orange-500' },
-    { key: 'batch', label: 'Batch', icon: '📦', desc: 'Multiple files', gradient: 'from-teal-500 to-cyan-500' }
+    { key: 'voice', label: 'Voice', desc: 'Detect synthetic voice', color: 'bg-blue-600' },
+    { key: 'video', label: 'Video', desc: 'Face swap detection', color: 'bg-purple-600' },
+    { key: 'image', label: 'Image', desc: 'Photo manipulation', color: 'bg-pink-600' },
+    { key: 'audio', label: 'Audio', desc: 'Audio forensics', color: 'bg-indigo-600' },
+    { key: 'document', label: 'Document', desc: 'Verify ID documents', color: 'bg-green-600' },
+    { key: 'liveness', label: 'Liveness', desc: 'Real person check', color: 'bg-orange-600' },
+    { key: 'scam', label: 'Scam Call', desc: 'Fraud call analysis', color: 'bg-yellow-600' },
+    { key: 'batch', label: 'Batch', desc: 'Multiple files', color: 'bg-teal-600' }
   ];
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,8 +69,7 @@ export default function AnalysisPage() {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Analysis failed: ${response.status}`);
+        throw new Error(`Upload failed: ${response.status}`);
       }
 
       const data = await response.json();
@@ -148,27 +147,24 @@ export default function AnalysisPage() {
   const currentTab = tabs.find(t => t.key === activeTab);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Enhanced Header */}
-      <nav className="sticky top-0 z-50 glass border-b border-white/20 shadow-xl">
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4 animate-fade-in">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl blur-lg opacity-75"></div>
-                <div className="relative w-14 h-14 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl transform hover:rotate-12 transition-transform">
-                  <span className="text-3xl">🔬</span>
-                </div>
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow">
+                <span className="text-xl text-white font-bold">AI</span>
               </div>
               <div>
-                <h1 className="text-3xl font-black gradient-text">AI Analysis Lab</h1>
-                <p className="text-sm text-indigo-600 font-bold flex items-center gap-2">
-                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  6 Engines Active • Real-time
+                <h1 className="text-2xl font-bold text-gray-900">Analysis</h1>
+                <p className="text-sm text-gray-600 flex items-center gap-2">
+                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                  6 Engines Active
                 </p>
               </div>
             </div>
-            <Link href="/dashboard" className="btn-primary">
+            <Link href="/dashboard" className="px-4 py-2 text-gray-700 hover:text-gray-900 font-medium">
               ← Dashboard
             </Link>
           </div>
@@ -177,7 +173,7 @@ export default function AnalysisPage() {
 
       <div className="container mx-auto px-6 py-12">
         {/* Tab Buttons */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 animate-fade-in-up">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
           {tabs.map((tab) => (
             <button
               key={tab.key}
@@ -186,25 +182,20 @@ export default function AnalysisPage() {
                 setFile(null);
                 setResult(null);
               }}
-              className={`group relative p-6 rounded-2xl transition-all duration-300 card-hover ${
+              className={`group relative p-6 rounded-2xl transition-all duration-300 ${
                 activeTab === tab.key
-                  ? `bg-gradient-to-br ${tab.gradient} text-white shadow-2xl`
-                  : 'glass text-gray-700 border border-gray-200'
+                  ? `${tab.color} text-white shadow-lg`
+                  : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300'
               }`}
             >
               {activeTab === tab.key && (
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl"></div>
               )}
               <div className="relative">
-                <div className={`text-4xl mb-3 transform transition-transform ${
-                  activeTab === tab.key ? 'scale-110' : 'group-hover:scale-125'
-                }`}>
-                  {tab.icon}
-                </div>
-                <div className={`font-bold text-sm mb-1 ${activeTab === tab.key ? 'text-white' : 'text-gray-900'}`}>
+                <div className={`font-bold text-lg mb-1 ${activeTab === tab.key ? 'text-white' : 'text-gray-900'}`}>
                   {tab.label}
                 </div>
-                <div className={`text-xs ${activeTab === tab.key ? 'text-white/90' : 'text-gray-500'}`}>
+                <div className={`text-sm ${activeTab === tab.key ? 'text-white/90' : 'text-gray-500'}`}>
                   {tab.desc}
                 </div>
               </div>
@@ -217,12 +208,12 @@ export default function AnalysisPage() {
           <div className="space-y-6 animate-fade-in-up animation-delay-200">
             <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20">
               <div className="flex items-center gap-3 mb-6">
-                <div className={`w-12 h-12 bg-gradient-to-br ${currentTab?.gradient} rounded-xl flex items-center justify-center text-2xl shadow-lg`}>
-                  {currentTab?.icon}
+                <div className={`w-12 h-12 ${currentTab?.color} rounded-xl flex items-center justify-center text-2xl shadow-lg text-white font-bold`}>
+                  {currentTab?.label.charAt(0)}
                 </div>
                 <div>
-                  <h2 className="text-2xl font-black text-gray-900">{currentTab?.label} Analysis</h2>
-                  <p className="text-sm text-gray-600 font-semibold">{currentTab?.desc}</p>
+                  <h2 className="text-2xl font-bold text-gray-900">{currentTab?.label} Analysis</h2>
+                  <p className="text-sm text-gray-600">{currentTab?.desc}</p>
                 </div>
               </div>
 
@@ -255,7 +246,7 @@ export default function AnalysisPage() {
                   id="file-upload"
                 />
                 <label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center">
-                  <div className="text-7xl mb-4 animate-float">{currentTab?.icon}</div>
+                  <div className="text-6xl mb-4 text-gray-400">📎</div>
                   {activeTab === 'batch' && batchFiles.length > 0 ? (
                     <div className="text-center">
                       <div className="text-xl font-black text-green-700 mb-2">✓ {batchFiles.length} Files Selected</div>
@@ -302,28 +293,28 @@ export default function AnalysisPage() {
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
-                    <span>🚀</span> {activeTab === 'batch' ? `Analyze ${batchFiles.length} Files` : 'Start AI Analysis'}
+                    {activeTab === 'batch' ? `Analyze ${batchFiles.length} Files` : 'Start AI Analysis'}
                   </span>
                 )}
               </button>
 
               {/* Analysis History */}
               {history.length > 0 && (
-                <div className="mt-6 p-5 bg-white rounded-2xl border-2 border-gray-200 shadow-lg">
-                  <h3 className="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
-                    <span>📊</span> Recent Analysis
+                <div className="mt-6 p-5 bg-white rounded-lg border border-gray-200 shadow">
+                  <h3 className="text-base font-bold text-gray-900 mb-3">
+                    Recent Analysis
                   </h3>
                   <div className="space-y-2 max-h-48 overflow-y-auto">
                     {history.map((item) => (
-                      <div key={item.id} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+                      <div key={item.id} className="flex items-center justify-between p-2 bg-gray-50 rounded border border-gray-200">
                         <div className="flex-1 min-w-0">
-                          <div className="font-bold text-xs text-gray-900 truncate">{item.filename}</div>
+                          <div className="font-medium text-sm text-gray-900 truncate">{item.filename}</div>
                           <div className="text-xs text-gray-500">{new Date(item.timestamp).toLocaleTimeString()}</div>
                         </div>
-                        <div className={`px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap ml-2 ${
+                        <div className={`px-2 py-1 rounded text-xs font-medium whitespace-nowrap ml-2 ${
                           item.isDeepfake ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
                         }`}>
-                          {item.isDeepfake ? '⚠️ Fake' : '✓ Real'} {item.confidence.toFixed(0)}%
+                          {item.isDeepfake ? 'Fake' : 'Real'} {item.confidence.toFixed(0)}%
                         </div>
                       </div>
                     ))}
@@ -332,13 +323,10 @@ export default function AnalysisPage() {
               )}
 
               {file && !analyzing && !result && (
-                <div className="mt-6 p-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border-2 border-blue-200">
-                  <div className="flex items-start gap-3">
-                    <span className="text-3xl">💡</span>
-                    <div className="text-sm text-gray-700">
-                      <p className="font-black text-lg mb-1 text-blue-900">Ready to analyze!</p>
-                      <p className="font-semibold">Our 6 AI engines will process your content in seconds with 94.2% accuracy.</p>
-                    </div>
+                <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="text-sm text-gray-700">
+                    <p className="font-bold text-base mb-1 text-blue-900">Ready to analyze</p>
+                    <p>Click the button above to start analysis.</p>
                   </div>
                 </div>
               )}
@@ -346,23 +334,25 @@ export default function AnalysisPage() {
           </div>
 
           {/* Results Section */}
-          <div className="space-y-6 animate-fade-in-up animation-delay-400">
-            <div className="glass rounded-3xl shadow-2xl p-8 border border-white/20 min-h-[600px]">
-              <h2 className="text-2xl font-black text-gray-900 mb-6 flex items-center gap-2">
-                <span>📊</span> Analysis Results
+          <div className="space-y-6">
+            <div className="bg-white rounded-lg shadow p-8 min-h-[600px]">
+              <h2 className="text-xl font-bold text-gray-900 mb-6">
+                Analysis Results
               </h2>
 
               {!analyzing && !result && (
                 <div className="text-center py-20">
-                  <div className="text-9xl mb-6 opacity-20 animate-float">🔬</div>
-                  <p className="text-2xl font-bold text-gray-400">Upload a file to start</p>
+                  <div className="text-6xl mb-6 text-gray-300">🔬</div>
+                  <p className="text-lg font-medium text-gray-400">Upload a file to start</p>
                   <p className="text-gray-500 mt-2">AI-powered detection in seconds</p>
                 </div>
               )}
 
               {analyzing && (
                 <div className="text-center py-12">
-                  <div className="text-9xl mb-6 animate-pulse">⚡</div>
+                  <div className="mb-6">
+                    <div className="w-24 h-24 mx-auto border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                  </div>
                   <div className="text-3xl font-black text-gray-900 mb-6">Analyzing Content...</div>
                   <div className="max-w-md mx-auto mb-8">
                     <div className="bg-gray-200 rounded-full h-6 overflow-hidden shadow-inner">
