@@ -18,10 +18,10 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Dark theme scrollbar */
+/* Enhanced scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -30,10 +30,50 @@ html {
 
 ::-webkit-scrollbar-thumb {
   @apply bg-gray-300 dark:bg-dark-300 rounded-full;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-400 dark:bg-dark-400;
+}
+
+/* Glassmorphism utility classes */
+@layer utilities {
+  .glass {
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(229, 229, 229, 0.5);
+  }
+  
+  .dark .glass {
+    background-color: rgba(17, 17, 17, 0.8);
+    border-color: rgba(45, 45, 45, 0.5);
+  }
+  
+  .glass-card {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(229, 229, 229, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark .glass-card {
+    background-color: rgba(26, 26, 26, 0.6);
+    border-color: rgba(45, 45, 45, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
+  }
+}
+
+/* Smooth transitions for theme switching */
+* {
+  @apply transition-colors duration-200;
 }
 
 /* Beautiful Animations */
