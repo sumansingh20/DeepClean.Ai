@@ -60,30 +60,30 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-dark-100">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Top Navigation */}
-      <nav className="border-b border-gray-200 dark:border-dark-300 bg-white dark:bg-dark-100">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-soft">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-dark-600 transition-colors">
+          <Link href="/" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             <span className="font-medium">Back</span>
           </Link>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">DC</span>
+            <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center shadow-medium">
+              <span className="text-white font-bold">DC</span>
             </div>
-            <span className="font-semibold text-gray-900 dark:text-white">DeepClean.AI</span>
+            <span className="font-bold text-gray-900 text-lg">DeepClean.AI</span>
           </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <div className="max-w-md mx-auto px-6 py-12">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Create account</h1>
-          <p className="text-gray-600 dark:text-dark-600">Start protecting against deepfakes</p>
+      <div className="max-w-md mx-auto px-6 pt-32 pb-20">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">Create account</h1>
+          <p className="text-gray-600 text-lg">Start protecting against deepfakes</p>
         </div>
 
         {/* OAuth Buttons */}
@@ -94,52 +94,52 @@ export default function RegisterPage() {
         {/* Divider */}
         <div className="relative mb-8">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200 dark:border-dark-200"></div>
+            <div className="w-full border-t border-gray-200"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-4 bg-white dark:bg-dark-100 text-gray-500 dark:text-dark-600">Or continue with email</span>
+            <span className="px-4 bg-white text-gray-500 font-medium">Or continue with email</span>
           </div>
         </div>
 
         {/* Error Display */}
         {(error || localError) && (
-          <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 rounded-lg text-sm">
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm font-medium shadow-soft">
             {error || localError}
           </div>
         )}
 
         {/* Register Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-dark-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-900 mb-2">
               Email
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-white dark:bg-dark-200 border border-gray-300 dark:border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all text-gray-900 dark:text-white"
+              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 shadow-soft"
               placeholder="you@company.com"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-dark-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-900 mb-2">
               Username
             </label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 bg-white dark:bg-dark-200 border border-gray-300 dark:border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all text-gray-900 dark:text-white"
+              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 shadow-soft"
               placeholder="username"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-dark-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-900 mb-2">
               Password
             </label>
             <div className="relative">
@@ -147,14 +147,14 @@ export default function RegisterPage() {
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 pr-12 bg-white dark:bg-dark-200 border border-gray-300 dark:border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 pr-12 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 shadow-soft"
                 placeholder="Create a strong password"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-dark-600 hover:text-gray-600 dark:hover:text-dark-700"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {showPassword ? (
@@ -172,7 +172,7 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-dark-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-900 mb-2">
               Confirm Password
             </label>
             <div className="relative">
@@ -180,14 +180,14 @@ export default function RegisterPage() {
                 type={showConfirmPassword ? "text" : "password"}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-3 pr-12 bg-white dark:bg-dark-200 border border-gray-300 dark:border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 pr-12 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 shadow-soft"
                 placeholder="Confirm your password"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-dark-600 hover:text-gray-600 dark:hover:text-dark-700"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {showConfirmPassword ? (
@@ -200,22 +200,22 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-3 pt-2">
             <input
               type="checkbox"
               id="terms"
               checked={acceptTerms}
               onChange={(e) => setAcceptTerms(e.target.checked)}
-              className="mt-1 w-4 h-4 rounded border-gray-300 dark:border-dark-300 text-blue-600 focus:ring-blue-500 dark:bg-dark-200"
+              className="mt-1 w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
               required
             />
-            <label htmlFor="terms" className="text-sm text-gray-600 dark:text-dark-600">
+            <label htmlFor="terms" className="text-sm text-gray-600 leading-relaxed">
               I agree to the{' '}
-              <Link href="/terms" className="text-blue-600 hover:underline">
+              <Link href="/terms" className="text-blue-600 hover:text-blue-700 font-medium">
                 Terms of Service
               </Link>
               {' '}and{' '}
-              <Link href="/privacy" className="text-blue-600 hover:underline">
+              <Link href="/privacy" className="text-blue-600 hover:text-blue-700 font-medium">
                 Privacy Policy
               </Link>
             </label>
@@ -224,16 +224,16 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-blue-600 dark:bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-700 dark:hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full bg-blue-600 text-white py-4 rounded-xl font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-medium hover:shadow-large"
           >
             {isLoading ? 'Creating account...' : 'Create account'}
           </button>
         </form>
 
         {/* Login Link */}
-        <div className="mt-8 text-center text-sm text-gray-600 dark:text-dark-600">
+        <div className="mt-10 text-center text-sm text-gray-600">
           Already have an account?{' '}
-          <Link href="/login" className="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+          <Link href="/login" className="text-blue-600 hover:text-blue-700 font-semibold">
             Sign in
           </Link>
         </div>
