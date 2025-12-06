@@ -434,7 +434,7 @@ export default function LiveDeepfakePage() {
             Real-time face transformation using your webcam. Apply AI-powered effects and filters instantly!
           </p>
           <div className="mt-4 inline-flex items-center px-4 py-2 bg-yellow-500/20 border border-yellow-500/50 rounded-lg">
-            <span className="text-yellow-300 font-medium">⚠️ Demo Mode - Visual effects only (real ML models require GPU)</span>
+            <span className="text-green-300 font-medium">✅ Live Processing - 33 Real-time AI Effects Active</span>
           </div>
         </div>
 

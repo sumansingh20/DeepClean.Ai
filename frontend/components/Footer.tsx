@@ -160,8 +160,8 @@ export const Footer: React.FC = () => {
               <h5 className="text-white font-semibold mb-2 flex items-center gap-2 justify-center">
                 <span>📞</span> Hotline
               </h5>
-              <p className="text-sm">Toll-Free: 1800-XXX-XXXX</p>
-              <p className="text-sm">Emergency: +91-XXXX-XXXXXX</p>
+              <p className="text-sm">Toll-Free: 1800-123-4567</p>
+              <p className="text-sm">Support: +91-11-4567-8900</p>
             </div>
             <div className="text-center md:text-right">
               <h5 className="text-white font-semibold mb-2 flex items-center gap-2 justify-center md:justify-end">

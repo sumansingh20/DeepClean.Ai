@@ -245,7 +245,7 @@ export default function Home() {
                 className="group px-8 py-4 bg-white text-gray-900 border-2 border-gray-300 rounded-2xl text-base font-bold transform hover:scale-105 hover:border-blue-600 hover:text-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <span className="flex items-center justify-center gap-2">
-                  <span>Watch Demo</span>
+                  <span>Start Analysis</span>
                   <span className="text-lg group-hover:scale-110 transition-transform inline-block">▶</span>
                 </span>
               </Link>

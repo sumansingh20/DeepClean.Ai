@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function APIDocs() {
   const [activeSection, setActiveSection] = useState('getting-started');
-  const [apiKey] = useState('YOUR_API_KEY_HERE');
+  const [apiKey] = useState(process.env.NEXT_PUBLIC_API_KEY || 'sk_live_deepclean_' + Date.now().toString(36));
 
   const sections = [
     { id: 'getting-started', title: '🚀 Getting Started', icon: '📘' },

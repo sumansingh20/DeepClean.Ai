@@ -1,8 +1,5 @@
-"""
-Comprehensive API routers for A-DFP Firewall
-Analysis endpoints: voice, video, document, liveness, scam, risk, incidents, webhooks, health
-Advanced features: real-time analysis, blockchain evidence, forensic reports
-"""
+# routers.py - API endpoint definitions
+# Handles all analysis endpoints: voice, video, document, liveness, scam detection
 
 from fastapi import APIRouter, UploadFile, File, HTTPException, status, Depends, Query, Body
 from sqlalchemy.orm import Session
@@ -35,15 +32,11 @@ from app.workers.tasks import (
     generate_report_task
 )
 
-# Import advanced router
 from app.api.advanced_router import router as advanced_router
 
 logger = logging.getLogger(__name__)
 
-# ============================================================================
-# VOICE ANALYSIS ROUTER
-# ============================================================================
-
+# Voice Analysis Endpoints
 voice_router = APIRouter(prefix="/voice", tags=["Voice Analysis"])
 
 
@@ -51,8 +44,7 @@ voice_router = APIRouter(prefix="/voice", tags=["Voice Analysis"])
     "",
     response_model=VoiceAnalysisResponse,
     status_code=status.HTTP_202_ACCEPTED,
-    summary="Analyze Voice for Deepfakes",
-    description="Upload voice audio file for AI deepfake detection analysis"
+    summary="Analyze Voice for Deepfakes"
 )
 async def upload_voice(
     session_id: str = Query(...),
@@ -60,14 +52,7 @@ async def upload_voice(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ) -> VoiceAnalysisResponse:
-    """
-    Upload voice audio for deepfake detection
-    
-    - **session_id**: Unique session ID
-    - **file**: Audio file (WAV, MP3, M4A - max 100MB)
-    
-    Returns analysis task ID for polling results
-    """
+    """Upload voice audio for deepfake detection (WAV, MP3, M4A - max 100MB)"""
     try:
         # Validate file
         if not FileValidator.validate_audio(file.filename, file.size):

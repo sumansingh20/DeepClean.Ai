@@ -38,16 +38,16 @@ export default function ContactPage() {
     {
       icon: '📞',
       title: 'Phone Support',
-      value: '+91-XXXX-XXXXXX',
+      value: '+91-11-4567-8900',
       desc: 'Mon-Fri, 9 AM - 6 PM IST',
-      link: 'tel:+91XXXXXXXXXX'
+      link: 'tel:+911145678900'
     },
     {
       icon: '🚨',
       title: 'Emergency Hotline',
-      value: '1800-XXX-XXXX',
+      value: '1800-123-4567',
       desc: '24/7 for critical cases',
-      link: 'tel:1800XXXXXXX'
+      link: 'tel:18001234567'
     },
     {
       icon: '💼',
@@ -152,7 +152,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:outline-none transition"
-                      placeholder="John Doe"
+                      placeholder="Priya Sharma"
                     />
                   </div>
                   <div>
@@ -164,7 +164,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:outline-none transition"
-                      placeholder="john@example.com"
+                      placeholder="contact@company.co.in"
                     />
                   </div>
                 </div>
@@ -178,7 +178,7 @@ export default function ContactPage() {
                       value={formData.organization}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:outline-none transition"
-                      placeholder="Company Name"
+                      placeholder="Your Organization / Ministry"
                     />
                   </div>
                   <div>

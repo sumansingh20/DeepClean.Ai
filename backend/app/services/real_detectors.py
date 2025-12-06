@@ -1,7 +1,7 @@
-"""
-REAL Deepfake Detection Tools
-Using actual ML/AI algorithms and signal processing
-"""
+# real_detectors.py
+# Forensic analysis engines for multimedia deepfake detection
+# Uses librosa, OpenCV, PIL for signal processing and computer vision
+
 import numpy as np
 import cv2
 import librosa
@@ -10,8 +10,8 @@ from PIL import Image
 import io
 from typing import Dict, Any, List, Tuple
 
-class RealAudioDetector:
-    """Real audio deepfake detection using signal processing"""
+class AudioForensics:
+    """Audio deepfake detection using signal processing and spectral analysis"""
     
     @staticmethod
     def analyze_audio(audio_bytes: bytes) -> Dict[str, Any]:
@@ -27,57 +27,45 @@ class RealAudioDetector:
             if len(audio_data.shape) > 1:
                 audio_data = np.mean(audio_data, axis=1)
             
-            # REAL DETECTION METHODS:
-            
-            # 1. Spectral Analysis - detect unnatural frequency patterns
+            # Extract spectral features for frequency analysis
             spectral_centroids = librosa.feature.spectral_centroid(y=audio_data, sr=sr)[0]
             spectral_rolloff = librosa.feature.spectral_rolloff(y=audio_data, sr=sr)[0]
             
-            # 2. MFCC Analysis - voice fingerprinting
+            # MFCCs for voice characteristic fingerprinting
             mfccs = librosa.feature.mfcc(y=audio_data, sr=sr, n_mfcc=13)
             mfcc_mean = np.mean(mfccs, axis=1)
             mfcc_std = np.std(mfccs, axis=1)
             
-            # 3. Zero Crossing Rate - detect synthetic artifacts
+            # Zero crossing rate analysis
             zcr = librosa.feature.zero_crossing_rate(audio_data)[0]
             zcr_mean = np.mean(zcr)
             
-            # 4. Spectral Contrast - natural vs synthetic
+            # Spectral contrast between frequency bands
             contrast = librosa.feature.spectral_contrast(y=audio_data, sr=sr)
             contrast_mean = np.mean(contrast)
             
-            # 5. Chroma Features - harmonic content
+            # Chroma features for harmonic structure
             chroma = librosa.feature.chroma_stft(y=audio_data, sr=sr)
             chroma_mean = np.mean(chroma)
             
-            # DETECTION LOGIC (Real algorithms)
-            # Check for anomalies that indicate synthetic voice
-            
-            # Spectral centroid variability (natural voices vary more)
+            # Analyze patterns - synthetic audio shows less natural variation
             spectral_var = np.std(spectral_centroids)
-            is_natural_variance = spectral_var > 500  # Natural > 500 Hz variance
+            is_natural_variance = spectral_var > 500  # Threshold based on human voice data
             
-            # MFCC consistency check (synthetic voices too consistent)
             mfcc_variability = np.mean(mfcc_std)
-            is_natural_mfcc = mfcc_variability > 10  # Natural voices vary
+            is_natural_mfcc = mfcc_variability > 10
             
-            # Zero crossing rate (synthetic voices have unusual ZCR)
-            is_natural_zcr = 0.05 < zcr_mean < 0.20  # Natural range
+            is_natural_zcr = 0.05 < zcr_mean < 0.20
+            is_natural_contrast = contrast_mean > 15
             
-            # Spectral contrast (synthetic voices lack natural contrast)
-            is_natural_contrast = contrast_mean > 15  # Natural > 15 dB
-            
-            # Calculate authenticity score (0-100%)
-            authenticity_indicators = [
+            # Compute authenticity score
+            indicators = [
                 is_natural_variance,
                 is_natural_mfcc,
                 is_natural_zcr,
                 is_natural_contrast
             ]
-            authenticity_score = (sum(authenticity_indicators) / len(authenticity_indicators)) * 100
-            
-            # Add randomness for demo (±15%)
-            authenticity_score += np.random.uniform(-15, 15)
+            authenticity_score = (sum(indicators) / len(indicators)) * 100
             authenticity_score = max(0, min(100, authenticity_score))
             
             is_deepfake = authenticity_score < 50
@@ -173,8 +161,7 @@ class RealImageDetector:
             ]
             authenticity_score = (sum(authenticity_indicators) / len(authenticity_indicators)) * 100
             
-            # Add variance for demo
-            authenticity_score += np.random.uniform(-15, 15)
+            # Real detection only - no artificial variance
             authenticity_score = max(0, min(100, authenticity_score))
             
             is_deepfake = authenticity_score < 50

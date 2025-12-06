@@ -57,17 +57,14 @@ export const useWebSocket = ({
       ws.current = new WebSocket(wsUrl);
 
       ws.current.onopen = () => {
-        console.log('WebSocket connected');
         setIsConnected(true);
         setError(null);
         reconnectCount.current = 0;
 
-        // Send initial ping
         if (ws.current) {
           ws.current.send(JSON.stringify({ type: 'ping', timestamp: new Date().toISOString() }));
         }
 
-        // Setup ping timer to keep connection alive
         pingTimer.current = setInterval(() => {
           if (ws.current?.readyState === WebSocket.OPEN) {
             ws.current.send(JSON.stringify({ type: 'ping', timestamp: new Date().toISOString() }));
@@ -80,24 +77,19 @@ export const useWebSocket = ({
           const message: WebSocketMessage = JSON.parse(event.data);
           setLastMessage(message);
 
-          // Handle specific message types
           if (message.type === 'analysis_progress') {
-            const progressData = message.data as AnalysisProgress;
-            setProgress(progressData);
+            setProgress(message.data as AnalysisProgress);
           }
 
-          // Emit to registered listeners
           const eventListeners = listeners.current.get(message.type) || [];
           eventListeners.forEach((listener) => listener(message.data));
         } catch (err) {
-          console.error('Failed to parse WebSocket message:', err);
+          console.error('WebSocket parse error:', err);
         }
       };
 
       ws.current.onerror = (event) => {
-        console.error('WebSocket error:', event);
-        const errorMsg = 'WebSocket connection error';
-        setError(errorMsg);
+        setError('WebSocket connection error');
       };
 
       ws.current.onclose = () => {

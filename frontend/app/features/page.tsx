@@ -318,7 +318,7 @@ export default function FeaturesPage() {
                 Start Free Trial
               </Link>
               <Link href="/analysis" className="btn-secondary text-xl px-12 py-5">
-                Try Demo
+                Start Free Trial
               </Link>
             </div>
           </div>

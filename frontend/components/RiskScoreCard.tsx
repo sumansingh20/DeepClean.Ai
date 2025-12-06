@@ -12,6 +12,29 @@ interface RiskScoreCardProps {
   scamScore: number;
 }
 
+const RISK_LEVELS = {
+  low: {
+    color: 'bg-green-100 border-green-300 text-green-800',
+    label: 'LOW RISK',
+    message: 'Low risk detected. Individual appears genuine with consistent patterns.'
+  },
+  medium: {
+    color: 'bg-yellow-100 border-yellow-300 text-yellow-800',
+    label: 'MEDIUM RISK',
+    message: 'Medium risk detected. Some inconsistencies observed. Further verification recommended.'
+  },
+  high: {
+    color: 'bg-orange-100 border-orange-300 text-orange-800',
+    label: 'HIGH RISK',
+    message: 'High risk detected. Multiple red flags identified. Enhanced verification required.'
+  },
+  critical: {
+    color: 'bg-red-100 border-red-300 text-red-800',
+    label: 'CRITICAL RISK',
+    message: 'Critical risk detected. Strong indicators of fraud. Immediate escalation recommended.'
+  }
+};
+
 export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({
   score,
   level,
@@ -21,41 +44,13 @@ export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({
   livenessScore,
   scamScore,
 }) => {
-  const getLevelColor = (lev: string): string => {
-    switch (lev) {
-      case 'low':
-        return 'bg-green-100 border-green-300 text-green-800';
-      case 'medium':
-        return 'bg-yellow-100 border-yellow-300 text-yellow-800';
-      case 'high':
-        return 'bg-orange-100 border-orange-300 text-orange-800';
-      case 'critical':
-        return 'bg-red-100 border-red-300 text-red-800';
-      default:
-        return 'bg-gray-100 border-gray-300 text-gray-800';
-    }
-  };
-
-  const getLevelLabel = (lev: string): string => {
-    switch (lev) {
-      case 'low':
-        return 'LOW RISK';
-      case 'medium':
-        return 'MEDIUM RISK';
-      case 'high':
-        return 'HIGH RISK';
-      case 'critical':
-        return 'CRITICAL RISK';
-      default:
-        return 'UNKNOWN';
-    }
-  };
+  const riskLevel = RISK_LEVELS[level] || RISK_LEVELS.low;
 
   return (
     <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg p-8">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Risk Assessment</h2>
-        <div className={`${getLevelColor(level)} border-2 rounded-lg p-4 mb-6`}>
+        <div className={`${riskLevel.color} border-2 rounded-lg p-4 mb-6`}>
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-semibold opacity-75">Overall Risk Score</p>
@@ -63,7 +58,7 @@ export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({
             </div>
             <div className="text-right">
               <p className="text-sm font-semibold opacity-75">Level</p>
-              <p className="text-2xl font-bold">{getLevelLabel(level)}</p>
+              <p className="text-2xl font-bold">{riskLevel.label}</p>
             </div>
           </div>
         </div>
@@ -104,10 +99,7 @@ export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({
       <div className="mt-6 p-4 bg-gray-50 rounded border border-gray-200">
         <p className="text-sm text-gray-700">
           <span className="font-semibold">Interpretation: </span>
-          {level === 'low' && 'Low risk detected. Individual appears genuine with consistent patterns across all detection methods.'}
-          {level === 'medium' && 'Medium risk detected. Some inconsistencies observed. Further verification recommended.'}
-          {level === 'high' && 'High risk detected. Multiple red flags identified. Enhanced verification required before proceeding.'}
-          {level === 'critical' && 'Critical risk detected. Strong indicators of fraudulent activity. Immediate escalation recommended.'}
+          {riskLevel.message}
         </p>
       </div>
     </div>

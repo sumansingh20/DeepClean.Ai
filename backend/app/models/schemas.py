@@ -1,6 +1,4 @@
-"""
-Pydantic request/response schemas for A-DFP Firewall API
-"""
+# schemas.py - Request/response models for API endpoints
 
 from pydantic import BaseModel, EmailStr, Field, validator
 from typing import Optional, List, Dict, Any
@@ -8,9 +6,7 @@ from datetime import datetime
 from enum import Enum
 
 
-# ============================================================================
-# User & Auth Schemas
-# ============================================================================
+# User & Authentication
 
 class UserRole(str, Enum):
     ADMIN = "admin"
@@ -63,9 +59,7 @@ class RefreshTokenRequest(BaseModel):
     refresh_token: str
 
 
-# ============================================================================
-# Session Schemas
-# ============================================================================
+# Session Management
 
 class SessionStatus(str, Enum):
     PENDING = "pending"
@@ -81,17 +75,15 @@ class ComponentStatus(str, Enum):
 
 
 class SessionCreate(BaseModel):
-    """Create new session"""
     pass
 
 
 class SessionResponse(BaseModel):
-    """Session response with all analysis results"""
+    """Session with all analysis results"""
     id: str
     session_token: str
     status: str
     
-    # Component scores
     voice_score: Optional[float]
     voice_confidence: Optional[float]
     voice_status: str

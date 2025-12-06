@@ -1,7 +1,5 @@
-"""
-Security utilities for A-DFP Firewall
-JWT, encryption, hashing, and authentication
-"""
+# security.py - Authentication and encryption utilities
+# JWT token management, password hashing, data encryption
 
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Any
@@ -19,7 +17,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 class JWTManager:
-    """Manage JWT token creation and verification"""
+    """JWT token operations for authentication"""
     
     def __init__(self, secret_key: str, algorithm: str = "HS256"):
         self.secret_key = secret_key
@@ -31,24 +29,22 @@ class JWTManager:
         role: str,
         expires_delta: Optional[timedelta] = None
     ) -> str:
-        """Create JWT access token"""
+        """Generate access token with user claims"""
         if expires_delta:
             expire = datetime.utcnow() + expires_delta
         else:
             expire = datetime.utcnow() + timedelta(hours=24)
         
-        to_encode = {
+        payload = {
             "sub": user_id,
             "role": role,
             "exp": expire,
             "iat": datetime.utcnow(),
-            "iss": "adfp-firewall",
-            "aud": "adfp-api",
+            "iss": "deepclean-api",
             "type": "access"
         }
         
-        encoded_jwt = jwt.encode(to_encode, self.secret_key, algorithm=self.algorithm)
-        return encoded_jwt
+        return jwt.encode(payload, self.secret_key, algorithm=self.algorithm)
     
     def create_refresh_token(
         self,

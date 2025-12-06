@@ -11,7 +11,7 @@ export const useAuth = () => {
   const [error, setError] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Load user from storage on mount
+  // Check if user session exists on page load
   useEffect(() => {
     const storedUser = getStoredUser();
     const token = getToken();
@@ -54,9 +54,7 @@ export const useAuth = () => {
       setError(null);
 
       try {
-        console.log('useAuth: Calling API login...');
         const response = await apiClient.login(email, password);
-        console.log('useAuth: API response received', response);
         const data: AuthResponse = response.data;
 
         setToken(data.access_token);
@@ -66,8 +64,7 @@ export const useAuth = () => {
 
         return data;
       } catch (err: any) {
-        console.error('useAuth: Login error', err);
-        const message = err.response?.data?.detail || err.message || 'Login failed - cannot connect to server';
+        const message = err.response?.data?.detail || err.message || 'Unable to connect to authentication server';
         setError(message);
         throw err;
       } finally {

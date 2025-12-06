@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 export default function AnalysisPage() {
-  const [activeTab, setActiveTab] = useState<'voice' | 'video' | 'document' | 'liveness' | 'scam' | 'image' | 'audio' | 'batch'>('video');
+  type AnalysisType = 'voice' | 'video' | 'document' | 'liveness' | 'scam' | 'image' | 'audio' | 'batch';
+  
+  const [activeTab, setActiveTab] = useState<AnalysisType>('video');
   const [file, setFile] = useState<File | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
   const [result, setResult] = useState<any>(null);
@@ -57,24 +59,22 @@ export default function AnalysisPage() {
     setAnalyzing(true);
     
     try {
-      // Create FormData for file upload
       const formData = new FormData();
       formData.append('file', file);
       formData.append('analysis_type', activeTab);
 
-      // Call backend API
       const response = await fetch('http://localhost:8001/api/deepfake/analyze', {
         method: 'POST',
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error(`API Error: ${response.status} ${response.statusText}`);
+        const errorText = await response.text();
+        throw new Error(`Analysis failed: ${response.status}`);
       }
 
       const data = await response.json();
       
-      // Use only real API data
       setResult({
         isDeepfake: data.is_deepfake,
         confidence: data.confidence,
@@ -85,7 +85,6 @@ export default function AnalysisPage() {
         timestamp: data.timestamp
       });
       
-      // Add to history
       setHistory(prev => [{
         id: data.analysis_id,
         type: activeTab,
@@ -93,9 +92,8 @@ export default function AnalysisPage() {
         isDeepfake: data.is_deepfake,
         confidence: data.confidence,
         timestamp: new Date().toISOString()
-      }, ...prev.slice(0, 9)]); // Keep last 10
+      }, ...prev.slice(0, 9)]);
       
-      setAnalyzing(false);
     } catch (error) {
       console.error('Analysis error:', error);
       setAnalyzing(false);
