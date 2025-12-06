@@ -6,22 +6,32 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-b border-gray-100 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-lg">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center h-24">
-            <Link href="/" className="flex items-center gap-3.5 group">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                <span className="text-white font-black text-lg">DC</span>
+          <div className="flex justify-between items-center h-20">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative w-11 h-11 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <span className="text-white font-black text-base">DC</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-400/0 via-blue-400/30 to-blue-400/0 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
               </div>
               <span className="font-black text-gray-900 text-xl tracking-tight">DeepClean.AI</span>
             </Link>
             
-            <div className="hidden md:flex items-center gap-12">
-              <Link href="/features" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-200">Features</Link>
-              <Link href="/pricing" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-200">Pricing</Link>
-              <Link href="/about" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-200">About</Link>
-              <Link href="/login" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-200">Login</Link>
-              <Link href="/register" className="px-7 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-sm font-bold rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
+            <div className="hidden md:flex items-center gap-8">
+              <Link href="/features" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-200 relative group">
+                Features
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link href="/pricing" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-200 relative group">
+                Pricing
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link href="/about" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-200 relative group">
+                About
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link href="/login" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-200">Login</Link>
+              <Link href="/register" className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-indigo-700">
                 Get Started
               </Link>
             </div>
@@ -30,57 +40,72 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-blue-50/30 via-white via-50% to-indigo-50/20">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative pt-28 pb-16 px-6 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50/40 to-purple-50/30">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-indigo-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           {/* Trust Badge */}
-          <div className="flex justify-center mb-10">
-            <div className="inline-flex items-center gap-3 px-7 py-3.5 bg-white rounded-full border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
-              <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shadow-md shadow-emerald-500/40"></div>
-              <span className="text-sm font-black text-gray-800 tracking-wide">Trusted by law enforcement agencies</span>
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white/90 backdrop-blur-md rounded-full border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="relative">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-75"></div>
+              </div>
+              <span className="text-xs font-black text-gray-800 tracking-wider">TRUSTED BY LAW ENFORCEMENT</span>
             </div>
           </div>
 
           {/* Main Headline */}
-          <div className="text-center max-w-5xl mx-auto mb-16">
-            <h1 className="text-7xl md:text-8xl font-black text-gray-900 mb-8 tracking-tight leading-[1.02] antialiased">
+          <div className="text-center max-w-5xl mx-auto mb-12">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-6 tracking-tight leading-[1.05] animate-in fade-in slide-in-from-bottom-4 duration-700">
               Enterprise-grade<br/>
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">deepfake detection</span>
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">deepfake detection</span>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-lg blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              </span>
             </h1>
             
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-6 duration-700 delay-150">
               Court-admissible forensic analysis powered by advanced AI.<br/>Protect your organization from manipulated media.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
               <Link 
                 href="/analysis" 
-                className="group px-14 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-lg font-bold rounded-2xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 inline-flex items-center justify-center gap-3"
+                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-bold rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
-                Start analyzing
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative flex items-center justify-center gap-2">
+                  Start analyzing
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
               </Link>
               <Link 
                 href="/contact" 
-                className="px-14 py-5 bg-white text-gray-900 text-lg font-bold rounded-2xl hover:bg-gray-50 transition-all duration-300 border-2 border-gray-300 hover:border-gray-400 shadow-md hover:shadow-lg hover:-translate-y-1"
+                className="group px-8 py-4 bg-white text-gray-900 text-base font-bold rounded-xl border-2 border-gray-300 hover:border-blue-600 hover:bg-gray-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 Talk to sales
               </Link>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 pt-16 border-t border-gray-200">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-gray-200/80">
               {[
                 { value: "127,000+", label: "Content analyzed" },
                 { value: "94.7%", label: "Detection accuracy" },
                 { value: "< 3s", label: "Average response" },
                 { value: "500+", label: "Organizations" }
               ].map((stat, i) => (
-                <div key={i} className="text-center group cursor-default">
-                  <div className="text-6xl font-black bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent mb-5 group-hover:scale-105 transition-transform duration-300">{stat.value}</div>
-                  <div className="text-base font-bold text-gray-600 tracking-wide">{stat.label}</div>
+                <div key={i} className="group text-center p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 hover:border-blue-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-default">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-br from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">{stat.value}</div>
+                  <div className="text-sm font-bold text-gray-600">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -112,43 +137,49 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 title: "Video & Image Analysis",
                 description: "Multi-modal deepfake detection using facial analysis, temporal consistency checks, and GAN artifact identification.",
                 features: ["Face-swap detection", "Expression manipulation", "Lip-sync verification"],
-                icon: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                icon: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+                gradient: "from-blue-500 to-indigo-600"
               },
               {
                 title: "Audio Forensics",
                 description: "Voice cloning detection with spectral analysis, acoustic modeling, and real-time verification.",
                 features: ["Voice authentication", "Clone detection", "Speaker verification"],
-                icon: "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
+                icon: "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z",
+                gradient: "from-indigo-500 to-purple-600"
               },
               {
                 title: "Document Verification",
                 description: "ID card, passport, and legal document authentication using OCR and template matching.",
                 features: ["Government ID verification", "Tamper detection", "Forgery analysis"],
-                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+                gradient: "from-purple-500 to-pink-600"
               }
             ].map((feature, i) => (
-              <div key={i} className="group relative p-10 bg-white rounded-3xl border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-2">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300 shadow-md">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
-                  </svg>
+              <div key={i} className="group relative bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+                <div className="relative">
+                  <div className={`w-14 h-14 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-black text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed text-sm">{feature.description}</p>
+                  <ul className="space-y-3">
+                    {feature.features.map((item, j) => (
+                      <li key={j} className="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"></div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="text-3xl font-black text-gray-900 mb-4">{feature.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-base">{feature.description}</p>
-                <ul className="space-y-4">
-                  {feature.features.map((item, j) => (
-                    <li key={j} className="flex items-center gap-3 text-sm font-bold text-gray-700">
-                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"></div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
