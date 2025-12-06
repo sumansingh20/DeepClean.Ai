@@ -30,57 +30,57 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-blue-50/30 via-white to-cyan-50/20">
+      <section className="relative pt-36 pb-28 px-6 bg-gradient-to-br from-blue-50/40 via-white to-indigo-50/30">
         <div className="max-w-7xl mx-auto">
           {/* Trust Badge */}
-          <div className="flex justify-center mb-12">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full border border-gray-200 shadow-medium hover:shadow-large transition-all">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-gray-700">Trusted by law enforcement agencies</span>
+          <div className="flex justify-center mb-14">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 rounded-full border border-gray-200/80 shadow-lg hover:shadow-xl transition-all backdrop-blur-sm">
+              <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shadow-lg shadow-emerald-500/50"></div>
+              <span className="text-sm font-bold text-gray-700 tracking-wide">Trusted by law enforcement agencies</span>
             </div>
           </div>
 
           {/* Main Headline */}
-          <div className="text-center max-w-5xl mx-auto mb-20">
-            <h1 className="text-7xl md:text-8xl font-extrabold text-gray-900 mb-8 tracking-tight leading-[1.1]">
+          <div className="text-center max-w-5xl mx-auto mb-24">
+            <h1 className="text-7xl md:text-8xl font-black text-gray-900 mb-10 tracking-tight leading-[1.05]">
               Enterprise-grade<br/>
-              <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent">deepfake detection</span>
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent">deepfake detection</span>
             </h1>
             
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
+            <p className="text-2xl text-gray-600 max-w-3xl mx-auto mb-14 leading-relaxed">
               Court-admissible forensic analysis powered by advanced AI.<br/>Protect your organization from manipulated media.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-5 justify-center mb-24">
+            <div className="flex flex-col sm:flex-row gap-5 justify-center mb-28">
               <Link 
                 href="/analysis" 
-                className="group px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-bold rounded-2xl hover:from-blue-700 hover:to-blue-800 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 inline-flex items-center justify-center gap-3"
+                className="group px-12 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-bold rounded-2xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 inline-flex items-center justify-center gap-3"
               >
                 Start analyzing
-                <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
               <Link 
                 href="/contact" 
-                className="px-10 py-5 bg-white text-gray-900 text-lg font-bold rounded-2xl hover:bg-gray-50 transition-all border-2 border-gray-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                className="px-12 py-5 bg-white text-gray-800 text-lg font-bold rounded-2xl hover:bg-gray-50 transition-all border-2 border-gray-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 Talk to sales
               </Link>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 pt-16 border-t-2 border-gray-200">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 pt-20 border-t border-gray-200">
               {[
                 { value: "127,000+", label: "Content analyzed" },
                 { value: "94.7%", label: "Detection accuracy" },
                 { value: "< 3s", label: "Average response" },
                 { value: "500+", label: "Organizations" }
               ].map((stat, i) => (
-                <div key={i} className="text-center group">
-                  <div className="text-5xl font-extrabold bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">{stat.value}</div>
-                  <div className="text-base font-semibold text-gray-600">{stat.label}</div>
+                <div key={i} className="text-center group cursor-default">
+                  <div className="text-5xl font-black bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-300">{stat.value}</div>
+                  <div className="text-base font-bold text-gray-600">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -89,13 +89,13 @@ export default function Home() {
       </section>
 
       {/* Social Proof */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50 border-y border-gray-200">
+      <section className="py-24 bg-gradient-to-b from-white via-gray-50/50 to-white border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs font-bold text-gray-500 mb-10 tracking-widest">TRUSTED BY</p>
+          <p className="text-center text-xs font-black text-gray-500 mb-12 tracking-[0.2em]">TRUSTED BY</p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {['Delhi Police', 'CBI', 'Ministry of Home Affairs', 'CERT-In', 'Supreme Court'].map((org) => (
-              <div key={org} className="text-center p-4 bg-white rounded-xl border border-gray-100 shadow-soft hover:shadow-medium transition-all">
-                <span className="text-sm font-bold text-gray-700">{org}</span>
+              <div key={org} className="text-center p-6 bg-white rounded-2xl border border-gray-200/80 shadow-md hover:shadow-xl transition-all hover:-translate-y-1 group">
+                <span className="text-sm font-black text-gray-700 group-hover:text-blue-600 transition-colors">{org}</span>
               </div>
             ))}
           </div>
@@ -112,7 +112,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-12">
             {[
               {
                 title: "Video & Image Analysis",
@@ -133,18 +133,18 @@ export default function Home() {
                 icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               }
             ].map((feature, i) => (
-              <div key={i} className="group relative p-10 bg-white rounded-3xl border-2 border-gray-200 hover:border-blue-400 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-2 duration-300">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+              <div key={i} className="group relative p-12 bg-white rounded-3xl border border-gray-200 hover:border-blue-400 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-2 duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed text-base">{feature.description}</p>
+                <h3 className="text-2xl font-black text-gray-900 mb-5">{feature.title}</h3>
+                <p className="text-gray-600 mb-10 leading-relaxed">{feature.description}</p>
                 <ul className="space-y-4">
                   {feature.features.map((item, j) => (
-                    <li key={j} className="flex items-center gap-3 text-sm font-semibold text-gray-700">
-                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600"></div>
+                    <li key={j} className="flex items-center gap-3 text-sm font-bold text-gray-700">
+                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 shadow-sm"></div>
                       {item}
                     </li>
                   ))}
