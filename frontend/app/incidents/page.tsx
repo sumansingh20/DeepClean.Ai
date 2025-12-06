@@ -27,55 +27,42 @@ export default function IncidentsPage() {
   const loadIncidents = async () => {
     setIsLoading(true);
     try {
-      // Mock data - replace with actual API call
-      const mockIncidents: Incident[] = [
-        {
-          id: 'INC001',
-          session_id: 'sess_123456',
-          title: 'Suspicious Voice Pattern Detected',
-          description: 'AI detected deepfake indicators in voice sample. Audio analysis shows unusual frequency patterns.',
-          status: 'investigating',
-          severity: 'high',
-          created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-          updated_at: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
-        },
-        {
-          id: 'INC002',
-          session_id: 'sess_654321',
-          title: 'Document Authenticity Failed',
-          description: 'Document verification system flagged potential forgery. Image artifacts detected.',
-          status: 'open',
-          severity: 'critical',
-          created_at: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
-          updated_at: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
-        },
-        {
-          id: 'INC003',
-          session_id: 'sess_789012',
-          title: 'Liveness Check Failed',
-          description: 'Biometric liveness check failed multiple times. Possible video replay attack detected.',
-          status: 'escalated',
-          severity: 'critical',
-          created_at: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
-          updated_at: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
-        },
-        {
-          id: 'INC004',
-          session_id: 'sess_345678',
-          title: 'Video Analysis Anomaly',
-          description: 'Facial recognition detected potential deepfake markers. Further review recommended.',
-          status: 'resolved',
-          severity: 'medium',
-          created_at: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
-          updated_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-        },
-      ];
-
-      // Apply filters
-      let filtered = mockIncidents;
+      const token = localStorage.getItem('token');
+      
+      // Build query parameters for filtering
+      let queryParams = new URLSearchParams();
+      queryParams.append('limit', '100');
+      queryParams.append('offset', '0');
       if (filterStatus !== 'all') {
-        filtered = filtered.filter((i) => i.status === filterStatus);
+        queryParams.append('status', filterStatus);
       }
+      
+      // Fetch incidents from API
+      const response = await fetch(`http://localhost:8001/api/v1/incidents?${queryParams.toString()}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch incidents');
+      }
+
+      const data = await response.json();
+      let apiIncidents: Incident[] = data.items.map((item: any) => ({
+        id: item.id,
+        session_id: item.session_id,
+        title: item.description?.substring(0, 50) || 'Incident',
+        description: item.description,
+        status: item.status,
+        severity: item.risk_score > 70 ? 'critical' : item.risk_score > 50 ? 'high' : item.risk_score > 30 ? 'medium' : 'low',
+        created_at: item.created_at,
+        updated_at: item.updated_at || item.created_at,
+      }));
+
+      // Apply severity filter client-side since API doesn't support it
+      let filtered = apiIncidents;
       if (filterSeverity !== 'all') {
         filtered = filtered.filter((i) => i.severity === filterSeverity);
       }

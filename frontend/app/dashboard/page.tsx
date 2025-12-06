@@ -139,6 +139,17 @@ export default function AdvancedDashboard(): React.ReactElement {
       // Set recent sessions
       setRecentSessions(allSessions.slice(0, 4));
       
+      // Generate real score history from sessions (not mock data)
+      const scoreHistory = completedSessions
+        .filter((s: Session) => s.fusion_score !== null)
+        .map((s: Session) => ({
+          date: new Date(s.created_at).toISOString().split('T')[0],
+          score: s.fusion_score || 0,
+          level: s.risk_level || 'low' as 'low' | 'medium' | 'high' | 'critical'
+        }))
+        .slice(0, 30);
+      setRecentScores(scoreHistory as any);
+      
       // Generate activity log from real data
       generateActivityLog(allSessions, incidents);
       
@@ -364,7 +375,7 @@ export default function AdvancedDashboard(): React.ReactElement {
                 </div>
                 <ScoreHistory
                   title=""
-                  history={generateMockScoreHistory()}
+                  history={recentScores.length > 0 ? recentScores : []}
                 />
               </div>
 
@@ -829,36 +840,5 @@ function ProgressMetric({ label, value, color }: ProgressMetricProps): React.Rea
   );
 }
 
-// Mock Data Generator - Generate realistic historical data
-function generateMockScoreHistory(): { date: string; score: number; level: 'low' | 'medium' | 'high' | 'critical' }[] {
-  const dates: { date: string; score: number; level: 'low' | 'medium' | 'high' | 'critical' }[] = [];
-  const now = Date.now();
-  
-  for (let i = 29; i >= 0; i--) {
-    const date = new Date(now - i * 24 * 60 * 60 * 1000);
-    // Generate more realistic data with trends
-    const baseScore = 40 + Math.random() * 30; // Base between 40-70
-    const trend = Math.sin(i / 5) * 10; // Add wave pattern
-    const noise = (Math.random() - 0.5) * 15; // Add randomness
-    const score = Math.max(0, Math.min(100, baseScore + trend + noise));
-    const roundedScore = Math.round(score);
-    
-    let level: 'low' | 'medium' | 'high' | 'critical';
-    if (roundedScore > 70) {
-      level = 'critical';
-    } else if (roundedScore > 50) {
-      level = 'high';
-    } else if (roundedScore > 30) {
-      level = 'medium';
-    } else {
-      level = 'low';
-    }
-    
-    dates.push({
-      date: date.toLocaleDateString(),
-      score: roundedScore,
-      level: level,
-    });
-  }
-  return dates;
-}
+// Removed mock data generator - using real session data instead
+

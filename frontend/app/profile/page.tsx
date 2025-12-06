@@ -29,15 +29,59 @@ export default function ProfilePage() {
 
   const fetchUserStats = async () => {
     try {
-      // Simulate API call - in production would fetch from API
+      const token = localStorage.getItem('token');
+      
+      // Fetch user's sessions to calculate statistics
+      const sessionsResponse = await fetch('http://localhost:8001/api/v1/sessions?limit=1000', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!sessionsResponse.ok) {
+        throw new Error('Failed to fetch user statistics');
+      }
+
+      const sessionsData = await sessionsResponse.json();
+      const totalAnalyses = sessionsData.total || 0;
+      
+      // Fetch user's incidents/reports
+      const incidentsResponse = await fetch('http://localhost:8001/api/v1/incidents?limit=1000', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      let reportsGenerated = 0;
+      if (incidentsResponse.ok) {
+        const incidentsData = await incidentsResponse.json();
+        reportsGenerated = incidentsData.total || 0;
+      }
+
+      // Calculate API calls (approximation: 5 API calls per analysis session)
+      const apiCalls = totalAnalyses * 5;
+      
+      // Calculate storage (approximation: 50MB per session)
+      const storageBytes = totalAnalyses * 50 * 1024 * 1024;
+      const storageGB = (storageBytes / (1024 * 1024 * 1024)).toFixed(2);
+      
       setStats({
-        totalAnalyses: 247,
-        reportsGenerated: 89,
-        apiCalls: 1523,
-        storageUsed: '2.4 GB'
+        totalAnalyses,
+        reportsGenerated,
+        apiCalls,
+        storageUsed: `${storageGB} GB`
       });
     } catch (error) {
       console.error('Failed to fetch stats:', error);
+      // Fallback to default values on error
+      setStats({
+        totalAnalyses: 0,
+        reportsGenerated: 0,
+        apiCalls: 0,
+        storageUsed: '0 GB'
+      });
     }
   };
 

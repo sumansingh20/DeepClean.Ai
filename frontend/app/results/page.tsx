@@ -40,69 +40,101 @@ export default function ResultsPage() {
       return;
     }
 
-    // In a real app, fetch from URL params or API
     const loadResults = async () => {
       try {
-        // Mock data - replace with actual API call
-        const mockResult: AnalysisResult = {
-          session_id: 'sess_' + Math.random().toString(36).substr(2, 9),
-          fusion_score: Math.floor(Math.random() * 100),
-          risk_level: Math.random() > 0.7 ? 'critical' : Math.random() > 0.5 ? 'high' : Math.random() > 0.3 ? 'medium' : 'low',
-          voice_score: Math.floor(Math.random() * 100),
-          video_score: Math.floor(Math.random() * 100),
-          document_score: Math.floor(Math.random() * 100),
-          liveness_score: Math.floor(Math.random() * 100),
-          scam_score: Math.floor(Math.random() * 100),
-          created_at: new Date().toISOString(),
+        const token = localStorage.getItem('token');
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id') || localStorage.getItem('last_session_id');
+        
+        if (!sessionId) {
+          console.error('No session ID provided');
+          setIsLoading(false);
+          return;
+        }
+
+        // Fetch session details with risk score
+        const sessionResponse = await fetch(`http://localhost:8001/api/v1/sessions/${sessionId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!sessionResponse.ok) {
+          throw new Error('Failed to fetch session data');
+        }
+
+        const sessionData = await sessionResponse.json();
+        
+        const apiResult: AnalysisResult = {
+          session_id: sessionData.id,
+          fusion_score: sessionData.fusion_score || 0,
+          risk_level: sessionData.risk_level || 'low',
+          voice_score: sessionData.voice_score || 0,
+          video_score: sessionData.video_score || 0,
+          document_score: sessionData.document_score || 0,
+          liveness_score: sessionData.liveness_score || 0,
+          scam_score: sessionData.scam_score || 0,
+          created_at: sessionData.created_at,
           analysis_details: {
             voice_analysis: {
-              deepfake_probability: Math.random(),
-              confidence: 0.92,
+              deepfake_probability: sessionData.voice_score ? sessionData.voice_score / 100 : 0,
+              confidence: sessionData.voice_confidence || 0,
               model: 'Wav2Vec2',
               features: ['MFCC', 'Spectral Analysis'],
               duration: '3.2s',
-              anomalies: Math.floor(Math.random() * 5)
+              anomalies: 0
             },
             video_analysis: {
-              deepfake_probability: Math.random(),
-              face_detected: true,
+              deepfake_probability: sessionData.video_score ? sessionData.video_score / 100 : 0,
+              face_detected: sessionData.video_score !== null,
               frames_analyzed: 120,
-              manipulation_type: 'Face Swap',
-              confidence: 0.88,
-              artifacts: ['Blending edges', 'Color inconsistency']
+              manipulation_type: sessionData.video_score > 70 ? 'Face Swap' : 'None',
+              confidence: sessionData.video_confidence || 0,
+              artifacts: sessionData.video_score > 70 ? ['Blending edges', 'Color inconsistency'] : ['None detected']
             },
             document_analysis: {
-              authenticity_score: Math.random(),
-              fraud_detected: Math.random() > 0.7,
+              authenticity_score: sessionData.document_score ? sessionData.document_score / 100 : 1,
+              fraud_detected: sessionData.document_score > 70,
               document_type: 'ID Card',
-              ocr_confidence: 0.95,
-              tampering: ['None detected']
+              ocr_confidence: sessionData.document_confidence || 0,
+              tampering: sessionData.document_score > 70 ? ['Potential tampering detected'] : ['None detected']
             },
             liveness_check: {
-              passed: Math.random() > 0.3,
-              motion_detected: true,
-              blink_rate: 'Normal',
-              head_movement: 'Detected',
-              spoofing_attempts: 0
+              passed: sessionData.liveness_score < 50,
+              motion_detected: sessionData.liveness_score !== null,
+              blink_rate: sessionData.liveness_score < 50 ? 'Normal' : 'Suspicious',
+              head_movement: sessionData.liveness_score !== null ? 'Detected' : 'Not detected',
+              spoofing_attempts: sessionData.liveness_score > 70 ? 1 : 0
             },
             scam_detection: {
-              patterns: Math.floor(Math.random() * 5),
-              risk_indicators: ['Unusual location', 'Suspicious timing'],
-              confidence: 0.81,
-              threat_level: 'Medium'
+              patterns: sessionData.scam_score > 50 ? 3 : 0,
+              risk_indicators: sessionData.scam_score > 50 ? ['Unusual location', 'Suspicious timing'] : [],
+              confidence: sessionData.scam_confidence || 0,
+              threat_level: sessionData.scam_score > 70 ? 'High' : sessionData.scam_score > 40 ? 'Medium' : 'Low'
             },
           },
         };
 
-        setResult(mockResult);
+        setResult(apiResult);
 
-        // Mock history
-        const mockHistory = Array.from({ length: 10 }, (_, i) => ({
-          date: new Date(Date.now() - i * 24 * 60 * 60 * 1000).toISOString(),
-          score: Math.floor(Math.random() * 100),
-          level: Math.random() > 0.7 ? 'critical' : Math.random() > 0.5 ? 'high' : Math.random() > 0.3 ? 'medium' : 'low'
-        })).reverse();
-        setHistory(mockHistory);
+        // Fetch user's session history for the chart
+        const historyResponse = await fetch(`http://localhost:8001/api/v1/sessions?limit=10`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (historyResponse.ok) {
+          const historyData = await historyResponse.json();
+          const historyItems = historyData.items.map((session: any) => ({
+            date: session.created_at,
+            score: session.fusion_score || 0,
+            level: session.risk_level || 'low'
+          }));
+          setHistory(historyItems.reverse());
+        }
       } catch (error) {
         console.error('Failed to load results:', error);
       } finally {

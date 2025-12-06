@@ -109,17 +109,6 @@ export default function CreateDeepfakePage() {
     setResult('');
 
     try {
-      // Simulate processing with progress
-      const progressInterval = setInterval(() => {
-        setProgress(prev => {
-          if (prev >= 95) {
-            clearInterval(progressInterval);
-            return 95;
-          }
-          return prev + 5;
-        });
-      }, 500);
-
       // Create FormData
       const formData = new FormData();
       formData.append('tool', selectedTool);
@@ -134,7 +123,6 @@ export default function CreateDeepfakePage() {
         body: formData
       });
 
-      clearInterval(progressInterval);
       setProgress(100);
 
       if (response.ok) {
