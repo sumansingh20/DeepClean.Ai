@@ -160,7 +160,7 @@ export default function AdvancedAnalysisDashboard() {
               <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
                 🔬 Advanced Forensic Analysis
               </h1>
-              <p className="text-gray-400 mt-1">Real ML Detection • Blockchain Evidence • PDF Reports</p>
+              <p className="text-gray-400 mt-1">Real ML Detection • Technical Reports • PDF Export</p>
             </div>
             <Link
               href="/"
@@ -273,9 +273,9 @@ export default function AdvancedAnalysisDashboard() {
                     className="w-5 h-5 rounded bg-gray-700 border-purple-500"
                   />
                   <span className="text-sm">
-                    <strong className="text-purple-300">⛓️ Enable Blockchain Evidence</strong>
+                    <strong className="text-purple-300">🔐 Include Cryptographic Hash</strong>
                     <br />
-                    <span className="text-gray-400">SHA-256 cryptographic evidence chain</span>
+                    <span className="text-gray-400">SHA-256 file verification hash</span>
                   </span>
                 </label>
 
@@ -443,7 +443,7 @@ export default function AdvancedAnalysisDashboard() {
                 <div className="text-center py-12 text-gray-400">
                   <div className="text-6xl mb-4">🔍</div>
                   <p>Upload and analyze a file to see results here</p>
-                  <p className="text-sm mt-2">Advanced ML algorithms • Blockchain evidence • PDF reports</p>
+                  <p className="text-sm mt-2">Advanced ML algorithms • Technical reports • PDF export</p>
                 </div>
               )}
             </div>

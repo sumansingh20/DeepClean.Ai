@@ -472,7 +472,7 @@ export default function ResultsPage() {
                   <li>✓ IT Act 2000 compliant</li>
                   <li>✓ Evidence Act 1872 compliant</li>
                   <li>✓ GDPR data handling</li>
-                  <li>✓ Court-admissible format</li>
+                  <li>✓ PDF export format</li>
                   <li>✓ Forensic integrity maintained</li>
                 </ul>
               </div>

@@ -201,19 +201,19 @@ export default function PricingPage() {
           <div className="mt-20 max-w-5xl mx-auto glass dark:bg-dark-200/50 rounded-3xl p-12 border border-white/20 dark:border-dark-300 shadow-2xl">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
-                🏛️ Special Plans Available
+                🏢 Enterprise Solutions
               </h2>
               <p className="text-xl text-gray-600 dark:text-dark-600">
-                Custom solutions for government agencies, law enforcement, and large organizations
+                Custom solutions for organizations with high-volume analysis needs
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center p-6">
-                <div className="text-5xl mb-4">👮</div>
-                <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2">Law Enforcement</h3>
+                <div className="text-5xl mb-4">🎓</div>
+                <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2">Academic & Research</h3>
                 <p className="text-gray-600 dark:text-dark-600 text-sm">
-                  Special pricing and features for police departments and cybercrime units
+                  Special pricing for universities and research institutions
                 </p>
               </div>
               <div className="text-center p-6">

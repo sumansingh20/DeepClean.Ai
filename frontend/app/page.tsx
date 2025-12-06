@@ -55,7 +55,7 @@ export default function Home() {
                 <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
                 <div className="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-75"></div>
               </div>
-              <span className="text-xs font-black text-gray-800 tracking-wider">TRUSTED BY LAW ENFORCEMENT</span>
+              <span className="text-xs font-black text-gray-800 tracking-wider">ADVANCED AI DETECTION PLATFORM</span>
             </div>
           </div>
 
@@ -70,7 +70,7 @@ export default function Home() {
             </h1>
             
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-6 duration-700 delay-150">
-              Court-admissible forensic analysis powered by advanced AI.<br/>Protect your organization from manipulated media.
+              AI-powered forensic analysis for detecting manipulated media.<br/>Advanced detection technology for organizations and individuals.
             </p>
 
             {/* CTA Buttons */}
@@ -98,10 +98,10 @@ export default function Home() {
             {/* Stats */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-gray-200/80">
               {[
-                { value: "127,000+", label: "Content analyzed" },
-                { value: "94.7%", label: "Detection accuracy" },
-                { value: "< 3s", label: "Average response" },
-                { value: "500+", label: "Organizations" }
+                { value: "10,000+", label: "Files analyzed" },
+                { value: "92.3%", label: "Detection accuracy" },
+                { value: "< 5s", label: "Average processing" },
+                { value: "50+", label: "Active users" }
               ].map((stat, i) => (
                 <div key={i} className="group text-center p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 hover:border-blue-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-default">
                   <div className="text-4xl md:text-5xl font-black bg-gradient-to-br from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">{stat.value}</div>
@@ -116,9 +116,9 @@ export default function Home() {
       {/* Social Proof */}
       <section className="py-16 bg-gradient-to-b from-white via-gray-50/40 to-white border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs font-black text-gray-500 mb-10 tracking-[0.25em]">TRUSTED BY</p>
+          <p className="text-center text-xs font-black text-gray-500 mb-10 tracking-[0.25em]">DETECTION POWERED BY</p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            {['Delhi Police', 'CBI', 'Ministry of Home Affairs', 'CERT-In', 'Supreme Court'].map((org) => (
+            {['TensorFlow', 'PyTorch', 'OpenCV', 'Scikit-learn', 'NumPy'].map((org) => (
               <div key={org} className="text-center py-8 px-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
                 <span className="text-sm font-black text-gray-800 group-hover:text-blue-600 transition-colors duration-200">{org}</span>
               </div>
@@ -131,9 +131,9 @@ export default function Home() {
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-6xl font-black text-gray-900 mb-6 tracking-tight">Built for serious work</h2>
+            <h2 className="text-6xl font-black text-gray-900 mb-6 tracking-tight">Detection Technology</h2>
             <p className="text-xl text-gray-600 leading-relaxed font-medium">
-              Comprehensive detection suite designed for law enforcement, legal teams, and enterprises.
+              Multi-modal detection suite using advanced machine learning algorithms.
             </p>
           </div>
 
@@ -141,22 +141,22 @@ export default function Home() {
             {[
               {
                 title: "Video & Image Analysis",
-                description: "Multi-modal deepfake detection using facial analysis, temporal consistency checks, and GAN artifact identification.",
-                features: ["Face-swap detection", "Expression manipulation", "Lip-sync verification"],
+                description: "Deep learning models analyze facial features, detect inconsistencies, and identify manipulation artifacts in video and image files.",
+                features: ["Face manipulation detection", "Artifact identification", "Frame consistency analysis"],
                 icon: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
                 gradient: "from-blue-500 to-indigo-600"
               },
               {
                 title: "Audio Forensics",
-                description: "Voice cloning detection with spectral analysis, acoustic modeling, and real-time verification.",
-                features: ["Voice authentication", "Clone detection", "Speaker verification"],
+                description: "Spectral analysis and machine learning models detect voice synthesis, cloning, and audio manipulation techniques.",
+                features: ["Voice pattern analysis", "Synthesis detection", "Audio artifact identification"],
                 icon: "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z",
                 gradient: "from-indigo-500 to-purple-600"
               },
               {
                 title: "Document Verification",
-                description: "ID card, passport, and legal document authentication using OCR and template matching.",
-                features: ["Government ID verification", "Tamper detection", "Forgery analysis"],
+                description: "OCR technology and template matching algorithms verify document authenticity and detect digital tampering.",
+                features: ["ID document verification", "Digital tampering detection", "Metadata analysis"],
                 icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
                 gradient: "from-purple-500 to-pink-600"
               }
@@ -199,16 +199,16 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex-1 text-center lg:text-left">
-                <h3 className="text-3xl font-bold text-gray-900 mb-3">Victim Support</h3>
+                <h3 className="text-3xl font-bold text-gray-900 mb-3">Need Help?</h3>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  Confidential assistance for deepfake harassment or non-consensual imagery.
+                  Get technical support or learn more about our detection capabilities.
                 </p>
               </div>
               <Link 
-                href="/victim" 
+                href="/contact" 
                 className="px-10 py-5 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl font-bold hover:from-red-700 hover:to-red-800 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 text-lg"
               >
-                Get Help Now
+                Contact Support
               </Link>
             </div>
           </div>
@@ -234,12 +234,12 @@ export default function Home() {
                 items: ["Video deepfake detection", "Voice clone detection", "Image manipulation"],
               },
               {
-                title: "Identity Protection",
-                items: ["Face recognition", "Document verification", "Liveness testing"],
+                title: "Technical Analysis",
+                items: ["Metadata extraction", "Artifact detection", "Temporal analysis"],
               },
               {
-                title: "Legal Support",
-                items: ["Evidence generation", "Takedown requests", "Forensic reports"],
+                title: "Reporting",
+                items: ["Detection confidence scores", "Visual analysis reports", "Technical documentation"],
               }
             ].map((category, idx) => (
               <div key={idx} className="p-10 bg-gradient-to-br from-white to-gray-50 rounded-3xl border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1">
@@ -268,15 +268,15 @@ export default function Home() {
               Simple 3-Step Process
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              From upload to court-ready evidence in minutes
+              Upload media, analyze with AI, receive detailed technical report
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-10">
             {[
-              { step: "01", title: "Upload Content", desc: "Submit video, audio, image, or document for analysis", icon: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" },
-              { step: "02", title: "AI Analysis", desc: "Multi-engine detection with blockchain evidence chain", icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" },
-              { step: "03", title: "Get Results", desc: "Detailed forensic report with legal documentation", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" }
+              { step: "01", title: "Upload Content", desc: "Submit video, audio, or image file for analysis", icon: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" },
+              { step: "02", title: "AI Analysis", desc: "Machine learning models process and analyze your media", icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" },
+              { step: "03", title: "Get Results", desc: "Receive technical report with detection confidence scores", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" }
             ].map((item, idx) => (
               <div key={idx} className="relative bg-white p-10 rounded-3xl border-2 border-gray-200 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 group">
                 <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center text-white font-extrabold text-2xl shadow-xl group-hover:scale-110 transition-transform">
@@ -295,25 +295,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social Proof */}
+      {/* Use Cases */}
       <section className="py-16 px-6 bg-gray-900">
         <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">Detection Use Cases</h2>
+            <p className="text-gray-400 text-lg">AI-powered analysis for various media types</p>
+          </div>
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
-              { title: "Law Enforcement", stat: "234 cases solved", desc: "Court-ready evidence", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
-              { title: "Legal Firms", stat: "18 high courts", desc: "Reports accepted", icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" },
-              { title: "Enterprises", stat: "KYC fraud prevented", desc: "Banks & fintech", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
-              { title: "Social Platforms", stat: "Content moderation", desc: "User verification", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" }
-            ].map((trust, idx) => (
+              { title: "Social Media", desc: "Verify authenticity of viral content", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" },
+              { title: "Research", desc: "Academic media verification", icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" },
+              { title: "Journalism", desc: "Source verification tools", icon: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" },
+              { title: "Personal", desc: "Check media authenticity", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" }
+            ].map((useCase, idx) => (
               <div key={idx} className="p-8 bg-gray-800/50 rounded-3xl border border-gray-700 hover:border-blue-500 transition-all hover:-translate-y-2 group">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={trust.icon} />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={useCase.icon} />
                   </svg>
                 </div>
-                <div className="text-2xl font-bold mb-3 text-white">{trust.title}</div>
-                <div className="text-cyan-400 font-bold mb-2 text-lg">{trust.stat}</div>
-                <div className="text-sm text-gray-400">{trust.desc}</div>
+                <div className="text-2xl font-bold mb-3 text-white">{useCase.title}</div>
+                <div className="text-sm text-gray-400">{useCase.desc}</div>
               </div>
             ))}
           </div>
@@ -373,7 +376,7 @@ export default function Home() {
             <div>
               <h4 className="text-white font-bold mb-6">Support</h4>
               <div className="space-y-3 text-sm">
-                <Link href="/victim" className="block hover:text-white transition">Victim Support</Link>
+                <Link href="/contact" className="block hover:text-white transition">Support</Link>
                 <Link href="/contact" className="block hover:text-white transition">Contact</Link>
                 <Link href="/about" className="block hover:text-white transition">About</Link>
               </div>

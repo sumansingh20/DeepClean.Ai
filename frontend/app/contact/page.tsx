@@ -276,15 +276,15 @@ export default function ContactPage() {
                       <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </div>
                   </Link>
-                  <Link href="/victim" className="block p-4 bg-gradient-to-r from-red-50 to-white dark:from-red-900/20 dark:to-dark-300 rounded-xl border-2 border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition group">
+                  <Link href="/help" className="block p-4 bg-gradient-to-r from-red-50 to-white dark:from-red-900/20 dark:to-dark-300 rounded-xl border-2 border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition group">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-gray-900 dark:text-white">🆘 Victim Support</span>
+                      <span className="font-bold text-gray-900 dark:text-white">📖 Help Center</span>
                       <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </div>
                   </Link>
-                  <Link href="/admin" className="block p-4 bg-gradient-to-r from-green-50 to-white dark:from-green-900/20 dark:to-dark-300 rounded-xl border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 transition group">
+                  <Link href="/dashboard" className="block p-4 bg-gradient-to-r from-green-50 to-white dark:from-green-900/20 dark:to-dark-300 rounded-xl border-2 border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600 transition group">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-gray-900 dark:text-white">👮 Government Portal</span>
+                      <span className="font-bold text-gray-900 dark:text-white">📊 Dashboard</span>
                       <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </div>
                   </Link>

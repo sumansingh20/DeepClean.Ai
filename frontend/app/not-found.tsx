@@ -36,7 +36,7 @@ export default function NotFound() {
           {[
             { href: '/analysis', icon: '🔬', label: 'Analysis' },
             { href: '/reports', icon: '📊', label: 'Reports' },
-            { href: '/victim', icon: '🛡️', label: 'Victim Support' },
+            { href: '/help', icon: '📖', label: 'Help Center' },
             { href: '/contact', icon: '📧', label: 'Contact' }
           ].map((link) => (
             <Link

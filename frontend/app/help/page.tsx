@@ -32,11 +32,11 @@ export default function HelpCenter() {
     },
     {
       icon: '📊',
-      title: 'Reports & Evidence',
+      title: 'Reports & Analysis',
       description: 'Generate and manage reports',
       articles: [
         'Generating analysis reports',
-        'Court-ready evidence packages',
+        'Technical report details',
         'Exporting data (PDF, Excel, JSON)',
         'Report customization options'
       ]
@@ -94,8 +94,8 @@ export default function HelpCenter() {
       a: 'No. Uploaded files are automatically deleted after 7 days. Analysis results and reports are retained according to your account retention policy. You can request immediate deletion anytime.'
     },
     {
-      q: 'Can I use this for legal proceedings?',
-      a: 'Yes. Our analysis reports include cryptographic signatures, blockchain timestamps, and detailed technical evidence accepted by Indian courts. We also generate court-ready evidence packages.'
+      q: 'Can I use this for documentation?',
+      a: 'Our analysis reports include technical details and confidence scores. Reports can be exported as PDF for record-keeping and documentation purposes.'
     },
     {
       q: 'What is the StopNCII platform?',
@@ -301,8 +301,8 @@ export default function HelpCenter() {
             <Link href="/security" className="px-6 py-3 bg-white text-blue-600 rounded-xl font-bold hover:bg-gray-100 transition shadow-lg">
               🔐 Security Overview
             </Link>
-            <Link href="/victim" className="px-6 py-3 bg-white text-blue-600 rounded-xl font-bold hover:bg-gray-100 transition shadow-lg">
-              🛡️ Victim Support
+            <Link href="/contact" className="px-6 py-3 bg-white text-blue-600 rounded-xl font-bold hover:bg-gray-100 transition shadow-lg">
+              📞 Contact Support
             </Link>
           </div>
         </div>
