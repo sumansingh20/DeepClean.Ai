@@ -79,17 +79,17 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
-      {/* Header */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-soft sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center text-white font-bold shadow-medium">
-                DC
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-b border-gray-100 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-between items-center h-24">
+            <Link href="/" className="flex items-center gap-3.5 group">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+                <span className="text-white font-black text-lg">DC</span>
               </div>
-              <span className="text-xl font-bold text-gray-900">DeepClean.AI</span>
+              <span className="font-black text-gray-900 text-xl tracking-tight">DeepClean.AI</span>
             </Link>
-            <Link href="/login" className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition shadow-medium">
+            <Link href="/login" className="px-7 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-sm font-bold rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
               Login
             </Link>
           </div>
@@ -97,48 +97,48 @@ export default function PricingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h1 className="text-6xl font-black text-gray-900 dark:text-white mb-6">
-              Choose Your <span className="gradient-text dark:text-blue-400">Protection Plan</span>
-            </h1>
-            <p className="text-2xl text-gray-600 dark:text-dark-600 max-w-3xl mx-auto mb-8">
-              Flexible pricing for individuals, professionals, and enterprises
-            </p>
+      <section className="pt-44 pb-20">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h1 className="text-7xl md:text-8xl font-black text-gray-900 mb-8 tracking-tight leading-[1.02]">
+            Simple, <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">transparent</span> pricing
+          </h1>
+          <p className="text-2xl text-gray-600 max-w-3xl mx-auto mb-12 font-medium">
+            Flexible pricing for individuals, professionals, and enterprises
+          </p>
 
-            {/* Billing Toggle */}
-            <div className="inline-flex items-center gap-4 bg-white dark:bg-dark-200 rounded-full p-2 shadow-lg border-2 border-gray-200 dark:border-dark-300">
-              <button
-                onClick={() => setBillingCycle('monthly')}
-                className={`px-8 py-3 rounded-full font-bold transition-all ${
-                  billingCycle === 'monthly'
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                    : 'text-gray-700 dark:text-dark-700 hover:bg-gray-100 dark:hover:bg-dark-300'
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setBillingCycle('annual')}
-                className={`px-8 py-3 rounded-full font-bold transition-all relative ${
-                  billingCycle === 'annual'
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                    : 'text-gray-700 dark:text-dark-700 hover:bg-gray-100 dark:hover:bg-dark-300'
-                }`}
-              >
-                Annual
-                <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">
-                  Save 17%
-                </span>
-              </button>
-            </div>
+          {/* Billing Toggle */}
+          <div className="inline-flex items-center gap-2 bg-white rounded-full p-2 shadow-md border-2 border-gray-200">
+            <button
+              onClick={() => setBillingCycle('monthly')}
+              className={`px-8 py-3 rounded-full font-bold transition-all duration-200 ${
+                billingCycle === 'monthly'
+                  ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setBillingCycle('annual')}
+              className={`px-8 py-3 rounded-full font-bold transition-all duration-200 relative ${
+                billingCycle === 'annual'
+                  ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              Annual
+              <span className="absolute -top-2 -right-2 bg-emerald-500 text-white text-xs px-2.5 py-1 rounded-full font-black shadow-md">
+                Save 17%
+              </span>
+            </button>
           </div>
+        </div>
+      </section>
 
-          {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {plans.map((plan, idx) => (
-              <div
+      {/* Pricing Cards */}
+      <section className="pb-32 px-6">
+        <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto">\n          {plans.map((plan, idx) => (
+            <div
                 key={idx}
                 className={`relative glass dark:bg-dark-200/50 rounded-3xl p-8 border-2 transition-all duration-300 ${
                   plan.popular

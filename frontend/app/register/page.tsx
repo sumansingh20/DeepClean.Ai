@@ -62,28 +62,28 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Top Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-soft">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-b border-gray-100 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 text-gray-700 hover:text-gray-900 transition font-bold">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span className="font-medium">Back</span>
+            <span className="font-bold">Back</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center shadow-medium">
-              <span className="text-white font-bold">DC</span>
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-md">
+              <span className="text-white font-black text-lg">DC</span>
             </div>
-            <span className="font-bold text-gray-900 text-lg">DeepClean.AI</span>
+            <span className="font-black text-gray-900 text-xl tracking-tight">DeepClean.AI</span>
           </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <div className="max-w-md mx-auto px-6 pt-32 pb-20">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Create account</h1>
-          <p className="text-gray-600 text-lg">Start protecting against deepfakes</p>
+      <div className="max-w-md mx-auto px-6 pt-44 pb-20">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-black text-gray-900 mb-4 tracking-tight">Create account</h1>
+          <p className="text-gray-600 text-lg font-medium">Start protecting against deepfakes</p>
         </div>
 
         {/* OAuth Buttons */}

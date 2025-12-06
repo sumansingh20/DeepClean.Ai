@@ -74,15 +74,15 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
-      {/* Header */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-soft">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center h-20">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all group-hover:scale-105">
-                <span className="text-white font-bold text-lg">DC</span>
+          <div className="flex justify-between items-center h-24">
+            <Link href="/" className="flex items-center gap-3.5 group">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+                <span className="text-white font-black text-lg">DC</span>
               </div>
-              <span className="font-bold text-gray-900 text-xl tracking-tight">DeepClean.AI</span>
+              <span className="font-black text-gray-900 text-xl tracking-tight">DeepClean.AI</span>
             </Link>
             <Link href="/dashboard" className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-bold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">Dashboard</Link>
           </div>

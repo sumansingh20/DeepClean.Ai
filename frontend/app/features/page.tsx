@@ -119,35 +119,34 @@ export default function FeaturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-dark-100 dark:via-dark-200 dark:to-dark-300">
-      {/* Header */}
-      <nav className="glass dark:bg-dark-100/70 sticky top-0 z-50 border-b border-white/20 dark:border-dark-200 shadow-xl">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-black shadow-lg">
-                DC
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-b border-gray-100 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-between items-center h-24">
+            <Link href="/" className="flex items-center gap-3.5 group">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+                <span className="text-white font-black text-lg">DC</span>
               </div>
-              <span className="text-2xl font-black gradient-text dark:text-white">DeepClean AI</span>
+              <span className="font-black text-gray-900 text-xl tracking-tight">DeepClean.AI</span>
             </Link>
-            <div className="flex items-center gap-4">
-              <Link href="/pricing" className="text-gray-700 dark:text-dark-700 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Pricing</Link>
-              <Link href="/login" className="btn-primary">Get Started</Link>
+            <div className="flex items-center gap-12">
+              <Link href="/pricing" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors duration-200">Pricing</Link>
+              <Link href="/login" className="px-7 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-sm font-bold rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">Get Started</Link>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <h1 className="text-6xl font-black text-gray-900 dark:text-white mb-6">
-              Powerful <span className="gradient-text dark:text-blue-400">Features</span>
-            </h1>
-            <p className="text-2xl text-gray-600 dark:text-dark-600">
-              6 AI engines working simultaneously to detect deepfakes with 94.2% accuracy
-            </p>
+      <section className="pt-44 pb-32 px-6 bg-gradient-to-br from-blue-50/30 via-white via-50% to-indigo-50/20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-7xl md:text-8xl font-black text-gray-900 mb-10 tracking-tight leading-[1.02]">
+            Powerful <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Features</span>
+          </h1>
+          <p className="text-2xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
+            6 AI engines working simultaneously to detect deepfakes with 94.2% accuracy
+          </p>
           </div>
 
           {/* Main Features */}
