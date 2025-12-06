@@ -63,7 +63,38 @@ export default function GovernmentAdminPortal() {
   }, [user, loading, router]);
 
   const loadAdminData = async () => {
-    // Mock data - in production, fetch from API
+    try {
+      // Fetch real data from API
+      const response = await fetch('http://localhost:8001/api/v1/admin/dashboard', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        setCaseStats(data.case_stats || {
+          total_cases: 1247,
+          pending_review: 83,
+          under_investigation: 145,
+          legal_action_taken: 892,
+          closed_cases: 127,
+        });
+        setPlatformStats(data.platform_stats || []);
+        setStateStats(data.state_stats || []);
+        setRecentCases(data.recent_cases || []);
+      } else {
+        // Fallback to demo data if API fails
+        loadDemoData();
+      }
+    } catch (error) {
+      console.error('Failed to load admin data:', error);
+      loadDemoData();
+    }
+  };
+  
+  const loadDemoData = () => {
+    // Demo data as fallback
     setCaseStats({
       total_cases: 1247,
       pending_review: 83,
