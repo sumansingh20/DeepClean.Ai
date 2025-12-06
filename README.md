@@ -1,8 +1,11 @@
-# 🔬 DeepClean AI - StopNCII Platform
+# 🔬 DeepClean AI - Women's Safety & StopNCII Platform
 
+> **Protecting Women from Deepfake Harassment, Revenge Porn & Digital Abuse**
 > **Production System - 100% Real Implementation - Zero Placeholders**
 
-A comprehensive platform combining **deepfake detection** + **StopNCII-style content protection** using real ML algorithms (PyTorch, Meta PDQ/TMK) with privacy-preserving perceptual hashing. Production-ready system for content safety and NCII prevention.
+A comprehensive **women's safety platform** combining **deepfake detection** + **StopNCII-style content protection** to combat non-consensual intimate imagery (NCII), revenge porn, and AI-generated deepfakes targeting women. Built with real ML algorithms (PyTorch, Meta PDQ/TMK) and privacy-preserving perceptual hashing.
+
+**Mission:** Empower women to detect, report, and remove harmful deepfake content and non-consensual intimate images across platforms.
 
 **Last Updated:** December 6, 2025
 

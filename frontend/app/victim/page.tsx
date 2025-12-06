@@ -163,8 +163,8 @@ export default function VictimPortal() {
                 🛡️
               </div>
               <div>
-                <h1 className="text-2xl font-black text-gray-900">Victim Support Portal</h1>
-                <p className="text-sm text-red-600 font-semibold">Get Your Content Removed - Fast & Free</p>
+                <h1 className="text-2xl font-black text-gray-900">Women's Safety & Victim Support Portal</h1>
+                <p className="text-sm text-red-600 font-semibold">Protecting Women from Deepfakes, Revenge Porn & Digital Abuse</p>
               </div>
             </div>
             <Link href="/" className="px-6 py-2 text-gray-700 hover:text-red-600 font-semibold transition">

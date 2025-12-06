@@ -178,16 +178,35 @@ export default function Home() {
                   Deepfake Shield
                 </span>
                 <svg className="absolute -bottom-4 left-0 w-full" height="12" viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 10C50 3 100 1 150 5C200 9 250 7 298 2" stroke="url(#gradient)" strokeWidth="3" strokeLinecap="round"/>
+                  <path d="M0 6 Q75 0, 150 6 T300 6" stroke="url(#gradient)" strokeWidth="8" strokeLinecap="round" fill="none"/>
                   <defs>
                     <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                       <stop offset="0%" stopColor="#3B82F6" />
                       <stop offset="50%" stopColor="#6366F1" />
-                      <stop offset="100%" stopColor="#8B5CF6" />
+                      <stop offset="100%" stopColor="#9333EA" />
                     </linearGradient>
                   </defs>
                 </svg>
               </span>
+            </h1>
+
+            {/* Women's Safety Banner */}
+            <div className="max-w-4xl mx-auto mb-8">
+              <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-300 rounded-2xl p-6 shadow-xl">
+                <div className="flex items-center gap-4">
+                  <div className="text-5xl">🛡️</div>
+                  <div>
+                    <h3 className="text-2xl font-black text-gray-900 mb-2">Protecting Women from Digital Abuse</h3>
+                    <p className="text-gray-700 text-lg">
+                      Confidential support for women affected by deepfake harassment, revenge porn, and non-consensual intimate imagery. 
+                      Get help now.
+                    </p>
+                    <a href="/victim" className="inline-block mt-4 px-6 py-3 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-xl font-bold hover:shadow-xl transition transform hover:-translate-y-0.5">
+                      🆘 Get Confidential Support →
+                    </a>
+                  </div>
+                </div>
+              </div>
             </h1>
             
             {/* Subtitle */}
