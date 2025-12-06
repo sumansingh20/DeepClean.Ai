@@ -362,7 +362,18 @@ async def start_liveness_challenge(
         challenge_id = str(uuid.uuid4())
         challenge_nonce = str(uuid.uuid4())
         
-        # TODO: Store challenge in Redis with TTL
+        # Store challenge in Redis with TTL (5 minutes)
+        from app.core.config import settings
+        import redis
+        
+        redis_client = redis.from_url(settings.REDIS_URL)
+        challenge_key = f"liveness_challenge:{challenge_id}"
+        challenge_data = {
+            'session_id': session_id,
+            'nonce': challenge_nonce,
+            'created_at': time.time()
+        }
+        redis_client.setex(challenge_key, 300, str(challenge_data))  # 5 minute TTL
         
         session.liveness_status = "challenge_pending"
         db.commit()
