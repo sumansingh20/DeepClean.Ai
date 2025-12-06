@@ -30,13 +30,13 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6">
+      <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-blue-50/30 via-white to-cyan-50/20">
         <div className="max-w-7xl mx-auto">
           {/* Trust Badge */}
           <div className="flex justify-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200 shadow-soft">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span className="text-sm font-medium text-gray-700">Trusted by law enforcement agencies</span>
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full border border-gray-200 shadow-medium hover:shadow-large transition-all">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-semibold text-gray-700">Trusted by law enforcement agencies</span>
             </div>
           </div>
 
@@ -88,12 +88,14 @@ export default function Home() {
       </section>
 
       {/* Social Proof */}
-      <section className="py-16 bg-gray-50 border-y border-gray-200">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs font-medium text-gray-500 mb-8 tracking-wider">TRUSTED BY</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-50">
+          <p className="text-center text-xs font-bold text-gray-500 mb-10 tracking-widest">TRUSTED BY</p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {['Delhi Police', 'CBI', 'Ministry of Home Affairs', 'CERT-In', 'Supreme Court'].map((org) => (
-              <div key={org} className="text-center text-sm font-semibold text-gray-700">{org}</div>
+              <div key={org} className="text-center p-4 bg-white rounded-xl border border-gray-100 shadow-soft hover:shadow-medium transition-all">
+                <span className="text-sm font-bold text-gray-700">{org}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -175,7 +177,7 @@ export default function Home() {
       </section>
 
       {/* Detection Capabilities */}
-      <section className="py-24 px-6 bg-white">
+      <section className="py-24 px-6 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold text-gray-900 mb-6">
@@ -271,17 +273,23 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 px-6 bg-gradient-to-br from-blue-600 to-blue-700">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-6 text-white">
+      <section className="relative py-32 px-6 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-6xl font-bold mb-6 text-white">
             Start Detecting Deepfakes Today
           </h2>
-          <p className="text-xl mb-10 text-blue-100 leading-relaxed">
+          <p className="text-xl mb-12 text-blue-100 leading-relaxed">
             Free analysis for first 10 files. No credit card required.
           </p>
           <Link 
             href="/register" 
-            className="inline-flex items-center gap-3 px-12 py-5 bg-white text-blue-600 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all shadow-large hover:shadow-xl"
+            className="inline-flex items-center gap-3 px-12 py-5 bg-white text-blue-600 rounded-xl font-bold text-lg hover:bg-gray-50 hover:scale-105 transition-all shadow-2xl hover:shadow-xl"
           >
             Create Free Account
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

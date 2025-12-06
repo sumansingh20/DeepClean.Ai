@@ -78,18 +78,18 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-dark-100 dark:via-dark-200 dark:to-dark-300">
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
       {/* Header */}
-      <nav className="bg-white/70 dark:bg-dark-100/70 backdrop-blur-2xl border-b border-white/20 dark:border-dark-200 shadow-xl sticky top-0 z-50">
+      <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-soft sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-black shadow-lg">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center text-white font-bold shadow-medium">
                 DC
               </div>
-              <span className="text-2xl font-black gradient-text dark:text-white">DeepClean AI</span>
+              <span className="text-xl font-bold text-gray-900">DeepClean.AI</span>
             </Link>
-            <Link href="/login" className="btn-primary">
+            <Link href="/login" className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition shadow-medium">
               Login
             </Link>
           </div>
