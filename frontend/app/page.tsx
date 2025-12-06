@@ -4,31 +4,25 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Premium Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
+    <div className="min-h-screen bg-white dark:bg-dark-100">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-100/80 backdrop-blur-xl border-b border-gray-200 dark:border-dark-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="w-11 h-11 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-lg">DC</span>
-                </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">DC</span>
               </div>
-              <div>
-                <div className="font-bold text-gray-900 text-lg">DeepClean.AI</div>
-                <div className="text-xs text-gray-500">Forensic Detection</div>
-              </div>
+              <span className="font-semibold text-gray-900 dark:text-white">DeepClean.AI</span>
             </div>
             
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="/features" className="text-gray-700 hover:text-gray-900 font-medium transition">Features</Link>
-              <Link href="/pricing" className="text-gray-700 hover:text-gray-900 font-medium transition">Pricing</Link>
-              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium transition">About</Link>
-              <Link href="/login" className="text-gray-700 hover:text-gray-900 font-medium transition">Login</Link>
-              <Link href="/register" className="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition shadow-sm">
-                Start Free
+            <div className="hidden md:flex items-center gap-6">
+              <Link href="/features" className="text-sm text-gray-600 dark:text-dark-600 hover:text-gray-900 dark:hover:text-white transition">Features</Link>
+              <Link href="/pricing" className="text-sm text-gray-600 dark:text-dark-600 hover:text-gray-900 dark:hover:text-white transition">Pricing</Link>
+              <Link href="/about" className="text-sm text-gray-600 dark:text-dark-600 hover:text-gray-900 dark:hover:text-white transition">About</Link>
+              <Link href="/login" className="text-sm text-gray-600 dark:text-dark-600 hover:text-gray-900 dark:hover:text-white transition">Login</Link>
+              <Link href="/register" className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition">
+                Get Started
               </Link>
             </div>
           </div>
@@ -39,28 +33,28 @@ export default function Home() {
       <section className="relative pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Trust Badge */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-100">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-gray-700">Trusted by law enforcement agencies across India</span>
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 dark:bg-blue-500/10 rounded-full border border-blue-500/20 dark:border-blue-500/20">
+              <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+              <span className="text-xs font-medium text-gray-700 dark:text-dark-700">Trusted by law enforcement agencies</span>
             </div>
           </div>
 
           {/* Main Headline */}
           <div className="text-center max-w-4xl mx-auto mb-12">
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
-              Enterprise-grade deepfake detection for India
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
+              Enterprise-grade deepfake detection
             </h1>
             
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-dark-600 max-w-2xl mx-auto mb-8">
               Court-admissible forensic analysis powered by advanced AI. Protect your organization from manipulated media.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-16">
               <Link 
                 href="/analysis" 
-                className="px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors inline-flex items-center justify-center gap-2"
+                className="px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition inline-flex items-center justify-center gap-2"
               >
                 Start analyzing
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,14 +63,14 @@ export default function Home() {
               </Link>
               <Link 
                 href="/contact" 
-                className="px-8 py-3 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-colors border border-gray-200"
+                className="px-6 py-3 bg-white dark:bg-dark-200 text-gray-900 dark:text-white text-sm font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-dark-300 transition border border-gray-200 dark:border-dark-300"
               >
                 Talk to sales
               </Link>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-8 border-t border-gray-200">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-8 border-t border-gray-200 dark:border-dark-200">
               {[
                 { value: "127,000+", label: "Content analyzed" },
                 { value: "94.7%", label: "Detection accuracy" },
@@ -84,8 +78,8 @@ export default function Home() {
                 { value: "500+", label: "Organizations" }
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{stat.value}</div>
+                  <div className="text-sm text-gray-600 dark:text-dark-600">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -94,12 +88,12 @@ export default function Home() {
       </section>
 
       {/* Social Proof */}
-      <section className="py-16 bg-gray-50 border-y border-gray-200">
+      <section className="py-16 bg-gray-50 dark:bg-dark-200/50 border-y border-gray-200 dark:border-dark-200">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-sm font-medium text-gray-500 mb-8">TRUSTED BY</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-60">
+          <p className="text-center text-xs font-medium text-gray-500 dark:text-dark-500 mb-8 tracking-wider">TRUSTED BY</p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-50">
             {['Delhi Police', 'CBI', 'Ministry of Home Affairs', 'CERT-In', 'Supreme Court'].map((org) => (
-              <div key={org} className="text-center font-semibold text-gray-700">{org}</div>
+              <div key={org} className="text-center text-sm font-semibold text-gray-700 dark:text-dark-700">{org}</div>
             ))}
           </div>
         </div>
@@ -109,8 +103,8 @@ export default function Home() {
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Built for serious work</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Built for serious work</h2>
+            <p className="text-lg text-gray-600 dark:text-dark-600">
               Comprehensive detection suite designed for law enforcement, legal teams, and enterprises.
             </p>
           </div>

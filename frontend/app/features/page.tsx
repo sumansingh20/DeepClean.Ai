@@ -119,19 +119,19 @@ export default function FeaturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-dark-100 dark:via-dark-200 dark:to-dark-300">
       {/* Header */}
-      <nav className="glass sticky top-0 z-50 border-b border-white/20 shadow-xl">
+      <nav className="glass dark:bg-dark-100/70 sticky top-0 z-50 border-b border-white/20 dark:border-dark-200 shadow-xl">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-black shadow-lg">
                 DC
               </div>
-              <span className="text-2xl font-black gradient-text">DeepClean AI</span>
+              <span className="text-2xl font-black gradient-text dark:text-white">DeepClean AI</span>
             </Link>
             <div className="flex items-center gap-4">
-              <Link href="/pricing" className="text-gray-700 hover:text-blue-600 font-semibold">Pricing</Link>
+              <Link href="/pricing" className="text-gray-700 dark:text-dark-700 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Pricing</Link>
               <Link href="/login" className="btn-primary">Get Started</Link>
             </div>
           </div>
@@ -142,10 +142,10 @@ export default function FeaturesPage() {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <h1 className="text-6xl font-black text-gray-900 mb-6">
-              Powerful <span className="gradient-text">Features</span>
+            <h1 className="text-6xl font-black text-gray-900 dark:text-white mb-6">
+              Powerful <span className="gradient-text dark:text-blue-400">Features</span>
             </h1>
-            <p className="text-2xl text-gray-600">
+            <p className="text-2xl text-gray-600 dark:text-dark-600">
               6 AI engines working simultaneously to detect deepfakes with 94.2% accuracy
             </p>
           </div>
@@ -156,26 +156,26 @@ export default function FeaturesPage() {
               {mainFeatures.map((feature, idx) => (
                 <div
                   key={idx}
-                  className="glass rounded-3xl p-8 shadow-2xl border border-white/20 card-hover"
+                  className="glass dark:bg-dark-200/50 rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-dark-300 card-hover"
                 >
-                  <h3 className="text-2xl font-black text-gray-900 mb-3">{feature.title}</h3>
-                  <p className="text-gray-600 mb-6">{feature.description}</p>
+                  <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 dark:text-dark-600 mb-6">{feature.description}</p>
                   
-                  <div className="flex items-center gap-4 mb-6 pb-6 border-b-2 border-gray-200">
+                  <div className="flex items-center gap-4 mb-6 pb-6 border-b-2 border-gray-200 dark:border-dark-200">
                     <div className="flex-1 text-center">
-                      <div className="text-xs text-gray-500 uppercase font-bold mb-1">Accuracy</div>
-                      <div className="text-2xl font-black text-green-600">{feature.accuracy}</div>
+                      <div className="text-xs text-gray-500 dark:text-dark-600 uppercase font-bold mb-1">Accuracy</div>
+                      <div className="text-2xl font-black text-green-600 dark:text-green-400">{feature.accuracy}</div>
                     </div>
-                    <div className="w-px h-12 bg-gray-300"></div>
+                    <div className="w-px h-12 bg-gray-300 dark:bg-dark-300"></div>
                     <div className="flex-1 text-center">
-                      <div className="text-xs text-gray-500 uppercase font-bold mb-1">Speed</div>
-                      <div className="text-2xl font-black text-blue-600">{feature.speed}</div>
+                      <div className="text-xs text-gray-500 dark:text-dark-600 uppercase font-bold mb-1">Speed</div>
+                      <div className="text-2xl font-black text-blue-600 dark:text-blue-400">{feature.speed}</div>
                     </div>
                   </div>
 
                   <ul className="space-y-2 mb-6">
                     {feature.features.map((item, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                      <li key={i} className="flex items-center gap-2 text-sm text-gray-700 dark:text-dark-700">
                         <span className="text-green-500">✓</span>
                         <span className="font-semibold">{item}</span>
                       </li>
@@ -190,9 +190,9 @@ export default function FeaturesPage() {
                   </button>
 
                   {selectedFeature === idx && (
-                    <div className="mt-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border-2 border-blue-200 animate-fade-in">
-                      <h4 className="font-bold text-lg text-gray-900 mb-3">How It Works</h4>
-                      <div className="space-y-3 text-sm text-gray-700">
+                    <div className="mt-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl border-2 border-blue-200 dark:border-blue-800 animate-fade-in">
+                      <h4 className="font-bold text-lg text-gray-900 dark:text-white mb-3">How It Works</h4>
+                      <div className="space-y-3 text-sm text-gray-700 dark:text-dark-700">
                         <p><strong>🔬 Technology:</strong> Powered by state-of-the-art deep learning models trained on millions of samples</p>
                         <p><strong>⚡ Processing:</strong> Cloud-based GPU acceleration for real-time analysis</p>
                         <p><strong>📊 Output:</strong> Detailed confidence scores with visual explanations</p>
@@ -215,21 +215,21 @@ export default function FeaturesPage() {
 
           {/* Additional Features */}
           <div className="max-w-7xl mx-auto mb-20">
-            <h2 className="text-4xl font-black text-center text-gray-900 mb-12">
+            <h2 className="text-4xl font-black text-center text-gray-900 dark:text-white mb-12">
               Complete Platform Features
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               {additionalFeatures.map((section, idx) => (
-                <div key={idx} className="glass rounded-3xl p-8 shadow-2xl border border-white/20">
+                <div key={idx} className="glass dark:bg-dark-200/50 rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-dark-300">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="text-5xl">{section.icon}</div>
-                    <h3 className="text-2xl font-black text-gray-900">{section.category}</h3>
+                    <h3 className="text-2xl font-black text-gray-900 dark:text-white">{section.category}</h3>
                   </div>
                   <div className="space-y-4">
                     {section.items.map((item, i) => (
-                      <div key={i} className="bg-gradient-to-r from-blue-50 to-white p-4 rounded-xl border-2 border-blue-200">
-                        <h4 className="font-bold text-gray-900 mb-1">{item.name}</h4>
-                        <p className="text-sm text-gray-600">{item.desc}</p>
+                      <div key={i} className="bg-gradient-to-r from-blue-50 to-white dark:from-blue-900/20 dark:to-dark-300 p-4 rounded-xl border-2 border-blue-200 dark:border-blue-800">
+                        <h4 className="font-bold text-gray-900 dark:text-white mb-1">{item.name}</h4>
+                        <p className="text-sm text-gray-600 dark:text-dark-600">{item.desc}</p>
                       </div>
                     ))}
                   </div>
@@ -240,32 +240,32 @@ export default function FeaturesPage() {
 
           {/* Integrations */}
           <div className="max-w-7xl mx-auto mb-20">
-            <h2 className="text-4xl font-black text-center text-gray-900 mb-4">
+            <h2 className="text-4xl font-black text-center text-gray-900 dark:text-white mb-4">
               Seamless Integrations
             </h2>
-            <p className="text-xl text-center text-gray-600 mb-12">
+            <p className="text-xl text-center text-gray-600 dark:text-dark-600 mb-12">
               Connect DeepClean AI with your existing tools and workflows
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {integrations.map((integration, idx) => (
                 <div
                   key={idx}
-                  className="glass rounded-2xl p-6 shadow-xl border border-white/20 text-center card-hover"
+                  className="glass dark:bg-dark-200/50 rounded-2xl p-6 shadow-xl border border-white/20 dark:border-dark-300 text-center card-hover"
                 >
                   <div className="text-5xl mb-3">{integration.icon}</div>
-                  <h4 className="font-black text-gray-900 mb-2">{integration.name}</h4>
-                  <p className="text-sm text-gray-600">{integration.desc}</p>
+                  <h4 className="font-black text-gray-900 dark:text-white mb-2">{integration.name}</h4>
+                  <p className="text-sm text-gray-600 dark:text-dark-600">{integration.desc}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* CTA */}
-          <div className="max-w-4xl mx-auto glass rounded-3xl p-12 text-center shadow-2xl border border-white/20">
-            <h2 className="text-4xl font-black text-gray-900 mb-6">
+          <div className="max-w-4xl mx-auto glass dark:bg-dark-200/50 rounded-3xl p-12 text-center shadow-2xl border border-white/20 dark:border-dark-300">
+            <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-6">
               Ready to Experience These Features?
             </h2>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-600 dark:text-dark-600 mb-8">
               Start your free 14-day trial. No credit card required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
