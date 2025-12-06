@@ -7,93 +7,51 @@ export default function FeaturesPage() {
   const [selectedFeature, setSelectedFeature] = useState<number | null>(null);
   const mainFeatures = [
     {
-      icon: '🎤',
-      title: 'Voice Deepfake Detection',
+      title: 'Voice Detection',
       description: 'AI analysis using Wav2Vec2, MFCC, and spectral analysis',
       accuracy: '91.8%',
       speed: '3 seconds',
-      color: 'bg-blue-600',
       features: [
         'Real-time voice cloning detection',
         'Speaker verification',
         'Audio forensic analysis',
-        'Frequency spectrum analysis',
-        'Neural vocoder detection'
+        'Frequency spectrum analysis'
       ]
     },
     {
-      icon: '🎥',
-      title: 'Video Deepfake Detection',
+      title: 'Video Detection',
       description: 'Multi-frame analysis with facial landmark tracking',
       accuracy: '94.2%',
       speed: '12 seconds',
-      color: 'bg-purple-600',
       features: [
         'Face swap detection',
         'Expression manipulation detection',
         'Temporal consistency analysis',
-        'GAN artifact identification',
         'Lip-sync verification'
       ]
     },
     {
-      icon: '📄',
-      title: 'Document Forgery Detection',
+      title: 'Document Verification',
       description: 'OCR verification and template matching for ID documents',
       accuracy: '89.5%',
       speed: '1.2 seconds',
-      color: 'bg-green-600',
       features: [
         'ID card verification',
         'Passport authentication',
         'Bank statement validation',
-        'Digital signature verification',
-        'Template matching'
+        'Digital signature verification'
       ]
     },
     {
-      icon: '👁️',
       title: 'Liveness Detection',
       description: 'Real-time blink detection and anti-replay',
       accuracy: '96.1%',
       speed: '0.8 seconds',
-      color: 'bg-orange-600',
       features: [
         'Blink detection',
         'Head movement analysis',
         'Anti-spoofing technology',
-        '3D depth sensing',
-        'Challenge-response verification'
-      ]
-    },
-    {
-      icon: '📞',
-      title: 'Scam Call Analysis',
-      description: 'Voice analysis with pattern matching for fraud detection',
-      accuracy: '88.3%',
-      speed: '5 seconds',
-      color: 'bg-yellow-600',
-      features: [
-        'Voice stress analysis',
-        'Fraud pattern detection',
-        'Real-time transcription',
-        'Emotion recognition',
-        'Caller ID verification'
-      ]
-    },
-    {
-      icon: '⚖️',
-      title: 'Legal Automation',
-      description: 'Generate evidence packages and legal documents',
-      accuracy: '100%',
-      speed: '0.3 seconds',
-      color: 'bg-indigo-600',
-      features: [
-        'DMCA takedown notices',
-        'IT Act FIR drafts',
-        'Evidence packaging',
-        'Platform takedown requests',
-        'Court-ready reports'
+        '3D depth sensing'
       ]
     }
   ];
@@ -200,9 +158,6 @@ export default function FeaturesPage() {
                   key={idx}
                   className="glass rounded-3xl p-8 shadow-2xl border border-white/20 card-hover"
                 >
-                  <div className={`w-20 h-20 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center text-4xl shadow-xl mb-6`}>
-                    {feature.icon}
-                  </div>
                   <h3 className="text-2xl font-black text-gray-900 mb-3">{feature.title}</h3>
                   <p className="text-gray-600 mb-6">{feature.description}</p>
                   

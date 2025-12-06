@@ -9,65 +9,47 @@ export default function PricingPage() {
   const plans = [
     {
       name: 'Individual',
-      description: 'Perfect for personal protection',
-      icon: '👤',
+      description: 'For personal use',
       monthlyPrice: 0,
       annualPrice: 0,
-      color: 'from-gray-600 to-gray-800',
       popular: false,
       features: [
-        { text: '5 analyses per month', included: true },
-        { text: 'Basic detection engines', included: true },
+        { text: '5 analyses/month', included: true },
+        { text: 'Basic detection', included: true },
         { text: 'Email support', included: true },
-        { text: 'Standard processing speed', included: true },
-        { text: 'Victim support portal access', included: true },
-        { text: 'Legal document templates', included: true },
-        { text: 'Priority support', included: false },
+        { text: 'Standard speed', included: true },
         { text: 'API access', included: false },
-        { text: 'White-label reports', included: false },
+        { text: 'Priority support', included: false },
       ]
     },
     {
       name: 'Professional',
       description: 'For creators & professionals',
-      icon: '💼',
       monthlyPrice: 2999,
       annualPrice: 29999,
-      color: 'from-blue-600 to-indigo-600',
       popular: true,
       features: [
-        { text: '100 analyses per month', included: true },
-        { text: 'All 6 AI detection engines', included: true },
-        { text: 'Priority email & chat support', included: true },
-        { text: 'Fast processing (2x speed)', included: true },
-        { text: 'Advanced evidence reports', included: true },
-        { text: 'Auto-takedown requests', included: true },
-        { text: 'Legal document generation', included: true },
-        { text: 'API access (100 calls/day)', included: true },
-        { text: 'Brand monitoring alerts', included: true },
+        { text: '100 analyses/month', included: true },
+        { text: 'All detection engines', included: true },
+        { text: 'Priority support', included: true },
+        { text: 'Fast processing', included: true },
+        { text: 'API access', included: true },
+        { text: 'Evidence reports', included: true },
       ]
     },
     {
       name: 'Enterprise',
-      description: 'Large organizations & govt',
-      icon: '🏢',
+      description: 'For organizations',
       monthlyPrice: 'Custom',
       annualPrice: 'Custom',
-      color: 'from-purple-600 to-pink-600',
       popular: false,
       features: [
         { text: 'Unlimited analyses', included: true },
-        { text: 'All engines + custom training', included: true },
-        { text: '24/7 dedicated support', included: true },
-        { text: 'Ultra-fast processing', included: true },
-        { text: 'Court-ready evidence packages', included: true },
-        { text: 'Mass takedown automation', included: true },
-        { text: 'Legal team coordination', included: true },
-        { text: 'Full API access (unlimited)', included: true },
-        { text: 'White-label solution', included: true },
-        { text: 'On-premise deployment', included: true },
-        { text: 'Custom integrations', included: true },
-        { text: 'SLA guarantees', included: true },
+        { text: 'Custom training', included: true },
+        { text: '24/7 support', included: true },
+        { text: 'White-label', included: true },
+        { text: 'Full API access', included: true },
+        { text: 'On-premise option', included: true },
       ]
     }
   ];
@@ -173,9 +155,6 @@ export default function PricingPage() {
                 )}
 
                 <div className="text-center mb-8">
-                  <div className={`w-20 h-20 mx-auto mb-4 bg-gradient-to-br ${plan.color} rounded-2xl flex items-center justify-center text-4xl shadow-xl`}>
-                    {plan.icon}
-                  </div>
                   <h3 className="text-3xl font-black text-gray-900 mb-2">{plan.name}</h3>
                   <p className="text-gray-600 font-semibold">{plan.description}</p>
                 </div>

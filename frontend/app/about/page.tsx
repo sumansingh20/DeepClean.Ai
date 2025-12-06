@@ -10,61 +10,30 @@ export default function AboutPage() {
     {
       name: 'Dr. Rajesh Kumar',
       role: 'Founder & CEO',
-      image: '👨‍💼',
-      bio: 'Former DRDO scientist, AI researcher with 15+ years in deepfake detection',
-      linkedin: '#'
+      bio: 'Former DRDO scientist with 15+ years in AI research'
     },
     {
       name: 'Priya Sharma',
       role: 'CTO',
-      image: '👩‍💻',
-      bio: 'Ex-Google AI, specialized in computer vision and neural networks',
-      linkedin: '#'
+      bio: 'Ex-Google AI, computer vision specialist'
     },
     {
       name: 'Dr. Amit Patel',
       role: 'Chief Data Scientist',
-      image: '👨‍🔬',
-      bio: 'PhD in Machine Learning from IIT Bombay, published 40+ papers',
-      linkedin: '#'
+      bio: 'PhD ML from IIT Bombay, 40+ published papers'
     },
     {
       name: 'Sneha Reddy',
       role: 'Head of Legal',
-      image: '👩‍⚖️',
-      bio: 'Former Additional Public Prosecutor, cyber law expert',
-      linkedin: '#'
-    },
-    {
-      name: 'Vikram Singh',
-      role: 'VP Engineering',
-      image: '👨‍💻',
-      bio: 'Ex-Microsoft, built scalable systems for 100M+ users',
-      linkedin: '#'
-    },
-    {
-      name: 'Ananya Krishnan',
-      role: 'Head of Research',
-      image: '👩‍🔬',
-      bio: 'AI researcher, Stanford PhD, GAN detection specialist',
-      linkedin: '#'
+      bio: 'Former prosecutor, cyber law expert'
     }
   ];
 
-  const timeline = [
-    { year: '2023', event: 'DeepClean AI Founded', desc: 'Started with a mission to protect India from deepfakes' },
-    { year: '2023', event: 'Seed Funding', desc: 'Raised $2M from leading VCs' },
-    { year: '2024', event: 'Government Partnership', desc: 'Partnered with MeitY for national rollout' },
-    { year: '2024', event: 'Series A', desc: 'Raised $15M, expanded to 50+ employees' },
-    { year: '2025', event: '100K+ Cases', desc: 'Analyzed over 100,000 deepfake cases' },
-    { year: '2025', event: 'International Expansion', desc: 'Launched in 5 Asian countries' }
-  ];
-
   const stats = [
-    { value: '500+', label: 'Organizations', icon: '🏢' },
-    { value: '100K+', label: 'Cases Analyzed', icon: '🔍' },
-    { value: '94.2%', label: 'Detection Accuracy', icon: '🎯' },
-    { value: '50+', label: 'Team Members', icon: '👥' }
+    { value: '500+', label: 'Organizations' },
+    { value: '100K+', label: 'Cases Analyzed' },
+    { value: '94.2%', label: 'Detection Accuracy' },
+    { value: '50+', label: 'Team Members' }
   ];
 
   return (
@@ -103,7 +72,6 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-20">
             {stats.map((stat, idx) => (
               <div key={idx} className="glass rounded-2xl p-8 text-center shadow-xl border border-white/20 card-hover">
-                <div className="text-5xl mb-4">{stat.icon}</div>
                 <div className="text-4xl font-black gradient-text mb-2">{stat.value}</div>
                 <div className="text-gray-600 font-semibold">{stat.label}</div>
               </div>
@@ -182,45 +150,16 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Timeline */}
-          <div className="max-w-6xl mx-auto mb-20">
-            <h2 className="text-4xl font-black text-center text-gray-900 mb-12">Our Journey</h2>
-            <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-600 to-purple-600"></div>
-              <div className="space-y-12">
-                {timeline.map((item, idx) => (
-                  <div key={idx} className={`flex items-center gap-8 ${idx % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-                    <div className={`flex-1 ${idx % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                      <div className="glass rounded-2xl p-6 shadow-xl border border-white/20 inline-block">
-                        <div className="text-3xl font-black gradient-text mb-2">{item.year}</div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{item.event}</h3>
-                        <p className="text-gray-600">{item.desc}</p>
-                      </div>
-                    </div>
-                    <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full border-4 border-white shadow-xl z-10"></div>
-                    <div className="flex-1"></div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
           {/* Team */}
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl font-black text-center text-gray-900 mb-4">Meet Our Team</h2>
             <p className="text-xl text-center text-gray-600 mb-12">World-class experts in AI, security, and law</p>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.map((member, idx) => (
                 <div key={idx} className="glass rounded-3xl p-8 shadow-xl border border-white/20 card-hover">
-                  <div className="text-8xl text-center mb-6">{member.image}</div>
-                  <h3 className="text-2xl font-black text-gray-900 text-center mb-2">{member.name}</h3>
-                  <div className="text-blue-600 font-bold text-center mb-4">{member.role}</div>
-                  <p className="text-gray-600 text-center text-sm mb-6">{member.bio}</p>
-                  <div className="text-center">
-                    <a href={member.linkedin} className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold">
-                      <span>🔗</span> LinkedIn
-                    </a>
-                  </div>
+                  <h3 className="text-xl font-black text-gray-900 text-center mb-2">{member.name}</h3>
+                  <div className="text-blue-600 font-semibold text-center mb-4">{member.role}</div>
+                  <p className="text-gray-600 text-center text-sm">{member.bio}</p>
                 </div>
               ))}
             </div>

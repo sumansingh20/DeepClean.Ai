@@ -29,28 +29,24 @@ export default function ContactPage() {
 
   const contactInfo = [
     {
-      icon: '📧',
       title: 'Email Support',
       value: 'support@deepclean.ai',
       desc: 'Response within 24 hours',
       link: 'mailto:support@deepclean.ai'
     },
     {
-      icon: '📞',
       title: 'Phone Support',
       value: '+91-11-4567-8900',
       desc: 'Mon-Fri, 9 AM - 6 PM IST',
       link: 'tel:+911145678900'
     },
     {
-      icon: '🚨',
       title: 'Emergency Hotline',
       value: '1800-123-4567',
       desc: '24/7 for critical cases',
       link: 'tel:18001234567'
     },
     {
-      icon: '💼',
       title: 'Enterprise Sales',
       value: 'sales@deepclean.ai',
       desc: 'Custom solutions & pricing',
@@ -62,20 +58,17 @@ export default function ContactPage() {
     {
       city: 'Bengaluru',
       address: 'Koramangala, Bengaluru, Karnataka 560034',
-      type: 'Headquarters',
-      icon: '🏢'
+      type: 'Headquarters'
     },
     {
       city: 'New Delhi',
       address: 'Connaught Place, New Delhi, Delhi 110001',
-      type: 'Government Relations',
-      icon: '🏛️'
+      type: 'Government Relations'
     },
     {
       city: 'Mumbai',
       address: 'Bandra-Kurla Complex, Mumbai, Maharashtra 400051',
-      type: 'Sales Office',
-      icon: '🌆'
+      type: 'Sales Office'
     }
   ];
 
@@ -116,7 +109,6 @@ export default function ContactPage() {
                 href={info.link}
                 className="glass rounded-2xl p-6 shadow-xl border border-white/20 card-hover group"
               >
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">{info.icon}</div>
                 <h3 className="text-lg font-black text-gray-900 mb-2">{info.title}</h3>
                 <div className="text-blue-600 font-bold mb-2">{info.value}</div>
                 <p className="text-sm text-gray-600">{info.desc}</p>
@@ -254,17 +246,14 @@ export default function ContactPage() {
                 <div className="space-y-6">
                   {offices.map((office, idx) => (
                     <div key={idx} className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl border-2 border-blue-200">
-                      <div className="flex items-start gap-4">
-                        <div className="text-4xl">{office.icon}</div>
-                        <div>
-                          <div className="flex items-center gap-2 mb-2">
-                            <h3 className="text-xl font-black text-gray-900">{office.city}</h3>
-                            <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded-full font-bold">
-                              {office.type}
-                            </span>
-                          </div>
-                          <p className="text-gray-600">{office.address}</p>
+                      <div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <h3 className="text-xl font-black text-gray-900">{office.city}</h3>
+                          <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded-full font-bold">
+                            {office.type}
+                          </span>
                         </div>
+                        <p className="text-gray-600">{office.address}</p>
                       </div>
                     </div>
                   ))}
