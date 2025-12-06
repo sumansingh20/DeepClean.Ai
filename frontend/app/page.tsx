@@ -4,13 +4,13 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-dark-100 dark:bg-mesh-gradient">
+    <div className="min-h-screen bg-white dark:bg-dark-100">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 dark:border-dark-300 bg-white/95 dark:bg-dark-100/95 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-glow-sm">
+              <div className="w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">DC</span>
               </div>
               <span className="font-semibold text-gray-900 dark:text-white">DeepClean.AI</span>
@@ -21,7 +21,7 @@ export default function Home() {
               <Link href="/pricing" className="text-sm text-gray-600 dark:text-dark-600 hover:text-gray-900 dark:hover:text-white transition">Pricing</Link>
               <Link href="/about" className="text-sm text-gray-600 dark:text-dark-600 hover:text-gray-900 dark:hover:text-white transition">About</Link>
               <Link href="/login" className="text-sm text-gray-600 dark:text-dark-600 hover:text-gray-900 dark:hover:text-white transition">Login</Link>
-              <Link href="/register" className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-purple-600 text-white text-sm rounded-lg hover:shadow-glow-md transition-all">
+              <Link href="/register" className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
                 Get Started
               </Link>
             </div>
@@ -33,21 +33,17 @@ export default function Home() {
       <section className="relative pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Trust Badge */}
-          <div className="flex justify-center mb-8 animate-fade-in">
-            <div className="glass-card px-4 py-2 rounded-full">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-xs font-medium text-gray-700 dark:text-dark-700">Trusted by law enforcement agencies</span>
-              </div>
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-dark-200 rounded-full border border-gray-200 dark:border-dark-300">
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+              <span className="text-xs font-medium text-gray-700 dark:text-dark-600">Trusted by law enforcement agencies</span>
             </div>
           </div>
 
           {/* Main Headline */}
-          <div className="text-center max-w-4xl mx-auto mb-12 animate-slide-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-              <span className="bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
-                Enterprise-grade deepfake detection
-              </span>
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
+              Enterprise-grade deepfake detection
             </h1>
             
             <p className="text-lg text-gray-600 dark:text-dark-600 max-w-2xl mx-auto mb-8">
@@ -58,23 +54,23 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-16">
               <Link 
                 href="/analysis" 
-                className="group px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-purple-600 text-white text-sm font-medium rounded-lg hover:shadow-glow-md transition-all inline-flex items-center justify-center gap-2"
+                className="px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors inline-flex items-center justify-center gap-2"
               >
                 Start analyzing
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
               <Link 
                 href="/contact" 
-                className="px-6 py-3 glass-card text-gray-900 dark:text-white text-sm font-medium rounded-lg hover:bg-white/80 dark:hover:bg-dark-200/80 transition-all"
+                className="px-6 py-3 bg-white dark:bg-dark-200 text-gray-900 dark:text-white text-sm font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-dark-300 transition-colors border border-gray-200 dark:border-dark-300"
               >
                 Talk to sales
               </Link>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-8 border-t border-gray-200/50 dark:border-dark-200">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-8 border-t border-gray-200 dark:border-dark-300">
               {[
                 { value: "127,000+", label: "Content analyzed" },
                 { value: "94.7%", label: "Detection accuracy" },

@@ -60,9 +60,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-dark-100 dark:bg-mesh-gradient">
+    <div className="min-h-screen bg-white dark:bg-dark-100">
       {/* Top Navigation */}
-      <nav className="glass">
+      <nav className="border-b border-gray-200 dark:border-dark-300 bg-white dark:bg-dark-100">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-dark-600 transition-colors">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,7 +71,7 @@ export default function RegisterPage() {
             <span className="font-medium">Back</span>
           </Link>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-glow-sm">
+            <div className="w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">DC</span>
             </div>
             <span className="font-semibold text-gray-900 dark:text-white">DeepClean.AI</span>
@@ -118,7 +118,7 @@ export default function RegisterPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 glass-card rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-gray-900 dark:text-white"
+              className="w-full px-4 py-3 bg-white dark:bg-dark-200 border border-gray-300 dark:border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all text-gray-900 dark:text-white"
               placeholder="you@company.com"
               required
             />
@@ -132,7 +132,7 @@ export default function RegisterPage() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 glass-card rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-gray-900 dark:text-white"
+              className="w-full px-4 py-3 bg-white dark:bg-dark-200 border border-gray-300 dark:border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all text-gray-900 dark:text-white"
               placeholder="username"
               required
             />
@@ -147,7 +147,7 @@ export default function RegisterPage() {
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 pr-12 glass-card rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 pr-12 bg-white dark:bg-dark-200 border border-gray-300 dark:border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all text-gray-900 dark:text-white"
                 placeholder="Create a strong password"
                 required
               />
@@ -180,7 +180,7 @@ export default function RegisterPage() {
                 type={showConfirmPassword ? "text" : "password"}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-3 pr-12 glass-card rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 pr-12 bg-white dark:bg-dark-200 border border-gray-300 dark:border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all text-gray-900 dark:text-white"
                 placeholder="Confirm your password"
                 required
               />
@@ -224,7 +224,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-500 dark:to-purple-600 text-white py-3 rounded-lg font-medium hover:shadow-glow-md disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            className="w-full bg-blue-600 dark:bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-700 dark:hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isLoading ? 'Creating account...' : 'Create account'}
           </button>

@@ -4,11 +4,14 @@
 
 @layer base {
   * {
-    @apply box-border;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
+  
   body {
     @apply bg-white dark:bg-dark-100 text-gray-900 dark:text-dark-700;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -18,62 +21,31 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Enhanced scrollbar */
+/* Clean scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-dark-300 rounded-full;
-  border: 2px solid transparent;
-  background-clip: padding-box;
+  background: #d4d4d4;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #404040;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-dark-400;
+  background: #a3a3a3;
 }
 
-/* Glassmorphism utility classes */
-@layer utilities {
-  .glass {
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(229, 229, 229, 0.5);
-  }
-  
-  .dark .glass {
-    background-color: rgba(17, 17, 17, 0.8);
-    border-color: rgba(45, 45, 45, 0.5);
-  }
-  
-  .glass-card {
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    background-color: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(229, 229, 229, 0.5);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dark .glass-card {
-    background-color: rgba(26, 26, 26, 0.6);
-    border-color: rgba(45, 45, 45, 0.3);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  }
-  
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
-  }
-}
-
-/* Smooth transitions for theme switching */
-* {
-  @apply transition-colors duration-200;
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #525252;
 }
 
 /* Beautiful Animations */
