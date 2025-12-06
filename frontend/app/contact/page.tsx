@@ -195,8 +195,10 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">Category *</label>
+                  <label htmlFor="category-select" className="block text-sm font-bold text-gray-700 mb-2">Category</label>
                   <select
+                    id="category-select"
+                    aria-label="Contact category"
                     name="category"
                     required
                     value={formData.category}

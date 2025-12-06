@@ -356,7 +356,7 @@ export default function AdvancedDashboard(): React.ReactElement {
               <div className="lg:col-span-2 bg-slate-800/50 border border-slate-700 rounded-xl p-6">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-white font-bold text-lg">Risk Score Trend</h3>
-                  <select className="px-3 py-1 bg-slate-700 text-slate-300 text-sm rounded-lg border border-slate-600">
+                  <select aria-label="Time period filter" className="px-3 py-1 bg-slate-700 text-slate-300 text-sm rounded-lg border border-slate-600">
                     <option>Last 30 Days</option>
                     <option>Last 7 Days</option>
                     <option>Last 24 Hours</option>

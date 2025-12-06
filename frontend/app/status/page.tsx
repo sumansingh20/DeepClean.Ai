@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function StatusPage() {
-  const [currentStatus, setCurrentStatus] = useState('operational');
   const [uptime, setUptime] = useState(99.98);
 
   useEffect(() => {

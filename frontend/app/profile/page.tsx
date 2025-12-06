@@ -24,12 +24,12 @@ export default function ProfilePage() {
     setUser(parsedUser);
 
     // Load user statistics
-    fetchUserStats(parsedUser.id);
+    fetchUserStats();
   }, [router]);
 
-  const fetchUserStats = async (userId: string) => {
+  const fetchUserStats = async () => {
     try {
-      // Simulate API call
+      // Simulate API call - in production would fetch from API
       setStats({
         totalAnalyses: 247,
         reportsGenerated: 89,
