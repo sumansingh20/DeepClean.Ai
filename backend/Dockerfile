@@ -13,11 +13,12 @@ RUN apt-get update && apt-get install -y \
     libxrender-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Python dependencies (production)
+COPY requirements-prod.txt .
+RUN pip install --no-cache-dir -r requirements-prod.txt
 
-# Copy application
+# Copy application files
+COPY main_api.py .
 COPY app ./app
 
 # Create ml_models directory (models will be mounted via volume)
@@ -28,4 +29,4 @@ HEALTHCHECK --interval=10s --timeout=5s --retries=5 \
     CMD curl -f http://localhost:8000/api/v1/health/status || exit 1
 
 # Run application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+CMD ["uvicorn", "main_api:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
