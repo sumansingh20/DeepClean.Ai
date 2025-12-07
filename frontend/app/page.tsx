@@ -69,65 +69,76 @@ export default function Home() {
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Trust Badge */}
+          {/* Women's Safety Badge */}
           <div className="flex justify-center mb-8">
-            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white/90 backdrop-blur-md rounded-full border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="relative">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                <div className="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-75"></div>
-              </div>
-              <span className="text-xs font-black text-gray-800 tracking-wider">ADVANCED AI DETECTION PLATFORM</span>
+            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-pink-100 backdrop-blur-md rounded-full border border-pink-300 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <span className="text-2xl">🛡️</span>
+              <span className="text-xs font-black text-pink-800 tracking-wider">BUILT FOR WOMEN'S SAFETY</span>
             </div>
           </div>
 
-          {/* Main Headline */}
+          {/* Main Headline - Women's Safety Focus */}
           <div className="text-center max-w-5xl mx-auto mb-12">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-6 tracking-tight leading-[1.05] animate-in fade-in slide-in-from-bottom-4 duration-700">
-              Protect Your Truth with<br/>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 tracking-tight leading-[1.1] animate-in fade-in slide-in-from-bottom-4 duration-700">
+              Protect Yourself from<br/>
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto] hover:bg-[position:100%_0%] transition-all duration-500">AI Detection</span>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-full opacity-50"></div>
+                <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">Deepfake Abuse</span>
+                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 rounded-full opacity-50"></div>
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-6 duration-700 delay-150 font-medium">
-              Enterprise-grade deepfake detection powered by advanced machine learning.
-              <span className="block mt-2 text-lg text-gray-500">Verify authenticity in seconds. Protect what matters.</span>
+            <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-6 leading-relaxed animate-in fade-in slide-in-from-bottom-6 duration-700 delay-150 font-semibold">
+              You deserve to feel safe online. Detect fake images and videos created to harm you.
+              <span className="block mt-3 text-lg text-gray-600 font-normal">Get evidence reports you can use to protect yourself and take legal action.</span>
             </p>
+            
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap justify-center gap-4 mb-10 text-sm font-semibold text-gray-700">
+              <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full border border-green-200">
+                <span className="text-green-600">✓</span>
+                <span>Your privacy protected</span>
+              </div>
+              <div className="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full border border-blue-200">
+                <span className="text-blue-600">✓</span>
+                <span>Evidence for legal action</span>
+              </div>
+              <div className="flex items-center gap-2 bg-purple-50 px-4 py-2 rounded-full border border-purple-200">
+                <span className="text-purple-600">✓</span>
+                <span>Free for all women</span>
+              </div>
+            </div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Women Focused */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
               <Link 
                 href="/analysis" 
-                className="group relative px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white text-lg font-bold rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(59,130,246,0.5)] hover:scale-105"
+                className="group relative px-10 py-5 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 text-white text-lg font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl shadow-pink-500/30"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 <div className="relative flex items-center justify-center gap-3">
-                  <span>Start Free Analysis</span>
+                  <span>Check Your Content Now</span>
                   <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>
               </Link>
               <Link 
-                href="/pricing" 
-                className="group px-10 py-5 bg-white text-gray-900 text-lg font-bold rounded-2xl border-2 border-gray-300 hover:border-blue-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)]"
+                href="/about" 
+                className="group px-10 py-5 bg-white text-gray-900 text-lg font-bold rounded-2xl border-2 border-pink-300 hover:border-pink-500 hover:bg-pink-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <span className="flex items-center justify-center gap-2">
-                  View Pricing
-                  <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  How We Help Women
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </span>
               </Link>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-gray-200/80">
+            {/* Stats - Women's Safety Impact */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-pink-100">
               {[
-                { value: stats.files_analyzed > 0 ? stats.files_analyzed.toLocaleString() : "0", label: "Files analyzed", icon: "📊" },
-                { value: stats.detection_accuracy > 0 ? `${stats.detection_accuracy}%` : "0%", label: "Detection accuracy", icon: "🎯" },
+                { value: stats.files_analyzed > 0 ? stats.files_analyzed.toLocaleString() : "0", label: "Women protected", icon: "👩", color: "pink" },
+                { value: stats.detection_accuracy > 0 ? `${stats.detection_accuracy}%` : "0%", label: "Accuracy rate", icon: "✓", color: "purple" },
                 { value: stats.avg_processing_time > 0 ? `${stats.avg_processing_time}s` : "0s", label: "Average processing", icon: "⚡" },
                 { value: stats.active_users > 0 ? `${stats.active_users}` : "0", label: "Active users", icon: "👥" }
               ].map((stat, i) => (
@@ -145,10 +156,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <section className="py-16 bg-gradient-to-b from-white via-gray-50/40 to-white border-y border-gray-100">
+      {/* Social Proof - Women's Safety Focus */}
+      <section className="py-16 bg-gradient-to-b from-pink-50/30 via-white to-pink-50/30 border-y border-pink-100">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs font-black text-gray-500 mb-10 tracking-[0.25em] uppercase">Powered by industry-leading technologies</p>
+          <div className="text-center mb-12">
+            <p className="text-sm font-bold text-gray-700 mb-3">Built to protect women from digital abuse</p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-pink-500 rounded-full"></span>
+                <span>No files stored</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                <span>Privacy protected</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                <span>Legal evidence reports</span>
+              </div>
+            </div>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {[
               { name: 'TensorFlow', color: 'from-orange-500 to-amber-500' },
