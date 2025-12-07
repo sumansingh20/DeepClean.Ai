@@ -83,21 +83,21 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Header */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 h-16">
+      <nav className="bg-white/95 backdrop-blur-2xl border-b border-purple-100 sticky top-0 z-50 shadow-xl">
+        <div className="max-w-6xl mx-auto px-4 h-20">
           <div className="flex justify-between items-center h-full">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">DC</span>
+            <Link href="/" className="flex items-center gap-2 transform hover:scale-105 transition-transform">
+              <div className="w-12 h-12 bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-black text-lg">DC</span>
               </div>
               <div>
-                <span className="font-bold text-base text-gray-900">DeepClean.AI</span>
-                <span className="block text-xs text-green-600 font-semibold -mt-1">100% FREE</span>
+                <span className="font-black text-xl text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600">DeepClean.AI</span>
+                <span className="block text-xs text-green-600 font-bold -mt-1">100% FREE</span>
               </div>
             </Link>
-            <Link href="/" className="px-4 py-2 text-sm text-gray-700 hover:text-pink-600 font-medium transition">
+            <Link href="/" className="px-6 py-2.5 text-sm text-gray-700 hover:text-purple-600 font-bold transition border-2 border-transparent hover:border-purple-200 rounded-xl">
               ← Back to Home
             </Link>
           </div>
@@ -105,12 +105,12 @@ export default function LoginPage() {
       </nav>
 
       {/* Login Form */}
-      <div className="flex items-center justify-center py-16 px-4 bg-gradient-to-br from-pink-50 via-purple-50 to-white">
+      <div className="flex items-center justify-center py-20 px-4 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
         <div className="w-full max-w-md">
-          <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back</h2>
-              <p className="text-sm text-gray-600">Sign in to access your dashboard</p>
+          <div className="bg-white rounded-3xl shadow-2xl hover:shadow-purple-200/50 p-10 border-2 border-purple-100 transform hover:scale-[1.01] transition-all duration-300">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 mb-3">Welcome Back</h2>
+              <p className="text-base text-gray-600 font-medium">Sign in to access your dashboard</p>
             </div>
 
             {error && (
@@ -192,7 +192,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 px-4 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="w-full py-4 px-4 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 hover:from-pink-700 hover:via-purple-700 hover:to-blue-700 text-white font-bold text-lg rounded-xl shadow-2xl hover:shadow-purple-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">

@@ -151,25 +151,25 @@ export default function HelpCenter() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Header */}
-      <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
+      <nav className="bg-white/95 backdrop-blur-2xl border-b border-purple-100 shadow-xl sticky top-0 z-50">
+        <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-black shadow-lg">
+            <Link href="/" className="flex items-center gap-3 transform hover:scale-105 transition-transform">
+              <div className="w-14 h-14 bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-xl">
                 DC
               </div>
               <div>
-                <span className="text-2xl font-black text-gray-900">DeepClean AI</span>
-                <div className="text-xs text-gray-500">Help Center</div>
+                <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600">DeepClean AI</span>
+                <div className="text-xs text-gray-600 font-bold">Help Center</div>
               </div>
             </Link>
             <div className="flex items-center gap-4">
-              <Link href="/dashboard" className="text-gray-600 hover:text-blue-600 font-semibold transition">
+              <Link href="/dashboard" className="text-gray-700 hover:text-purple-600 font-bold transition">
                 Dashboard
               </Link>
-              <Link href="/contact" className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold hover:shadow-lg transition">
+              <Link href="/contact" className="px-6 py-3 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-white rounded-xl font-bold hover:shadow-2xl transform hover:scale-105 transition-all">
                 Contact Support
               </Link>
             </div>
@@ -178,13 +178,13 @@ export default function HelpCenter() {
       </nav>
 
       {/* Hero */}
-      <section className="py-20 text-center">
+      <section className="py-24 text-center">
         <div className="container mx-auto px-6">
-          <div className="text-6xl mb-6">💡</div>
-          <h1 className="text-6xl font-black mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <div className="text-7xl mb-6">💡</div>
+          <h1 className="text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
             How can we help you?
           </h1>
-          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 mb-12 max-w-2xl mx-auto font-semibold">
             Search our knowledge base or browse categories to find answers
           </p>
 
@@ -196,15 +196,15 @@ export default function HelpCenter() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for help articles, guides, tutorials..."
-                className="w-full px-6 py-5 rounded-2xl border-2 border-gray-200 focus:border-blue-500 focus:outline-none text-lg shadow-xl"
+                className="w-full px-6 py-6 rounded-2xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none text-lg shadow-2xl hover:shadow-purple-200"
               />
-              <button className="absolute right-3 top-1/2 -translate-y-1/2 px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold hover:shadow-lg transition">
+              <button className="absolute right-3 top-1/2 -translate-y-1/2 px-6 py-3 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-white rounded-xl font-bold hover:shadow-xl transform hover:scale-105 transition-all">
                 Search
               </button>
             </div>
             <div className="flex gap-3 mt-4 justify-center flex-wrap">
               {['Getting Started', 'API Docs', 'Pricing', 'Legal Docs', 'Security'].map((tag) => (
-                <button key={tag} className="px-4 py-2 bg-white border-2 border-gray-200 rounded-xl text-sm font-semibold hover:border-blue-400 hover:text-blue-600 transition">
+                <button key={tag} className="px-5 py-2.5 bg-white border-2 border-purple-200 rounded-xl text-sm font-bold hover:border-purple-400 hover:text-purple-600 hover:shadow-lg transform hover:scale-105 transition-all">
                   {tag}
                 </button>
               ))}
@@ -214,9 +214,9 @@ export default function HelpCenter() {
       </section>
 
       {/* Help Categories */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-black text-center mb-12 text-gray-900">Browse by Category</h2>
+          <h2 className="text-5xl font-black text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600">Browse by Category</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {helpCategories.map((category, idx) => (
               <div key={idx} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition border-2 border-gray-100 hover:border-blue-300">

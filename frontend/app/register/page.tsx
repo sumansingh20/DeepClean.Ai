@@ -60,21 +60,21 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Top Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-b border-gray-100 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-b border-purple-100 shadow-xl">
         <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 text-gray-700 hover:text-gray-900 transition font-bold">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <Link href="/" className="flex items-center gap-2.5 text-gray-700 hover:text-purple-600 transition font-bold transform hover:scale-105">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span className="font-bold">Back</span>
+            <span className="font-extrabold text-lg">Back</span>
           </Link>
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-md">
-              <span className="text-white font-black text-lg">DC</span>
+            <div className="w-14 h-14 bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl">
+              <span className="text-white font-black text-xl">DC</span>
             </div>
-            <span className="font-black text-gray-900 text-xl tracking-tight">DeepClean.AI</span>
+            <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-2xl tracking-tight">DeepClean.AI</span>
           </div>
         </div>
       </nav>
@@ -82,8 +82,8 @@ export default function RegisterPage() {
       {/* Main Content */}
       <div className="max-w-md mx-auto px-6 pt-44 pb-20">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-black text-gray-900 mb-4 tracking-tight">Create account</h1>
-          <p className="text-gray-600 text-lg font-medium">Start protecting against deepfakes</p>
+          <h1 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 mb-4 tracking-tight">Create account</h1>
+          <p className="text-gray-600 text-lg font-semibold">Start protecting against deepfakes</p>
         </div>
 
         {/* OAuth Buttons */}
@@ -111,35 +111,35 @@ export default function RegisterPage() {
         {/* Register Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">
+            <label className="block text-sm font-bold text-gray-900 mb-2">
               Email
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 shadow-soft"
+              className="w-full px-5 py-4 bg-white border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900 shadow-lg hover:shadow-xl"
               placeholder="you@company.com"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">
+            <label className="block text-sm font-bold text-gray-900 mb-2">
               Username
             </label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 shadow-soft"
+              className="w-full px-5 py-4 bg-white border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900 shadow-lg hover:shadow-xl"
               placeholder="username"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">
+            <label className="block text-sm font-bold text-gray-900 mb-2">
               Password
             </label>
             <div className="relative">
@@ -147,7 +147,7 @@ export default function RegisterPage() {
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 pr-12 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 shadow-soft"
+                className="w-full px-5 py-4 pr-12 bg-white border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900 shadow-lg hover:shadow-xl"
                 placeholder="Create a strong password"
                 required
               />
@@ -226,7 +226,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-blue-600 text-white py-4 rounded-xl font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-medium hover:shadow-large"
+            className="w-full bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:from-pink-700 hover:via-purple-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-2xl hover:shadow-purple-300 transform hover:scale-105"
           >
             {isLoading ? 'Creating account...' : 'Create account'}
           </button>

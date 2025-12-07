@@ -119,33 +119,33 @@ export default function FeaturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-dark-100 dark:via-dark-200 dark:to-dark-300">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Header */}
-      <nav className="glass dark:bg-dark-100/70 sticky top-0 z-50 border-b border-white/20 dark:border-dark-200 shadow-xl">
-        <div className="container mx-auto px-6 py-4">
+      <nav className="bg-white/95 backdrop-blur-2xl sticky top-0 z-50 border-b border-purple-100 shadow-xl">
+        <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-black shadow-lg">
+            <Link href="/" className="flex items-center gap-3 transform hover:scale-105 transition-transform">
+              <div className="w-14 h-14 bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-xl">
                 DC
               </div>
-              <span className="text-2xl font-black gradient-text dark:text-white">DeepClean AI</span>
+              <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600">DeepClean AI</span>
             </Link>
             <div className="flex items-center gap-4">
-              <Link href="/pricing" className="text-gray-700 dark:text-dark-700 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Pricing</Link>
-              <Link href="/login" className="btn-primary">Get Started</Link>
+              <Link href="/pricing" className="text-gray-700 hover:text-purple-600 font-bold transition">Pricing</Link>
+              <Link href="/login" className="px-6 py-3 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all">Get Started</Link>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <h1 className="text-6xl font-black text-gray-900 dark:text-white mb-6">
-              Powerful <span className="gradient-text dark:text-blue-400">Features</span>
+            <h1 className="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 mb-6">
+              Powerful <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">Features</span>
             </h1>
-            <p className="text-2xl text-gray-600 dark:text-dark-600">
+            <p className="text-2xl text-gray-700 font-semibold">
               6 AI engines working simultaneously to detect deepfakes with 94.2% accuracy
             </p>
           </div>

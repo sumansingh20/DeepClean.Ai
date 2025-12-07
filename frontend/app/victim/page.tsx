@@ -121,21 +121,21 @@ export default function VictimPortal() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-pink-50 to-orange-50">
       {/* Header */}
-      <nav className="bg-white/90 backdrop-blur-xl border-b border-red-200 shadow-lg">
-        <div className="container mx-auto px-6 py-4">
+      <nav className="bg-white/95 backdrop-blur-2xl border-b border-pink-100 shadow-xl">
+        <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-orange-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 via-pink-600 to-orange-600 rounded-2xl flex items-center justify-center text-white font-black text-3xl shadow-2xl">
                 🛡️
               </div>
               <div>
-                <h1 className="text-2xl font-black text-gray-900">Women's Safety & Victim Support Portal</h1>
-                <p className="text-sm text-red-600 font-semibold">Protecting Women from Deepfakes, Revenge Porn & Digital Abuse</p>
+                <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-orange-600">Women's Safety & Victim Support Portal</h1>
+                <p className="text-sm text-red-600 font-extrabold">Protecting Women from Deepfakes, Revenge Porn & Digital Abuse</p>
               </div>
             </div>
-            <Link href="/" className="px-6 py-2 text-gray-700 hover:text-red-600 font-semibold transition">
+            <Link href="/" className="px-6 py-3 text-gray-700 hover:text-pink-600 font-bold transition border-2 border-transparent hover:border-pink-200 rounded-xl">
               ← Back to Home
             </Link>
           </div>

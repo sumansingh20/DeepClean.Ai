@@ -258,15 +258,15 @@ export default function AnalysisPage() {
   const currentTab = tabs.find(t => t.key === activeTab);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Header */}
-      <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-2xl border-b border-white/20 shadow-2xl shadow-blue-500/10">
-        <div className="container mx-auto px-6 py-4">
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-2xl border-b border-purple-100 shadow-xl">
+        <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="relative w-14 h-14 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-2xl shadow-blue-500/50 hover:scale-110 transition-all duration-500">
-                <span className="text-3xl text-white drop-shadow-lg">⚡</span>
-                <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl blur opacity-40 -z-10"></div>
+              <div className="relative w-16 h-16 bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-500">
+                <span className="text-4xl text-white drop-shadow-lg">⚡</span>
+                <div className="absolute -inset-0.5 bg-gradient-to-br from-pink-400 via-purple-500 to-blue-500 rounded-2xl blur opacity-40 -z-10"></div>
               </div>
               <div>
                 <h1 className="text-3xl font-black bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent tracking-tight">AI Analysis</h1>

@@ -4,21 +4,21 @@ import Link from 'next/link';
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 h-16">
+      <nav className="bg-white/95 backdrop-blur-2xl border-b border-purple-100 sticky top-0 z-50 shadow-xl">
+        <div className="max-w-6xl mx-auto px-4 h-20">
           <div className="flex justify-between items-center h-full">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">DC</span>
+            <Link href="/" className="flex items-center gap-2 transform hover:scale-105 transition-transform">
+              <div className="w-12 h-12 bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-black text-lg">DC</span>
               </div>
               <div>
-                <span className="font-bold text-base text-gray-900">DeepClean.AI</span>
-                <span className="block text-xs text-green-600 font-semibold -mt-1">100% FREE</span>
+                <span className="font-black text-xl text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600">DeepClean.AI</span>
+                <span className="block text-xs text-green-600 font-extrabold -mt-1">100% FREE</span>
               </div>
             </Link>
-            <Link href="/" className="px-4 py-2 text-sm text-gray-700 hover:text-pink-600 font-medium transition">
+            <Link href="/" className="px-6 py-2.5 text-sm text-gray-700 hover:text-purple-600 font-bold transition border-2 border-transparent hover:border-purple-200 rounded-xl">
               ← Back to Home
             </Link>
           </div>
@@ -26,38 +26,38 @@ export default function PricingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-green-50 via-emerald-50 to-white">
+      <section className="py-20 px-4 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block px-4 py-2 bg-green-600 text-white rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full text-base font-extrabold mb-6 shadow-xl transform hover:scale-105 transition-transform">
             🎉 ALWAYS FREE
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mb-6">
             Simple Pricing. Actually Free.
           </h1>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-xl text-gray-600 mb-8 font-medium">
             No hidden costs. No premium tiers. No paywalls. <br />
-            <strong className="text-green-600">Everything is free, forever.</strong>
+            <strong className="text-green-600 text-2xl font-extrabold">Everything is free, forever.</strong>
           </p>
         </div>
       </section>
 
       {/* Pricing Card */}
-      <section className="py-16 px-4">
+      <section className="py-20 px-4">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white border-4 border-green-500 rounded-2xl shadow-2xl overflow-hidden">
+          <div className="bg-white border-4 border-green-500 rounded-3xl shadow-2xl hover:shadow-green-200 overflow-hidden transform hover:scale-[1.02] transition-all duration-300">
             {/* Header */}
-            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-8 text-center">
-              <h2 className="text-3xl font-bold mb-2">Forever Free Plan</h2>
-              <p className="text-green-100 text-sm">For all women. No exceptions.</p>
-              <div className="mt-6">
-                <div className="text-6xl font-bold">₹0</div>
-                <div className="text-green-100 text-sm mt-2">No credit card required</div>
+            <div className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 text-white p-10 text-center">
+              <h2 className="text-4xl font-black mb-3">Forever Free Plan</h2>
+              <p className="text-green-100 text-base font-semibold">For all women. No exceptions.</p>
+              <div className="mt-8">
+                <div className="text-7xl font-black">₹0</div>
+                <div className="text-green-100 text-base mt-3 font-bold">No credit card required</div>
               </div>
             </div>
 
             {/* Features */}
-            <div className="p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">What's Included:</h3>
+            <div className="p-10">
+              <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 mb-8">What's Included:</h3>
               <ul className="space-y-4">
                 {[
                   'Unlimited deepfake analyses',

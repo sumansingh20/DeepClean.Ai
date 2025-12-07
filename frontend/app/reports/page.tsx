@@ -62,13 +62,14 @@ export default function ReportsPage(): React.ReactElement {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2 text-gray-900">Reports</h1>
-        <p className="text-gray-600">Generate, manage, and download analysis reports</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-10">
+          <h1 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 mb-4">Reports</h1>
+          <p className="text-gray-700 text-lg font-semibold">Generate, manage, and download analysis reports</p>
+        </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Report Generator */}
         <div className="lg:col-span-1">
           <ReportGenerator onReportGenerated={handleReportGenerated} onError={clearError} />
@@ -224,6 +225,7 @@ export default function ReportsPage(): React.ReactElement {
             Interactive HTML reports viewable in any browser with full formatting and embedded resources.
           </p>
         </div>
+      </div>
       </div>
     </div>
   );
