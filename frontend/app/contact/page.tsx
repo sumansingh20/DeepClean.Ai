@@ -115,6 +115,7 @@ export default function ContactPage() {
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
+                    aria-label="Select contact category"
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 text-gray-900"
                   >
                     <option value="general">General Inquiry</option>
