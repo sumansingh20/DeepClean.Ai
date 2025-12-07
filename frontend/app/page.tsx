@@ -20,41 +20,36 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-3xl border-b border-pink-100/50 shadow-2xl shadow-pink-500/5">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center h-20">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-14 h-14 bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-2xl shadow-pink-500/50 group-hover:shadow-pink-600/60 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                <span className="text-white font-black text-xl drop-shadow-2xl">DC</span>
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/40 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
-                <div className="absolute -inset-1 bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-600 rounded-2xl blur opacity-40 group-hover:opacity-70 transition-opacity -z-10 animate-pulse"></div>
+              <div className="relative w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                <span className="text-white font-black text-lg">DC</span>
               </div>
-              <span className="font-black text-gray-900 text-2xl tracking-tight">DeepClean<span className="text-pink-600">.AI</span></span>
+              <div className="flex flex-col">
+                <span className="font-black text-gray-900 text-xl tracking-tight leading-none">DeepClean<span className="text-pink-600">.AI</span></span>
+                <span className="text-xs font-bold text-green-600">100% FREE Platform</span>
+              </div>
             </Link>
             
             <div className="hidden md:flex items-center gap-8">
-              <Link href="/features" className="text-sm font-bold text-gray-700 hover:text-pink-600 transition-all duration-300 relative group">
+              <Link href="/features" className="text-sm font-semibold text-gray-700 hover:text-pink-600 transition-all duration-200">
                 Features
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/pricing" className="text-sm font-bold text-gray-700 hover:text-purple-600 transition-all duration-300 relative group">
+              <Link href="/pricing" className="text-sm font-semibold text-gray-700 hover:text-pink-600 transition-all duration-200">
                 Pricing
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/about" className="text-sm font-bold text-gray-700 hover:text-indigo-600 transition-all duration-300 relative group">
+              <Link href="/about" className="text-sm font-semibold text-gray-700 hover:text-pink-600 transition-all duration-200">
                 About
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/login" className="text-sm font-bold text-gray-700 hover:text-purple-600 transition-all duration-300 relative group">
+              <Link href="/login" className="text-sm font-semibold text-gray-700 hover:text-pink-600 transition-all duration-200">
                 Login
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/register" className="relative px-8 py-3.5 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-700 text-white text-sm font-black rounded-2xl shadow-2xl shadow-pink-500/40 hover:shadow-[0_20px_40px_-10px_rgba(236,72,153,0.6)] transition-all duration-500 hover:-translate-y-1 hover:scale-105 overflow-hidden group">
-                <span className="relative z-10 tracking-wide">Get Started</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500 opacity-30 group-hover:opacity-60 blur rounded-2xl transition-opacity duration-500 -z-10 animate-pulse"></div>
+              <Link href="/register" className="px-6 py-2.5 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-sm font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5">
+                Get Started Free
               </Link>
             </div>
           </div>
@@ -62,98 +57,87 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        {/* Animated Background with Glassmorphism */}
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-100/50 via-purple-100/40 to-indigo-100/50">
-          <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-gradient-to-br from-pink-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-purple-400/20 to-indigo-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-pink-300/10 to-indigo-300/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
-        </div>
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50">
         
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Women's Safety Badge */}
-          <div className="flex justify-center mb-10 animate-bounce-slow">
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-pink-100 via-purple-100 to-pink-100 backdrop-blur-2xl rounded-full border-2 border-pink-400 shadow-2xl shadow-pink-500/20 hover:shadow-pink-500/30 transition-all duration-500 hover:scale-105">
-              <span className="text-3xl animate-pulse">🛡️</span>
-              <span className="text-sm font-black text-pink-700 tracking-widest">BUILT FOR WOMEN'S SAFETY</span>
+          {/* FREE Platform Badge */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-3 px-8 py-3 bg-green-100 rounded-full border-2 border-green-400 shadow-lg">
+              <span className="text-2xl">🎉</span>
+              <span className="text-sm font-black text-green-700 tracking-wide">100% FREE FOR ALL WOMEN</span>
             </div>
           </div>
 
           {/* Main Headline - Women's Safety Focus */}
           <div className="text-center max-w-5xl mx-auto mb-12">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-8 tracking-tight leading-[1.05] animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 tracking-tight leading-tight">
               Protect Yourself from<br/>
-              <span className="relative inline-block mt-2">
-                <span className="text-pink-600">Deepfake Abuse</span>
-                <div className="absolute -bottom-4 left-0 right-0 h-2 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 rounded-full opacity-60 blur-sm"></div>
-              </span>
+              <span className="text-pink-600">Deepfake Abuse</span>
             </h1>
             
-            <p className="text-2xl md:text-3xl text-gray-700 max-w-4xl mx-auto mb-8 leading-relaxed animate-in fade-in slide-in-from-bottom-6 duration-700 delay-150 font-bold">
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
               You deserve to feel safe online. Detect fake images and videos created to harm you.
-              <span className="block mt-4 text-xl text-gray-600 font-semibold">Get evidence reports you can use to protect yourself and take legal action.</span>
+              <span className="block mt-3 text-lg text-gray-500 font-medium">Get evidence reports you can use to protect yourself and take legal action.</span>
             </p>
             
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-5 mb-12 text-base font-bold text-gray-800">
-              <div className="flex items-center gap-3 bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-3.5 rounded-full border-2 border-green-300/50 shadow-xl shadow-green-500/10 hover:shadow-green-500/20 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
-                <span className="text-green-600 text-xl">✓</span>
-                <span>Your privacy protected</span>
+            <div className="flex flex-wrap justify-center gap-4 mb-10 text-sm font-semibold text-gray-700">
+              <div className="flex items-center gap-2 bg-white px-5 py-2.5 rounded-lg border border-gray-200 shadow-sm">
+                <span className="text-green-600 text-lg">✓</span>
+                <span>100% Free Forever</span>
               </div>
-              <div className="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-3.5 rounded-full border-2 border-blue-300/50 shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
-                <span className="text-blue-600 text-xl">✓</span>
-                <span>Evidence for legal action</span>
+              <div className="flex items-center gap-2 bg-white px-5 py-2.5 rounded-lg border border-gray-200 shadow-sm">
+                <span className="text-blue-600 text-lg">✓</span>
+                <span>Privacy Protected</span>
               </div>
-              <div className="flex items-center gap-3 bg-gradient-to-r from-purple-50 to-pink-50 px-6 py-3.5 rounded-full border-2 border-purple-300/50 shadow-xl shadow-purple-500/10 hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
-                <span className="text-purple-600 text-xl">✓</span>
-                <span>Free for all women</span>
+              <div className="flex items-center gap-2 bg-white px-5 py-2.5 rounded-lg border border-gray-200 shadow-sm">
+                <span className="text-purple-600 text-lg">✓</span>
+                <span>Legal Evidence Reports</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white px-5 py-2.5 rounded-lg border border-gray-200 shadow-sm">
+                <span className="text-pink-600 text-lg">✓</span>
+                <span>No Credit Card Needed</span>
               </div>
             </div>
 
             {/* CTA Buttons - Women Focused */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link 
                 href="/analysis" 
-                className="group relative px-12 py-6 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 text-white text-xl font-black rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:scale-105 shadow-[0_20px_50px_-15px_rgba(236,72,153,0.4)] hover:shadow-[0_30px_70px_-15px_rgba(236,72,153,0.6)]"
+                className="px-10 py-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-lg font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500 opacity-30 group-hover:opacity-60 blur-xl rounded-3xl transition-all duration-500 -z-10 animate-pulse"></div>
-                <div className="relative flex items-center justify-center gap-3">
-                  <span className="tracking-wide">Check Your Content Now</span>
-                  <svg className="w-7 h-7 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <div className="flex items-center justify-center gap-2">
+                  <span>Start Free Analysis</span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>
               </Link>
               <Link 
                 href="/about" 
-                className="group px-12 py-6 bg-white/90 backdrop-blur-xl text-gray-900 text-xl font-black rounded-3xl border-3 border-pink-300 hover:border-pink-500 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(236,72,153,0.3)] shadow-xl"
+                className="px-10 py-4 bg-white text-gray-900 text-lg font-bold rounded-lg border-2 border-gray-300 hover:border-pink-500 hover:bg-pink-50 transition-all duration-200 shadow-md"
               >
-                <span className="flex items-center justify-center gap-3">
-                  How We Help Women
-                  <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                <span className="flex items-center justify-center gap-2">
+                  Learn More
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </span>
               </Link>
             </div>
 
             {/* Stats - Women's Safety Impact */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-16 border-t-2 border-pink-200/60">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-gray-200">
               {[
-                { value: stats.files_analyzed > 0 ? stats.files_analyzed.toLocaleString() : "0", label: "Women protected", icon: "👩", color: "pink" },
-                { value: stats.detection_accuracy > 0 ? `${stats.detection_accuracy}%` : "0%", label: "Accuracy rate", icon: "✓", color: "purple" },
-                { value: stats.avg_processing_time > 0 ? `${stats.avg_processing_time}s` : "0s", label: "Average processing", icon: "⚡" },
+                { value: stats.files_analyzed > 0 ? stats.files_analyzed.toLocaleString() : "0", label: "Women protected", icon: "👩" },
+                { value: stats.detection_accuracy > 0 ? `${stats.detection_accuracy}%` : "0%", label: "Accuracy rate", icon: "✓" },
+                { value: stats.avg_processing_time > 0 ? `${stats.avg_processing_time}s` : "0s", label: "Avg processing", icon: "⚡" },
                 { value: stats.active_users > 0 ? `${stats.active_users}` : "0", label: "Active users", icon: "👥" }
               ].map((stat, i) => (
-                <div key={i} className="group relative text-center p-10 bg-white/90 backdrop-blur-2xl rounded-3xl border-2 border-pink-200/50 hover:border-purple-400/60 hover:shadow-[0_30px_70px_-20px_rgba(236,72,153,0.4)] transition-all duration-700 hover:-translate-y-3 cursor-default overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-400/20 to-purple-400/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative">
-                    <div className="text-5xl mb-4 group-hover:scale-125 transition-transform duration-500 drop-shadow-lg">{stat.icon}</div>
-                    <div className="text-5xl md:text-6xl font-black text-pink-600 mb-4 group-hover:scale-110 transition-transform duration-500">{stat.value}</div>
-                    <div className="text-base font-bold text-gray-700 group-hover:text-gray-900 transition-colors tracking-wide">{stat.label}</div>
-                  </div>
+                <div key={i} className="text-center p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200">
+                  <div className="text-3xl mb-3">{stat.icon}</div>
+                  <div className="text-4xl font-black text-pink-600 mb-2">{stat.value}</div>
+                  <div className="text-sm font-semibold text-gray-600">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -162,26 +146,26 @@ export default function Home() {
       </section>
 
       {/* Social Proof - Women's Safety Focus */}
-      <section className="py-20 bg-gradient-to-b from-pink-50/50 via-white to-purple-50/50 border-y-2 border-pink-100/60">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <p className="text-lg font-black text-pink-700 mb-5 tracking-wide">Built to protect women from digital abuse</p>
-            <div className="flex flex-wrap justify-center gap-8 text-base text-gray-700 font-semibold">
-              <div className="flex items-center gap-3 bg-white/80 backdrop-blur-xl px-6 py-3 rounded-full border-2 border-pink-200/50 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                <span className="w-3 h-3 bg-pink-500 rounded-full animate-pulse shadow-lg shadow-pink-500/50"></span>
+          <div className="text-center mb-12">
+            <p className="text-base font-bold text-gray-700 mb-4">Built to protect women from digital abuse</p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 font-medium">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-pink-500 rounded-full"></span>
                 <span>No files stored</span>
               </div>
-              <div className="flex items-center gap-3 bg-white/80 backdrop-blur-xl px-6 py-3 rounded-full border-2 border-purple-200/50 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                <span className="w-3 h-3 bg-purple-500 rounded-full animate-pulse delay-300 shadow-lg shadow-purple-500/50"></span>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
                 <span>Privacy protected</span>
               </div>
-              <div className="flex items-center gap-3 bg-white/80 backdrop-blur-xl px-6 py-3 rounded-full border-2 border-indigo-200/50 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                <span className="w-3 h-3 bg-indigo-500 rounded-full animate-pulse delay-700 shadow-lg shadow-indigo-500/50"></span>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
                 <span>Legal evidence reports</span>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               { name: 'TensorFlow', color: 'from-orange-500 to-amber-500' },
               { name: 'PyTorch', color: 'from-red-500 to-orange-500' },
@@ -189,9 +173,8 @@ export default function Home() {
               { name: 'Scikit-learn', color: 'from-indigo-500 to-blue-500' },
               { name: 'NumPy', color: 'from-cyan-500 to-blue-500' }
             ].map((tech) => (
-              <div key={tech.name} className="relative group text-center py-10 px-6 bg-white/90 backdrop-blur-xl rounded-3xl border-2 border-gray-200/50 hover:border-transparent shadow-xl hover:shadow-2xl hover:shadow-${tech.color}/20 transition-all duration-500 hover:-translate-y-3 overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                <span className={`relative text-base font-black text-gray-800 group-hover:bg-gradient-to-r group-hover:${tech.color} group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300`}>{tech.name}</span>
+              <div key={tech.name} className="text-center py-6 px-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200">
+                <span className="text-sm font-bold text-gray-800">{tech.name}</span>
               </div>
             ))}
           </div>
@@ -492,50 +475,50 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="relative bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900 text-gray-400 py-24 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxIDAgNiAyLjY5IDYgNnMtMi42OSA2LTYgNi02LTIuNjktNi02IDIuNjktNiA2LTZ6IiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDIpIi8+PC9nPjwvc3ZnPg==')] opacity-40"></div>
-        <div className="max-w-7xl mx-auto relative">
-          <div className="grid md:grid-cols-4 gap-12 mb-20">
+      <footer className="bg-gray-900 text-gray-400 py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-10 mb-12">
             <div>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-14 h-14 bg-gradient-to-br from-pink-600 via-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-pink-500/30">
-                  <span className="text-white font-black text-lg">DC</span>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">DC</span>
                 </div>
-                <span className="text-white font-black text-2xl">DeepClean.AI</span>
+                <span className="text-white font-bold text-lg">DeepClean.AI</span>
               </div>
-              <p className="text-base leading-relaxed text-gray-400 font-medium">India's leading deepfake detection platform</p>
+              <p className="text-sm leading-relaxed mb-3">Free deepfake detection platform for women's safety</p>
+              <p className="text-xs text-green-400 font-semibold">100% Free • Always</p>
             </div>
             
             <div>
-              <h4 className="text-white font-black mb-8 text-lg tracking-wide">Product</h4>
-              <div className="space-y-4 text-base font-medium">
-                <Link href="/analysis" className="block hover:text-pink-400 transition-all duration-300 hover:translate-x-1">Analysis</Link>
-                <Link href="/pricing" className="block hover:text-purple-400 transition-all duration-300 hover:translate-x-1">Pricing</Link>
-                <Link href="/features" className="block hover:text-indigo-400 transition-all duration-300 hover:translate-x-1">API</Link>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-black mb-8 text-lg tracking-wide">Support</h4>
-              <div className="space-y-4 text-base font-medium">
-                <Link href="/contact" className="block hover:text-pink-400 transition-all duration-300 hover:translate-x-1">Support</Link>
-                <Link href="/contact" className="block hover:text-purple-400 transition-all duration-300 hover:translate-x-1">Contact</Link>
-                <Link href="/about" className="block hover:text-indigo-400 transition-all duration-300 hover:translate-x-1">About</Link>
+              <h4 className="text-white font-bold mb-4 text-sm">Product</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/analysis" className="block hover:text-pink-400 transition">Analysis</Link>
+                <Link href="/pricing" className="block hover:text-pink-400 transition">Pricing</Link>
+                <Link href="/features" className="block hover:text-pink-400 transition">Features</Link>
               </div>
             </div>
             
             <div>
-              <h4 className="text-white font-black mb-8 text-lg tracking-wide">Legal</h4>
-              <div className="space-y-4 text-base font-medium">
-                <Link href="/privacy" className="block hover:text-pink-400 transition-all duration-300 hover:translate-x-1">Privacy</Link>
-                <Link href="/terms" className="block hover:text-purple-400 transition-all duration-300 hover:translate-x-1">Terms</Link>
-                <Link href="/security" className="block hover:text-indigo-400 transition-all duration-300 hover:translate-x-1">Security</Link>
+              <h4 className="text-white font-bold mb-4 text-sm">Support</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/contact" className="block hover:text-pink-400 transition">Contact</Link>
+                <Link href="/about" className="block hover:text-pink-400 transition">About</Link>
+                <Link href="/help" className="block hover:text-pink-400 transition">Help</Link>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-bold mb-4 text-sm">Legal</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/privacy" className="block hover:text-pink-400 transition">Privacy</Link>
+                <Link href="/terms" className="block hover:text-pink-400 transition">Terms</Link>
+                <Link href="/security" className="block hover:text-pink-400 transition">Security</Link>
               </div>
             </div>
           </div>
           
-          <div className="border-t-2 border-gray-800/50 pt-10 text-base text-center">
-            <p className="text-gray-400 font-medium">© 2025 DeepClean.AI. All rights reserved. <span className="text-pink-500 font-bold">Made in India</span></p>
+          <div className="border-t border-gray-800 pt-8 text-sm text-center">
+            <p className="text-gray-400">© 2025 DeepClean.AI. All rights reserved. <span className="text-pink-500 font-semibold">Made in India</span> 🇮🇳</p>
           </div>
         </div>
       </footer>
