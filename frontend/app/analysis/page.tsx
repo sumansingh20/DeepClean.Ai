@@ -20,13 +20,18 @@ export default function AnalysisPage() {
   useEffect(() => {
     const checkBackend = async () => {
       try {
-        const response = await fetch('http://localhost:8001/', { method: 'GET' });
+        const response = await fetch('http://localhost:8001/api/v1/health', { 
+          method: 'GET',
+          signal: AbortSignal.timeout(3000) // 3 second timeout
+        });
         if (response.ok) {
           setBackendStatus('online');
         } else {
           setBackendStatus('offline');
         }
       } catch (error) {
+        // Don't show alert on background health checks
+        console.warn('Backend health check failed:', error);
         setBackendStatus('offline');
       }
     };
@@ -174,15 +179,31 @@ export default function AnalysisPage() {
       setProgress(0);
       
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      const isBackendDown = errorMessage.includes('Failed to fetch') || errorMessage.includes('NetworkError');
+      const isBackendDown = errorMessage.includes('Failed to fetch') || errorMessage.includes('NetworkError') || errorMessage.includes('Load failed');
       
       if (isBackendDown) {
-        alert('⚠️ Cannot connect to backend server.\n\nPlease ensure:\n1. Backend is running on port 8001\n2. Run: .\\START_BACKEND.ps1 from backend folder');
         setBackendStatus('offline');
+        // Show user-friendly error without intrusive alert
+        setResult({
+          isDeepfake: false,
+          confidence: 0,
+          details: {
+            error: 'Cannot connect to backend server',
+            message: 'Please ensure backend is running on port 8001',
+            suggestion: 'Run: .\\START_BACKEND.ps1 from backend folder'
+          }
+        });
       } else {
-        alert(`❌ Analysis failed: ${errorMessage}`);
+        // Show error in result card instead of alert
+        setResult({
+          isDeepfake: false,
+          confidence: 0,
+          details: {
+            error: 'Analysis Failed',
+            message: errorMessage
+          }
+        });
       }
-      setResult(null);
     }
   };
 
