@@ -92,10 +92,7 @@ export default function LoginPage() {
               <div className="w-12 h-12 bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
                 <span className="text-white font-black text-lg">DC</span>
               </div>
-              <div>
-                <span className="font-black text-xl text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600">DeepClean.AI</span>
-                <span className="block text-xs text-green-600 font-bold -mt-1">100% FREE</span>
-              </div>
+              <span className="font-black text-xl text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600">DeepClean.AI</span>
             </Link>
             <Link href="/" className="px-6 py-2.5 text-sm text-gray-700 hover:text-purple-600 font-bold transition border-2 border-transparent hover:border-purple-200 rounded-xl">
               ← Back to Home

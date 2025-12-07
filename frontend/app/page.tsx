@@ -31,7 +31,6 @@ export default function Home() {
               </div>
               <div>
                 <span className="font-bold text-gray-900 text-base">DeepClean<span className="text-pink-600">.AI</span></span>
-                <span className="text-[10px] font-semibold text-green-600 block leading-none">FREE Platform</span>
               </div>
             </Link>
             
@@ -60,14 +59,6 @@ export default function Home() {
       <section className="pt-24 pb-16 px-4 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
         
         <div className="max-w-4xl mx-auto">
-          {/* FREE Badge */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-lg transform hover:scale-105 transition">
-              <span className="text-sm">🎉</span>
-              <span className="text-sm font-bold text-white">100% Free for All Women</span>
-            </div>
-          </div>
-
           {/* Main Headline */}
           <div className="text-center mb-12">
             <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
@@ -81,21 +72,17 @@ export default function Home() {
             
             {/* Trust Indicators */}
             <div className="flex flex-wrap justify-center gap-3 mb-8 text-sm">
-              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-green-200 shadow-md hover:shadow-lg transition">
-                <span className="text-green-600 font-bold">✓</span>
-                <span className="font-semibold text-gray-700">Free Forever</span>
-              </div>
               <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-blue-200 shadow-md hover:shadow-lg transition">
                 <span className="text-blue-600 font-bold">✓</span>
                 <span className="font-semibold text-gray-700">Private & Secure</span>
               </div>
               <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-purple-200 shadow-md hover:shadow-lg transition">
                 <span className="text-purple-600 font-bold">✓</span>
-                <span className="font-semibold text-gray-700">Legal Reports</span>
+                <span className="font-semibold text-gray-700">Legal Evidence Reports</span>
               </div>
               <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-pink-200 shadow-md hover:shadow-lg transition">
                 <span className="text-pink-600 font-bold">✓</span>
-                <span className="font-semibold text-gray-700">No Card Required</span>
+                <span className="font-semibold text-gray-700">AI-Powered Detection</span>
               </div>
             </div>
 
