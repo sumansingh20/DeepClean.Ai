@@ -206,10 +206,10 @@ export const Footer: React.FC = () => {
           </div>
           <div className="space-y-2">
             <p>
-              © {currentYear} DeepClean AI. A project of the Ministry of Electronics & Information Technology, Government of India.
+              © {currentYear} DeepClean.AI. All rights reserved. Made in India 🇮🇳
             </p>
-            <p className="text-xs">
-              All rights reserved. DeepClean AI® and related marks are registered trademarks.
+            <p className="text-xs text-gray-400">
+              Built by IIT Patna Team: Aayush, Ashish, Disha, Khushi, Suman
             </p>
             <p className="text-xs text-gray-500">
               This platform is secured with advanced encryption and follows strict data protection guidelines.
