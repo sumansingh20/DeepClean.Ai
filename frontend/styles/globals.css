@@ -12,8 +12,20 @@
     animation: bounce-slow 3s ease-in-out infinite;
   }
   
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .delay-700 {
+    animation-delay: 0.7s;
+  }
+  
   .delay-1000 {
     animation-delay: 1s;
+  }
+  
+  .delay-2000 {
+    animation-delay: 2s;
   }
   
   .animate-in {
