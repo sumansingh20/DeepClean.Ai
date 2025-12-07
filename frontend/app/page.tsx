@@ -35,20 +35,17 @@ export default function Home() {
             </Link>
             
             <div className="hidden md:flex items-center gap-6">
-              <Link href="/features" className="text-sm text-gray-600 hover:text-gray-900 transition">
-                Features
-              </Link>
-              <Link href="/how-it-works" className="text-sm text-gray-600 hover:text-gray-900 transition">
-                How It Works
-              </Link>
               <Link href="/about" className="text-sm text-gray-600 hover:text-gray-900 transition">
                 About
+              </Link>
+              <Link href="/help" className="text-sm text-gray-600 hover:text-gray-900 transition">
+                Help
               </Link>
               <Link href="/login" className="text-sm text-gray-600 hover:text-gray-900 transition">
                 Login
               </Link>
               <Link href="/register" className="px-4 py-2 bg-pink-600 text-white text-sm font-medium rounded-lg hover:bg-pink-700 transition">
-                Start Free
+                Get Started
               </Link>
             </div>
           </div>
