@@ -31,7 +31,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/40 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
                 <div className="absolute -inset-1 bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-600 rounded-2xl blur opacity-40 group-hover:opacity-70 transition-opacity -z-10 animate-pulse"></div>
               </div>
-              <span className="font-black bg-gradient-to-r from-pink-700 via-purple-700 to-indigo-900 bg-clip-text text-transparent text-2xl tracking-tight">DeepClean.AI</span>
+              <span className="font-black text-gray-900 text-2xl tracking-tight">DeepClean<span className="text-pink-600">.AI</span></span>
             </Link>
             
             <div className="hidden md:flex items-center gap-8">
@@ -73,9 +73,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Women's Safety Badge */}
           <div className="flex justify-center mb-10 animate-bounce-slow">
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-pink-100 via-purple-100 to-pink-100 backdrop-blur-2xl rounded-full border-2 border-pink-300/60 shadow-2xl shadow-pink-500/20 hover:shadow-pink-500/30 transition-all duration-500 hover:scale-105">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-pink-100 via-purple-100 to-pink-100 backdrop-blur-2xl rounded-full border-2 border-pink-400 shadow-2xl shadow-pink-500/20 hover:shadow-pink-500/30 transition-all duration-500 hover:scale-105">
               <span className="text-3xl animate-pulse">🛡️</span>
-              <span className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-700 via-purple-700 to-indigo-700 tracking-widest">BUILT FOR WOMEN'S SAFETY</span>
+              <span className="text-sm font-black text-pink-700 tracking-widest">BUILT FOR WOMEN'S SAFETY</span>
             </div>
           </div>
 
@@ -84,7 +84,7 @@ export default function Home() {
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-8 tracking-tight leading-[1.05] animate-in fade-in slide-in-from-bottom-4 duration-700">
               Protect Yourself from<br/>
               <span className="relative inline-block mt-2">
-                <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent drop-shadow-2xl">Deepfake Abuse</span>
+                <span className="text-pink-600">Deepfake Abuse</span>
                 <div className="absolute -bottom-4 left-0 right-0 h-2 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 rounded-full opacity-60 blur-sm"></div>
               </span>
             </h1>
@@ -151,7 +151,7 @@ export default function Home() {
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-400/20 to-purple-400/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative">
                     <div className="text-5xl mb-4 group-hover:scale-125 transition-transform duration-500 drop-shadow-lg">{stat.icon}</div>
-                    <div className="text-5xl md:text-6xl font-black bg-gradient-to-br from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">{stat.value}</div>
+                    <div className="text-5xl md:text-6xl font-black text-pink-600 mb-4 group-hover:scale-110 transition-transform duration-500">{stat.value}</div>
                     <div className="text-base font-bold text-gray-700 group-hover:text-gray-900 transition-colors tracking-wide">{stat.label}</div>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-b from-pink-50/50 via-white to-purple-50/50 border-y-2 border-pink-100/60">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-700 via-purple-700 to-indigo-700 mb-5 tracking-wide">Built to protect women from digital abuse</p>
+            <p className="text-lg font-black text-pink-700 mb-5 tracking-wide">Built to protect women from digital abuse</p>
             <div className="flex flex-wrap justify-center gap-8 text-base text-gray-700 font-semibold">
               <div className="flex items-center gap-3 bg-white/80 backdrop-blur-xl px-6 py-3 rounded-full border-2 border-pink-200/50 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
                 <span className="w-3 h-3 bg-pink-500 rounded-full animate-pulse shadow-lg shadow-pink-500/50"></span>
@@ -207,7 +207,7 @@ export default function Home() {
             </div>
             <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight leading-tight">
               Multi-Modal Detection
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Technology</span>
+              <span className="block text-purple-600">Technology</span>
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed font-medium">
               Comprehensive analysis suite powered by cutting-edge machine learning algorithms
@@ -315,7 +315,7 @@ export default function Home() {
             </div>
             <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
               Full Spectrum
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Detection Suite</span>
+              <span className="block text-purple-600">Detection Suite</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Multi-engine detection powered by computer vision, machine learning, and forensic analysis
@@ -369,7 +369,7 @@ export default function Home() {
             </div>
             <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
               How It
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Works</span>
+              <span className="block text-purple-600">Works</span>
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
               Get professional analysis results in three simple steps
@@ -411,7 +411,7 @@ export default function Home() {
               🎯 Real-World Applications
             </div>
             <h2 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">Trusted Across
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Industries</span>
+              <span className="block text-cyan-400">Industries</span>
             </h2>
             <p className="text-gray-400 text-xl">AI-powered detection for diverse use cases and applications</p>
           </div>
@@ -535,7 +535,7 @@ export default function Home() {
           </div>
           
           <div className="border-t-2 border-gray-800/50 pt-10 text-base text-center">
-            <p className="text-gray-400 font-medium">© 2025 DeepClean.AI. All rights reserved. <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 font-bold">Made in India</span></p>
+            <p className="text-gray-400 font-medium">© 2025 DeepClean.AI. All rights reserved. <span className="text-pink-500 font-bold">Made in India</span></p>
           </div>
         </div>
       </footer>
