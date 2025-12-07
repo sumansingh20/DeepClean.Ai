@@ -28,5 +28,5 @@ RUN mkdir -p ./ml_models
 HEALTHCHECK --interval=10s --timeout=5s --retries=5 \
     CMD curl -f http://localhost:8000/api/v1/health/status || exit 1
 
-# Run application
-CMD ["uvicorn", "main_api:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+# Run application (use PORT env variable from Render)
+CMD uvicorn main_api:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1
