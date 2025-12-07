@@ -65,11 +65,14 @@ export default function AboutPage() {
       </nav>
 
       {/* Hero */}
-      <section className="pt-32 pb-24">
+      <section className="pt-32 pb-24 bg-gradient-to-b from-white via-purple-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-5xl mx-auto mb-20">
-            <h1 className="text-7xl font-extrabold text-gray-900 mb-8 tracking-tight">
-              About <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent">DeepClean.AI</span>
+            <div className="inline-block px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white text-sm font-bold mb-6 shadow-lg">
+              🇮🇳 Made in India
+            </div>
+            <h1 className="text-6xl md:text-7xl font-extrabold text-gray-900 mb-8 tracking-tight">
+              About <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">DeepClean.AI</span>
             </h1>
             <p className="text-2xl text-gray-600 leading-relaxed font-medium">
               India's leading platform for detecting deepfakes and protecting digital identity
@@ -79,9 +82,9 @@ export default function AboutPage() {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-20">
             {statsDisplay.map((stat, idx) => (
-              <div key={idx} className="glass dark:bg-dark-200/50 rounded-2xl p-8 text-center shadow-xl border border-white/20 dark:border-dark-300 card-hover">
-                <div className="text-4xl font-black gradient-text dark:text-blue-400 mb-2">{stat.value}</div>
-                <div className="text-gray-600 dark:text-dark-600 font-semibold">{stat.label}</div>
+              <div key={idx} className="bg-white rounded-2xl p-8 text-center shadow-xl border-2 border-gray-200 hover:shadow-2xl hover:scale-105 hover:border-purple-300 transition-all transform">
+                <div className="text-5xl font-black bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-3">{stat.value}</div>
+                <div className="text-gray-700 font-bold text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -93,10 +96,10 @@ export default function AboutPage() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-8 py-4 rounded-xl font-bold text-lg capitalize transition-all ${
+                  className={`px-10 py-4 rounded-2xl font-bold text-lg capitalize transition-all transform ${
                     activeTab === tab
-                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xl'
-                      : 'glass dark:bg-dark-200/50 text-gray-700 dark:text-dark-700 hover:shadow-lg'
+                      ? 'bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-white shadow-2xl scale-105'
+                      : 'bg-white text-gray-700 hover:shadow-xl border-2 border-gray-200 hover:border-purple-300'
                   }`}
                 >
                   {tab}

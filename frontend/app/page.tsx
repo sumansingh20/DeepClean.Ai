@@ -57,22 +57,22 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-pink-50 to-white">
+      <section className="pt-24 pb-16 px-4 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
         
         <div className="max-w-4xl mx-auto">
           {/* FREE Badge */}
           <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-50 rounded-full border border-green-200">
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-lg transform hover:scale-105 transition">
               <span className="text-sm">🎉</span>
-              <span className="text-xs font-semibold text-green-700">100% Free for All Women</span>
+              <span className="text-sm font-bold text-white">100% Free for All Women</span>
             </div>
           </div>
 
           {/* Main Headline */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
               Protect Yourself from<br/>
-              <span className="text-pink-600">Deepfake Abuse</span>
+              <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">Deepfake Abuse</span>
             </h1>
             
             <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
@@ -80,36 +80,36 @@ export default function Home() {
             </p>
             
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-3 mb-8 text-xs text-gray-600">
-              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-md border border-gray-200">
-                <span className="text-green-600">✓</span>
-                <span>Free Forever</span>
+            <div className="flex flex-wrap justify-center gap-3 mb-8 text-sm">
+              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-green-200 shadow-md hover:shadow-lg transition">
+                <span className="text-green-600 font-bold">✓</span>
+                <span className="font-semibold text-gray-700">Free Forever</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-md border border-gray-200">
-                <span className="text-blue-600">✓</span>
-                <span>Private & Secure</span>
+              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-blue-200 shadow-md hover:shadow-lg transition">
+                <span className="text-blue-600 font-bold">✓</span>
+                <span className="font-semibold text-gray-700">Private & Secure</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-md border border-gray-200">
-                <span className="text-purple-600">✓</span>
-                <span>Legal Reports</span>
+              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-purple-200 shadow-md hover:shadow-lg transition">
+                <span className="text-purple-600 font-bold">✓</span>
+                <span className="font-semibold text-gray-700">Legal Reports</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-md border border-gray-200">
-                <span className="text-pink-600">✓</span>
-                <span>No Card Required</span>
+              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-pink-200 shadow-md hover:shadow-lg transition">
+                <span className="text-pink-600 font-bold">✓</span>
+                <span className="font-semibold text-gray-700">No Card Required</span>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <Link 
                 href="/analysis" 
-                className="px-6 py-3 bg-pink-600 text-white text-base font-medium rounded-lg hover:bg-pink-700 transition"
+                className="px-8 py-4 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-white text-base font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all transform shadow-xl"
               >
                 Start Free Analysis →
               </Link>
               <Link 
                 href="/about" 
-                className="px-6 py-3 bg-white text-gray-700 text-base font-medium rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition"
+                className="px-8 py-4 bg-white text-gray-700 text-base font-semibold rounded-xl border-2 border-gray-300 hover:border-pink-500 hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl"
               >
                 Learn More
               </Link>
@@ -118,15 +118,15 @@ export default function Home() {
             {/* Stats */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-8 border-t border-gray-200">
               {[
-                { value: stats.files_analyzed > 0 ? stats.files_analyzed.toLocaleString() : "0", label: "Women Protected", icon: "👩" },
-                { value: stats.detection_accuracy > 0 ? `${stats.detection_accuracy}%` : "0%", label: "Accuracy", icon: "✓" },
-                { value: stats.avg_processing_time > 0 ? `${stats.avg_processing_time}s` : "0s", label: "Avg Speed", icon: "⚡" },
-                { value: stats.active_users > 0 ? `${stats.active_users}` : "0", label: "Users", icon: "👥" }
+                { value: stats.files_analyzed > 0 ? stats.files_analyzed.toLocaleString() : "0", label: "Women Protected", icon: "👩", color: "from-pink-500 to-rose-500" },
+                { value: stats.detection_accuracy > 0 ? `${stats.detection_accuracy}%` : "0%", label: "Accuracy", icon: "✓", color: "from-green-500 to-emerald-500" },
+                { value: stats.avg_processing_time > 0 ? `${stats.avg_processing_time}s` : "0s", label: "Avg Speed", icon: "⚡", color: "from-blue-500 to-cyan-500" },
+                { value: stats.active_users > 0 ? `${stats.active_users}` : "0", label: "Users", icon: "👥", color: "from-purple-500 to-indigo-500" }
               ].map((stat, i) => (
-                <div key={i} className="text-center p-4 bg-white rounded-lg border border-gray-100">
-                  <div className="text-2xl mb-1">{stat.icon}</div>
-                  <div className="text-2xl font-bold text-gray-900 mb-0.5">{stat.value}</div>
-                  <div className="text-xs text-gray-500">{stat.label}</div>
+                <div key={i} className="text-center p-5 bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-gray-200 shadow-lg hover:shadow-xl hover:scale-105 transition-all transform">
+                  <div className="text-3xl mb-2">{stat.icon}</div>
+                  <div className={`text-3xl font-extrabold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>{stat.value}</div>
+                  <div className="text-sm font-semibold text-gray-600">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -135,26 +135,26 @@ export default function Home() {
       </section>
 
       {/* Trust Section */}
-      <section className="py-12 bg-gray-50 border-y border-gray-200">
+      <section className="py-12 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-y border-gray-200">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-8">
-            <p className="text-sm font-medium text-gray-600 mb-3">Powered by advanced machine learning</p>
-            <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-500">
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 bg-pink-500 rounded-full"></span>
-                <span>No files stored</span>
+            <p className="text-sm font-bold text-gray-700 mb-3">⚡ Powered by advanced machine learning</p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm font-medium">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border-2 border-pink-200 shadow-md">
+                <span className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>
+                <span className="text-gray-700">No files stored</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                <span>Privacy first</span>
+              <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border-2 border-purple-200 shadow-md">
+                <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+                <span className="text-gray-700">Privacy first</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                <span>Legal reports</span>
+              <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border-2 border-blue-200 shadow-md">
+                <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                <span className="text-gray-700">Legal reports</span>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
             {[
               { name: 'TensorFlow' },
               { name: 'PyTorch' },
@@ -162,8 +162,8 @@ export default function Home() {
               { name: 'Scikit-learn' },
               { name: 'NumPy' }
             ].map((tech) => (
-              <div key={tech.name} className="text-center py-3 px-2 bg-white rounded-md border border-gray-200">
-                <span className="text-xs font-semibold text-gray-700">{tech.name}</span>
+              <div key={tech.name} className="text-center py-4 px-3 bg-white rounded-xl border-2 border-gray-200 shadow-md hover:shadow-lg hover:border-purple-300 transition-all transform hover:scale-105">
+                <span className="text-sm font-bold text-gray-800">{tech.name}</span>
               </div>
             ))}
           </div>
@@ -171,43 +171,46 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-white via-purple-50 to-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
               How It Works
             </h2>
-            <p className="text-base text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Advanced AI analyzes your content in three simple steps
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 title: "Upload Content",
                 description: "Upload your image or video file securely. We support all major formats.",
-                icon: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                icon: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12",
+                color: "from-pink-500 to-rose-500"
               },
               {
                 title: "AI Analysis",
                 description: "Our AI scans for manipulation patterns, artifacts, and inconsistencies.",
-                icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+                color: "from-purple-500 to-indigo-500"
               },
               {
                 title: "Get Results",
                 description: "Receive a detailed report with evidence you can use for legal action.",
-                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+                color: "from-blue-500 to-cyan-500"
               }
             ].map((feature, i) => (
-              <div key={i} className="p-6 bg-gray-50 rounded-lg border border-gray-200 hover:border-pink-300 hover:bg-pink-50 transition">
-                <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={i} className="bg-white rounded-2xl p-8 border-2 border-gray-200 shadow-xl hover:shadow-2xl hover:scale-105 transition-all transform hover:border-purple-300">
+                <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${feature.color} mb-6 shadow-lg`}>
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>

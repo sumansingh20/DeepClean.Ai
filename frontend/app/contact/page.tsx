@@ -57,13 +57,16 @@ export default function ContactPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-purple-50 via-pink-50 to-white">
+      <section className="py-20 px-4 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Get in Touch
+          <div className="inline-block px-5 py-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full text-white text-sm font-bold mb-6 shadow-lg">
+            💬 We're Here to Help
+          </div>
+          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6">
+            Get in <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">Touch</span>
           </h1>
-          <p className="text-lg text-gray-600">
-            We're here to help. Reach out for support, questions, or just to say hi.
+          <p className="text-xl text-gray-600 leading-relaxed">
+            Reach out for support, questions, or partnerships. We respond within 24 hours.
           </p>
         </div>
       </section>
