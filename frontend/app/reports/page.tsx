@@ -88,6 +88,7 @@ export default function ReportsPage(): React.ReactElement {
                       loadReports();
                     }}
                     className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                    aria-label="Filter reports by format"
                   >
                     <option value="all">All Formats</option>
                     <option value="pdf">PDF</option>
@@ -99,6 +100,7 @@ export default function ReportsPage(): React.ReactElement {
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as any)}
                     className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                    aria-label="Sort reports by criteria"
                   >
                     <option value="date">Sort by Date</option>
                     <option value="size">Sort by Size</option>

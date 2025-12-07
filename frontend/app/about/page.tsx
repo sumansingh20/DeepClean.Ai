@@ -1,8 +1,18 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function AboutPage() {
+  const [activeTab, setActiveTab] = useState('mission');
+
+  // Static stats data
+  const stats = {
+    organizations: 500,
+    cases_analyzed: 100000,
+    detection_accuracy: 98,
+    team_members: 25
+  };
 
   const team = [
     {
