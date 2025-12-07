@@ -1,10 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState('mission');
+  const [stats, setStats] = useState({
+    organizations: 0,
+    cases_analyzed: 0,
+    detection_accuracy: 0,
+    team_members: 0
+  });
+
+  useEffect(() => {
+    // Fetch real stats from backend
+    fetch('http://localhost:8001/api/v1/stats')
+      .then(res => res.json())
+      .then(data => setStats(data))
+      .catch(err => console.error('Failed to fetch stats:', err));
+  }, []);
 
   const team = [
     {
@@ -29,11 +43,11 @@ export default function AboutPage() {
     }
   ];
 
-  const stats = [
-    { value: '500+', label: 'Organizations' },
-    { value: '100K+', label: 'Cases Analyzed' },
-    { value: '94.2%', label: 'Detection Accuracy' },
-    { value: '50+', label: 'Team Members' }
+  const statsDisplay = [
+    { value: stats.organizations > 0 ? `${stats.organizations}` : '0', label: 'Organizations' },
+    { value: stats.cases_analyzed > 0 ? `${stats.cases_analyzed.toLocaleString()}` : '0', label: 'Cases Analyzed' },
+    { value: stats.detection_accuracy > 0 ? `${stats.detection_accuracy}%` : '0%', label: 'Detection Accuracy' },
+    { value: stats.team_members > 0 ? `${stats.team_members}` : '0', label: 'Team Members' }
   ];
 
   return (
@@ -70,7 +84,7 @@ export default function AboutPage() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-20">
-            {stats.map((stat, idx) => (
+            {statsDisplay.map((stat, idx) => (
               <div key={idx} className="glass dark:bg-dark-200/50 rounded-2xl p-8 text-center shadow-xl border border-white/20 dark:border-dark-300 card-hover">
                 <div className="text-4xl font-black gradient-text dark:text-blue-400 mb-2">{stat.value}</div>
                 <div className="text-gray-600 dark:text-dark-600 font-semibold">{stat.label}</div>
@@ -130,7 +144,7 @@ export default function AboutPage() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-gradient-to-br from-blue-50 to-white dark:from-blue-900/20 dark:to-dark-300 p-6 rounded-2xl border-2 border-blue-200 dark:border-blue-800">
                       <h3 className="text-xl font-black text-blue-900 dark:text-blue-400 mb-3">🎯 Accuracy First</h3>
-                      <p className="text-gray-700 dark:text-dark-700">We maintain 94.2% detection accuracy because lives depend on it.</p>
+                      <p className="text-gray-700 dark:text-dark-700">We maintain {stats.detection_accuracy > 0 ? `${stats.detection_accuracy}%` : 'high'} detection accuracy because lives depend on it.</p>
                     </div>
                     <div className="bg-gradient-to-br from-green-50 to-white dark:from-green-900/20 dark:to-dark-300 p-6 rounded-2xl border-2 border-green-200 dark:border-green-800">
                       <h3 className="text-xl font-black text-green-900 dark:text-green-400 mb-3">🔒 Privacy Always</h3>

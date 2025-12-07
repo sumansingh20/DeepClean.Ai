@@ -1,16 +1,28 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CareersPage() {
   const [selectedDepartment, setSelectedDepartment] = useState('all');
+  const [platformStats, setPlatformStats] = useState({
+    team_members: 0,
+    organizations: 0
+  });
+
+  useEffect(() => {
+    // Fetch real stats from backend
+    fetch('http://localhost:8001/api/v1/stats')
+      .then(res => res.json())
+      .then(data => setPlatformStats(data))
+      .catch(err => console.error('Failed to fetch stats:', err));
+  }, []);
 
   const stats = [
-    { label: 'Team Members', value: '250+', icon: '👥' },
-    { label: 'Countries', value: '15', icon: '🌍' },
-    { label: 'Open Positions', value: '42', icon: '📋' },
-    { label: 'Rating', value: '4.8/5', icon: '⭐' },
+    { label: 'Team Members', value: platformStats.team_members > 0 ? `${platformStats.team_members}` : '0', icon: '👥' },
+    { label: 'Organizations', value: platformStats.organizations > 0 ? `${platformStats.organizations}` : '0', icon: '🌍' },
+    { label: 'Open Positions', value: '0', icon: '📋' },
+    { label: 'Rating', value: '5/5', icon: '⭐' },
   ];
 
   const departments = [

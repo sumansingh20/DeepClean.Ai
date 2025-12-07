@@ -363,7 +363,6 @@ async def request_password_reset(
 
 @router.post(
     "/password-reset",
-    response_model={"message": str},
     summary="Reset Password",
     description="Reset password using a reset token"
 )

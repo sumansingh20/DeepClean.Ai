@@ -1,38 +1,59 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [stats, setStats] = useState({
+    files_analyzed: 0,
+    active_users: 0,
+    detection_accuracy: 0,
+    avg_processing_time: 0
+  });
+
+  useEffect(() => {
+    // Fetch real stats from backend
+    fetch('http://localhost:8001/api/v1/stats')
+      .then(res => res.json())
+      .then(data => setStats(data))
+      .catch(err => console.error('Failed to fetch stats:', err));
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-lg">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-2xl border-b border-white/20 shadow-2xl shadow-blue-500/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center h-20">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-11 h-11 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                <span className="text-white font-black text-base">DC</span>
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-400/0 via-blue-400/30 to-blue-400/0 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
+              <div className="relative w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-2xl shadow-blue-500/50 group-hover:shadow-blue-600/60 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                <span className="text-white font-black text-lg drop-shadow-lg">DC</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/40 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+                <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition-opacity -z-10"></div>
               </div>
-              <span className="font-black text-gray-900 text-xl tracking-tight">DeepClean.AI</span>
+              <span className="font-black bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent text-xl tracking-tight">DeepClean.AI</span>
             </Link>
             
             <div className="hidden md:flex items-center gap-8">
-              <Link href="/features" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-200 relative group">
+              <Link href="/features" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-300 relative group">
                 Features
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/pricing" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-200 relative group">
+              <Link href="/pricing" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-300 relative group">
                 Pricing
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/about" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-200 relative group">
+              <Link href="/about" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-300 relative group">
                 About
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/login" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-200">Login</Link>
-              <Link href="/register" className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-indigo-700">
-                Get Started
+              <Link href="/login" className="text-sm font-bold text-gray-700 hover:text-blue-600 transition-all duration-300 relative group">
+                Login
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link href="/register" className="relative px-7 py-3 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white text-sm font-bold rounded-xl shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-600/40 transition-all duration-300 hover:-translate-y-1 hover:scale-105 overflow-hidden group">
+                <span className="relative z-10">Get Started</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
             </div>
           </div>
@@ -105,10 +126,10 @@ export default function Home() {
             {/* Stats */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-gray-200/80">
               {[
-                { value: "10,000+", label: "Files analyzed", icon: "📊" },
-                { value: "92.3%", label: "Detection accuracy", icon: "🎯" },
-                { value: "< 5s", label: "Average processing", icon: "⚡" },
-                { value: "50+", label: "Active users", icon: "👥" }
+                { value: stats.files_analyzed > 0 ? stats.files_analyzed.toLocaleString() : "0", label: "Files analyzed", icon: "📊" },
+                { value: stats.detection_accuracy > 0 ? `${stats.detection_accuracy}%` : "0%", label: "Detection accuracy", icon: "🎯" },
+                { value: stats.avg_processing_time > 0 ? `${stats.avg_processing_time}s` : "0s", label: "Average processing", icon: "⚡" },
+                { value: stats.active_users > 0 ? `${stats.active_users}` : "0", label: "Active users", icon: "👥" }
               ].map((stat, i) => (
                 <div key={i} className="group relative text-center p-8 bg-white/80 backdrop-blur-md rounded-3xl border border-gray-200/50 hover:border-blue-400 hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.3)] transition-all duration-500 hover:-translate-y-2 cursor-default overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
