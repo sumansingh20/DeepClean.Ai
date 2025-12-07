@@ -1,28 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function AboutPage() {
-  const [activeTab, setActiveTab] = useState('mission');
-  const [stats, setStats] = useState({
-    organizations: 0,
-    cases_analyzed: 0,
-    detection_accuracy: 0,
-    team_members: 0
-  });
-
-  useEffect(() => {
-    // Fetch real stats from backend
-    fetch('http://localhost:8001/api/v1/stats')
-      .then(res => res.json())
-      .then(data => setStats(data))
-      .catch(err => console.error('Failed to fetch stats:', err));
-  }, []);
 
   const team = [
     {
-      name: 'Dr. Rajesh Kumar',
+      name: 'Suman Kumar',
       role: 'Founder & CEO',
       bio: 'Former DRDO scientist with 15+ years in AI research'
     },
