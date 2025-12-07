@@ -1,8 +1,20 @@
-# DeepClean.AI - Deepfake Detection Platform
+# DeepClean.AI - Women's Safety Platform
 
-A practical deepfake detection tool built with OpenCV and Python. This project helps you analyze images and videos to spot manipulated content.
+A deepfake detection tool built to protect women from digital harassment and manipulation. This project helps detect fake images and videos that are often used to harm women online.
+
+**My Mission:** Creating a safer digital space for women. This is my dream - to help women protect themselves from deepfake abuse, revenge porn, and online harassment.
 
 **Last Updated:** December 7, 2025
+
+## Why This Matters
+
+Women are the primary targets of deepfake abuse. Fake intimate images, manipulated videos, and AI-generated content are used to:
+- Harass and blackmail women
+- Damage reputations and careers
+- Cause emotional trauma
+- Spread without consent
+
+This platform gives women the tools to detect and report this abuse.
 
 ---
 
@@ -40,7 +52,16 @@ Test accounts you can use:
 
 ---
 
-## What It Does
+## How It Helps Women
+
+### Protection Features
+
+This platform helps women:
+- Verify if images/videos are real or fake
+- Get evidence reports for legal action
+- Track and report abusive content
+- Protect their digital identity
+- Get analysis reports they can share with authorities
 
 ### Detection Methods
 
@@ -263,10 +284,22 @@ Before going live, make sure to:
 
 All rights reserved.
 
-## Author
+## About the Developer
 
-Suman Singh  
+**Suman Singh**  
 GitHub: [@sumansingh20](https://github.com/sumansingh20)
+
+I'm building this platform because I believe every woman deserves to feel safe online. Deepfake technology is being misused to harm women, and I want to give them tools to fight back. This is my contribution to making the internet safer for women.
+
+## My Vision
+
+Women's safety is my first priority. I dream of a world where:
+- Women can trust what they see online
+- Abusers can be caught and stopped
+- Technology protects women instead of harming them
+- Every woman has access to tools that keep them safe
+
+This platform is just the beginning. I'm committed to continuously improving it to better serve women who need protection from digital abuse.
 
 ## Credits
 
