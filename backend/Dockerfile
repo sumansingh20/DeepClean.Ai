@@ -24,9 +24,8 @@ COPY app ./app
 # Create ml_models directory (models will be mounted via volume)
 RUN mkdir -p ./ml_models
 
-# Health check
-HEALTHCHECK --interval=10s --timeout=5s --retries=5 \
-    CMD curl -f http://localhost:8000/api/v1/health/status || exit 1
+# Expose port
+EXPOSE 8000
 
-# Run application (use PORT env variable from Render)
-CMD uvicorn main_api:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1
+# Run application
+CMD ["sh", "-c", "uvicorn main_api:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1"]
