@@ -303,6 +303,16 @@ async def root():
         "cv_available": CV_AVAILABLE
     }
 
+@app.get("/api/v1/health")
+async def health_check():
+    """Health check endpoint for Render/Railway deployment monitoring"""
+    return {
+        "status": "healthy",
+        "timestamp": datetime.utcnow().isoformat(),
+        "version": "2.0.0",
+        "cv_available": CV_AVAILABLE
+    }
+
 @app.get("/api/v1/stats")
 async def get_platform_stats():
     """Get real platform statistics - NO MOCK DATA"""
