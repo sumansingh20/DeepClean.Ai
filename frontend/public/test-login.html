@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Login - DeepClean AI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .quick-fill {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .quick-fill button {
+            flex: 1;
+            padding: 10px;
+            font-size: 13px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .result {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 10px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+        }
+        .result-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .result-content {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        code {
+            background: rgba(0,0,0,0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Test Login</h1>
+        <p class="subtitle">Direct API test without framework interference</p>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="admin@deepclean.ai" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="admin123" required>
+            </div>
+
+            <button type="submit" id="submitBtn">Login</button>
+        </form>
+
+        <div class="quick-fill">
+            <button onclick="fillAdmin()">👮 Admin</button>
+            <button onclick="fillMod()">🛡️ Moderator</button>
+        </div>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8001/api/v1/auth/login';
+
+        function fillAdmin() {
+            document.getElementById('email').value = 'admin@deepclean.ai';
+            document.getElementById('password').value = 'admin123';
+        }
+
+        function fillMod() {
+            document.getElementById('email').value = 'moderator@deepclean.ai';
+            document.getElementById('password').value = 'mod123';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const resultDiv = document.getElementById('result');
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Logging in...';
+            resultDiv.style.display = 'none';
+
+            try {
+                console.log('=== LOGIN ATTEMPT ===');
+                console.log('API:', API_URL);
+                console.log('Email:', email);
+
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password }),
+                    mode: 'cors'
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response headers:', [...response.headers.entries()]);
+
+                const data = await response.json();
+                console.log('Response data:', data);
+
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <div class="result-title">✓ Login Successful!</div>
+                        <div class="result-content">
+                            <strong>User:</strong> ${data.user.username}<br>
+                            <strong>Email:</strong> ${data.user.email}<br>
+                            <strong>Role:</strong> ${data.user.role}<br>
+                            <strong>Token:</strong> <code>${data.access_token.substring(0, 40)}...</code><br>
+                            <br>
+                            <strong>✓ Backend API is working perfectly!</strong><br>
+                            <strong>✓ CORS is configured correctly!</strong><br>
+                            <strong>✓ Authentication successful!</strong>
+                        </div>
+                    `;
+                    resultDiv.style.display = 'block';
+
+                    // Store in localStorage
+                    localStorage.setItem('token', data.access_token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                } else {
+                    throw new Error(data.detail || 'Login failed');
+                }
+
+            } catch (err) {
+                console.error('Error:', err);
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <div class="result-title">✗ Login Failed</div>
+                    <div class="result-content">
+                        <strong>Error:</strong> ${err.message}<br>
+                        <br>
+                        <strong>Troubleshooting:</strong><br>
+                        • Check if backend is running on port 8001<br>
+                        • Check browser console for CORS errors<br>
+                        • Verify credentials are correct
+                    </div>
+                `;
+                resultDiv.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Login';
+            }
+        });
+
+        // Auto-fill admin on load
+        window.onload = () => {
+            fillAdmin();
+            console.log('Test page loaded. Backend API:', API_URL);
+        };
+    </script>
+</body>
+</html>

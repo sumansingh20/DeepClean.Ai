@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["python311", "gcc", "postgresql"]
+
+[phases.install]
+cmds = ["pip install -r requirements-prod.txt"]
+
+[phases.build]
+cmds = []
+
+[start]
+cmd = "uvicorn main_api:app --host 0.0.0.0 --port $PORT"

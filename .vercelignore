@@ -1,0 +1,12 @@
+backend/
+ml_models/
+deployment/
+docs/
+__pycache__
+*.pyc
+.env
+venv/
+node_modules
+.git
+*.md
+!README.md
